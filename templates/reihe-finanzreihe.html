@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import pk, book_card, clip, minis, crumbs %}
+{% from '_macros.html' import pk, bestseller_box, book_card, clip, minis, crumbs %}
 {% block main %}
 <section class="sub-hero">
   <div class="wrap sub-grid">
@@ -85,6 +85,12 @@
     <p class="small" style="margin-top: 18px">Gemeinsam geschrieben: Tag auf Tag im Hamsterrad, Der Hamster verlässt das Rad, Mein Geldbaum.</p>
   </div>
 </section>
+
+{% if bestseller %}
+<section class="block block--flush">
+  <div class="wrap">{% for bs in bestseller %}{{ bestseller_box(bs) }}{% endfor %}</div>
+</section>
+{% endif %}
 
 <section class="block">
   <div class="wrap">

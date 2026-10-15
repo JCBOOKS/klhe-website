@@ -12,10 +12,12 @@
   </div>
 </section>
 
-<section class="block block--flush">
+<section class="block block--flush" id="bestseller">
   <div class="wrap">
-    {{ bestseller_box(bestseller) }}
-    <p class="best-note small">Auch unsere <a href="{{ finanzreihe.url }}">Finanzreihe</a> war Amazon-Bestseller und in den Amazon Top 100.</p>
+    <div class="best-list">
+      {% for bs in bestseller %}{{ bestseller_box(bs, tint=['apricot', 'flieder'][loop.index0 % 2]) }}{% endfor %}
+    </div>
+    <p class="best-note small">Die <a href="{{ finanzreihe.url }}">Finanzreihe</a> war außerdem in den Amazon Top 100.</p>
   </div>
 </section>
 

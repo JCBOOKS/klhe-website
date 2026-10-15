@@ -178,13 +178,15 @@ def load():
         p['reihe_obj'] = reihe_by.get(p.get('reihe'))
         p['ist_medien'] = bool(p.get('art'))  # Fernsehen, Radio, Online
     bestseller = json.loads((DATA / 'bestseller.json').read_text(encoding='utf-8'))
-    for sl, bs in bestseller.items():
-        if sl not in slug_by:
-            raise SystemExit(f'bestseller.json: Buch „{sl}“ gibt es nicht in buecher.csv')
-        if not (STATIC / bs['bild'].lstrip('/')).exists():
-            warn(f'Bestseller-Bild fehlt: {bs["bild"]}')
-        bs['buch_obj'] = slug_by[sl]
-        slug_by[sl]['bestseller'] = bs
+    for bs in bestseller:
+        if bs['buch'] not in slug_by:
+            raise SystemExit(f'bestseller.json: Buch „{bs["buch"]}“ gibt es nicht in buecher.csv')
+        for f in [bs['bild']] + [x['bild'] for x in bs.get('details', [])]:
+            if not (STATIC / f.lstrip('/')).exists():
+                warn(f'Bestseller-Bild fehlt: {f}')
+        bs.setdefault('details', [])
+        bs['buch_obj'] = slug_by[bs['buch']]
+        slug_by[bs['buch']]['bestseller'] = bs
     for r in reihen:
         r['buecher'] = sorted([b for b in books if b['reihe'] == r['id']], key=lambda b: (int(b['band']) if b['band'].isdigit() else 99, b['pos']))
         r['url'] = f'/reihen/{r["id"]}/'
@@ -270,7 +272,7 @@ def build():
     picks = sorted([b for b in books if b['empfohlen']], key=lambda b: int(b['empfohlen']) if b['empfohlen'].isdigit() else 99)
     render('index.html', '/', page_meta('KLHE · Bücher, die bewegen.', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, seit 2011: Ratgeber, Lebensgeschichten, Kinder- und Ausmalbücher, bestellbar im Buchhandel.', '/', jsonld=org_jsonld()),
            wall=wall, picks=picks, start_reihen=[r for r in d['reihen'] if r.get('start')], mitmach=reihe_by['mitmachbuecher'],
-           clips=[d['presse_by'][p] for p in START_PRESSE], presse_anzahl=len(d['presse']), bestseller=d['bestseller']['mutmacherinnen'])
+           clips=[d['presse_by'][p] for p in START_PRESSE], presse_anzahl=len(d['presse']), bestseller=d['bestseller'])
 
     # Programm
     sections = []
@@ -308,6 +310,7 @@ def build():
         extra = {}
         if r['id'] == 'finanzreihe':
             extra['clips'] = [d['presse_by'][p] for p in FINANZ_PRESSE]
+            extra['bestseller'] = [bs for bs in d['bestseller'] if bs['buch_obj']['reihe'] == 'finanzreihe']
         if r['id'] == 'mutmachbuecher':
             extra['kids'] = pick(['das-witzige-sport-mitmachbuch', 'das-tierische-mitmachbuch', 'die-wuselbande-sucht-das-gaehnen', 'mama-wer-wohnt-eigentlich-auf-dem-bauernhof', 'affe-loki-und-die-reise-zur-schatzinsel', 'das-total-verrueckte-suchbuch'])
         desc = r['text'] if 'intro' not in r else short(r['intro'])
@@ -316,7 +319,7 @@ def build():
     # Presse
     render('presse.html', '/presse/', page_meta('Presse · KLHE', f'{len(d["presse"])} Berichte über Bücher von KLHE und ihre Autorinnen und Autoren, von Focus Money bis Psychologie Heute.', '/presse/', nav='presse'),
            presse=d['presse'], medien_items=[p for p in d['presse'] if p['ist_medien']], print_items=[p for p in d['presse'] if not p['ist_medien']],
-           bestseller=d['bestseller']['mutmacherinnen'], finanzreihe=reihe_by['finanzreihe'])
+           bestseller=d['bestseller'], finanzreihe=reihe_by['finanzreihe'])
 
     # Verlag, Autor:innen, Kontakt
     render('verlag.html', '/verlag/', page_meta('Der Verlag · KLHE', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, gegründet 2011 von Christopher Klein und Jens Helbig. Die Geschichte des Verlags.', '/verlag/', nav='verlag'),

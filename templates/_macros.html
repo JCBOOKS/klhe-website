@@ -73,10 +73,14 @@
 </div>
 {%- endmacro %}
 
-{# Bestseller-Beleg: Bildschirmfoto von Amazon mit Buch-Mockup #}
-{% macro bestseller_box(bs, heading='h2', mehr=True) -%}
-<div class="best" id="bestseller">
-  <figure class="best-shot"><a href="{{ bs.bild }}" title="Bildschirmfoto in voller Größe öffnen"><img src="{{ bs.bild }}" alt="{{ bs.alt }}" loading="lazy"></a><figcaption>Bildschirmfoto von amazon.de</figcaption></figure>
+{# Bestseller-Beleg: Bildschirmfoto von Amazon, weitere Belege klein darunter, Buch als Mockup #}
+{% macro bestseller_box(bs, heading='h2', mehr=True, tint='apricot') -%}
+<div class="best t-{{ tint }}" id="bestseller-{{ bs.id }}">
+  <figure class="best-shot">
+    <a href="{{ bs.bild }}" title="Bildschirmfoto in voller Größe öffnen"><img src="{{ bs.bild }}" alt="{{ bs.alt }}" loading="lazy"></a>
+    {% if bs.details %}<div class="best-more">{% for x in bs.details %}<a href="{{ x.bild }}" title="Bildschirmfoto in voller Größe öffnen"><img src="{{ x.bild }}" alt="{{ x.alt }}" loading="lazy"></a>{% endfor %}</div>{% endif %}
+    <figcaption>{{ bs.quelle }}</figcaption>
+  </figure>
   <div class="best-copy">
     <p class="kicker">Amazon-Bestseller</p>
     <{{ heading }} class="h2 best-title">{{ bs.titel }}</{{ heading }}>
@@ -87,6 +91,14 @@
     </div>
   </div>
 </div>
+{%- endmacro %}
+
+{# Kurzform für die Startseite: zwei Belege nebeneinander #}
+{% macro bestseller_mini(bs) -%}
+<figure class="best-mini">
+  <a class="best-mini-shot" href="{{ bs.buch_obj.url }}"><img src="{{ bs.bild }}" alt="{{ bs.alt }}" loading="lazy"></a>
+  <figcaption><b>Platz 1 bei Amazon</b><span>in {{ bs.kurz }}: <a href="{{ bs.buch_obj.url }}">{{ bs.buch_obj.titel }}</a></span></figcaption>
+</figure>
 {%- endmacro %}
 
 {% macro crumbs(items) -%}

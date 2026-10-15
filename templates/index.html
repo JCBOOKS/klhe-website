@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import book_card, pk, medienleiste %}
+{% from '_macros.html' import book_card, pk, medienleiste, bestseller_mini %}
 {% block main %}
 <section class="hero">
   <div class="wrap hero-grid">
@@ -24,7 +24,7 @@
       <div class="fact t-mint"><b class="num">2011</b><span>gegründet, noch während des Studiums</span></div>
       <div class="fact t-flieder"><b class="num">500.000+</b><span>verkaufte Bücher</span></div>
       <div class="fact t-rose"><b class="num">3</b><span>große Barsortimente liefern an den Buchhandel: Libri, Zeitfracht und Umbreit</span></div>
-      <a class="fact t-apricot" href="/presse/#bestseller"><b>Bestseller</b><span>bei Amazon, zum Beispiel Platz&nbsp;1 in Brust &amp; Brustkrebs</span></a>
+      <a class="fact t-apricot" href="/presse/#bestseller"><b>Bestseller</b><span>bei Amazon, mehrfach auf Platz&nbsp;1 ihrer Kategorie</span></a>
     </div>
     {{ medienleiste(kurz=True) }}
   </div>
@@ -105,14 +105,10 @@
       <div class="pks pks--start">
         {% for m in clips %}{{ pk(m, 'weiss', links=False) }}{% endfor %}
       </div>
-      <div class="best best--kompakt">
-        <figure class="best-shot"><a href="{{ bestseller.bild }}" title="Bildschirmfoto in voller Größe öffnen"><img src="{{ bestseller.bild }}" alt="{{ bestseller.alt }}" loading="lazy"></a><figcaption>Bildschirmfoto von amazon.de</figcaption></figure>
-        <div class="best-copy">
-          <p class="kicker">Amazon-Bestseller</p>
-          <h3 class="h3">{{ bestseller.titel }}: {{ bestseller.buch_obj.titel }}</h3>
-          <p>{{ bestseller.text }} Auch unsere Finanzreihe war Amazon-Bestseller und in den Amazon Top 100.</p>
-          <a class="more" href="{{ bestseller.buch_obj.url }}">Zum Buch</a>
-        </div>
+      <div class="best-minis" id="bestseller">
+        <div class="best-minis-head"><p class="kicker">Amazon-Bestseller</p><a class="more" href="/presse/#bestseller">Alle Belege</a></div>
+        {% for bs in bestseller %}{{ bestseller_mini(bs) }}{% endfor %}
+      </div>
       </div>
     </div>
   </div>

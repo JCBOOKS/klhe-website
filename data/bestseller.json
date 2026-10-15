@@ -1,9 +1,37 @@
-{
- "mutmacherinnen": {
-  "bild": "/img/presse/amazon-bestseller-mutmacherinnen.webp",
+[
+ {
+  "id": "mutmacherinnen",
   "buch": "mutmacherinnen",
-  "titel": "Platz 1 bei Amazon",
-  "text": "Mutmacherinnen auf Platz 1 der Amazon-Bestseller in der Kategorie Brust & Brustkrebs.",
-  "alt": "Bildschirmfoto von amazon.de: Bestseller in Brust & Brustkrebs, auf Platz 1 Mutmacherinnen, herausgegeben von Esther Irmer"
+  "titel": "Platz 1 in Brust & Brustkrebs",
+  "kurz": "Brust & Brustkrebs",
+  "text": "Mutmacherinnen, herausgegeben von Esther Irmer, auf Platz 1 der Amazon-Bestseller in der Kategorie Brust & Brustkrebs.",
+  "bild": "/img/presse/amazon-bestseller-mutmacherinnen.webp",
+  "alt": "Bildschirmfoto von amazon.de: Bestseller in Brust & Brustkrebs, auf Platz 1 Mutmacherinnen, herausgegeben von Esther Irmer",
+  "quelle": "Bildschirmfoto von amazon.de",
+  "details": []
+ },
+ {
+  "id": "nine-to-five",
+  "buch": "nine-to-five-muss-nicht-sein",
+  "titel": "Platz 1 in Geldanlage & Vermögensaufbau",
+  "kurz": "Geldanlage & Vermögensaufbau",
+  "text": "„Nine to five muss nicht sein!“ von Christopher Klein auf Platz 1 der Amazon-Bestseller in Geldanlage & Vermögensaufbau, vor „Rich Dad Poor Dad“ und „Souverän investieren mit Indexfonds & ETFs“. Außerdem Platz 1 in Betriebswirtschaft, E-Commerce und Online-Marketing.",
+  "bild": "/img/presse/amazon-bestseller-nine-to-five.webp",
+  "alt": "Bildschirmfoto von amazon.de vom 18. Juli 2017: Bestseller in Geldanlage & Vermögensaufbau, Platz 1 Nine-to-five muss nicht sein! von Christopher Klein, Platz 2 Rich Dad Poor Dad, Platz 3 Souverän investieren",
+  "quelle": "Bildschirmfotos von amazon.de, Bestsellerliste vom 18. Juli 2017, frühere Auflage (Kindle-Ausgabe)",
+  "details": [
+   {
+    "bild": "/img/presse/amazon-rang-nine-to-five-1.webp",
+    "alt": "Bildschirmfoto der Produktinformation: Nr. 1 in Betriebswirtschaft, E-Commerce und Online-Marketing"
+   },
+   {
+    "bild": "/img/presse/amazon-rang-nine-to-five-2.webp",
+    "alt": "Bildschirmfoto der Produktinformation: Nr. 1 in Geldanlage & Vermögensaufbau und E-Commerce"
+   },
+   {
+    "bild": "/img/presse/amazon-badge-nine-to-five.webp",
+    "alt": "Bildschirmfoto von amazon.de: Nine-to-five muss nicht sein! mit Bestseller-Kennzeichnung, erschienen am 2. Juli 2017"
+   }
+  ]
  }
-}
+]
