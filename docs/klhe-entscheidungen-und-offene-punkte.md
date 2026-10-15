@@ -237,7 +237,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 
 | # | Was | Wer | Status |
 |---|---|---|---|
-| T1 | Die 31 Bonusdateien holen: im Repo `python3 tools/bonus_holen.py` ausführen (lädt sie von der alten Website nach `static/bonus/dateien/`), Dateien kurz prüfen, neu bauen | Jens oder Chris | offen, vor dem Livegang |
+| T1 | Die 31 Bonusdateien holen, ohne Suchen und Verlinken: Ordner `wp-content/uploads` per FTP herunterladen und `python3 tools/bonus_holen.py --ordner <Ordner>` ausführen (oder ohne `--ordner` direkt von der noch laufenden Seite). Das Skript sucht, benennt um und legt ab; neu bauen | Jens | offen, vor dem Livegang |
 | T2 | Flache Cover in hoher Auflösung, Dateiname = ISBN (heute nur 3D-Mockups für ~37 Titel) | Chris | offen |
 | T3 | Logo als SVG (oder Schriftname des Wortbilds) | Chris | offen |
 | T4 | Korrekturen Bücherliste: 3 falsche Amazon-Links (Ziele finden, Glücklich denken, Chinesisch kochen), 4 B0-ASINs, Bandnummern Kuschelige Momente, „am/im Meer“, Mutmacherinnen SC/HC | Chris | offen |

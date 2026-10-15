@@ -38,6 +38,8 @@ SITE = {
     'buchbuddy': 'https://buchbuddy.de/',
     'jahr': date.today().year,
     'stand': '15. Oktober 2026',
+    # erst auf True setzen, wenn https://www.klhe.de mit Zertifikat läuft: leitet http:// und klhe.de ohne www dorthin um
+    'https_www_erzwingen': False,
 }
 
 # Startseite: drei bewegte Cover-Spalten (Gestaltung v5)
@@ -285,7 +287,7 @@ def build():
             parts.append(f'{n_links} Link' if n_links == 1 else f'{n_links} Links')
         s['count'] = ', '.join(parts) or 'folgt'
     if missing:
-        warn(f'{len(missing)} Bonusdateien fehlen noch in static/bonus/dateien/ und erscheinen als „folgt“. Holen mit: python3 tools/bonus_holen.py')
+        warn(f'{len(missing)} Bonusdateien fehlen noch in static/bonus/dateien/ und erscheinen als „folgt“. Holen mit: python3 tools/bonus_holen.py --ordner <FTP-Download von wp-content/uploads> (oder ohne --ordner direkt von klhe.de)')
     render('bonus.html', '/bonus/', page_meta('Bonusmaterial · KLHE', 'Zusatzmaterial zu Büchern und Hörbüchern von KLHE, ohne Anmeldung zum Herunterladen.', '/bonus/', noindex=True), bonus=d['bonus'])
 
     # Recht
@@ -346,10 +348,12 @@ def write_redirects():
         '',
         'RewriteEngine On',
         '',
-        '# Hauptadresse erzwingen (erst aktivieren, wenn HTTPS und www eingerichtet sind)',
-        '# RewriteCond %{HTTPS} off [OR]',
-        '# RewriteCond %{HTTP_HOST} !^www\\.klhe\\.de$ [NC]',
-        '# RewriteRule ^(.*)$ https://www.klhe.de/$1 [R=301,L]',
+        '# Hauptadresse erzwingen (Schalter https_www_erzwingen in build.py)',
+        *([] if SITE['https_www_erzwingen'] else ['# (noch aus)']),
+        *[('' if SITE['https_www_erzwingen'] else '# ') + z for z in [
+            'RewriteCond %{HTTPS} off [OR]',
+            'RewriteCond %{HTTP_HOST} !^www\\.klhe\\.de$ [NC]',
+            'RewriteRule ^(.*)$ https://www.klhe.de/$1 [R=301,L]']],
         '',
         '# 1. Alte Adressen einzeln (301, Abfrage-Parameter wie ?fbclid werden verworfen)',
     ]

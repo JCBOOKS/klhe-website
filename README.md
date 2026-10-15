@@ -41,23 +41,43 @@ Neues Buch: Zeile ergänzen, Cover als `static/img/cover/<slug>.webp` ablegen (e
 
 ## Bonusmaterial
 
-Die Dateien liegen noch auf der alten Website. Einmalig holen (auf einem Rechner mit Internet, solange klhe.de noch läuft):
+Die 31 Bonusdateien (PDF, ZIP, PNG) liegen noch auf dem alten Server unter `wp-content/uploads/…`. Niemand muss sie suchen oder verlinken: Das Skript sucht sie heraus, benennt sie um und legt sie nach `static/bonus/dateien/`. Beim nächsten Bauen sind sie auf `/bonus/` verlinkt, und die alten Download-Links aus Büchern und Hörbüchern leiten automatisch auf die neuen Dateien.
+
+**Weg A, aus dem FTP-Server:** den Ordner `wp-content/uploads` per FTP komplett auf den Rechner ziehen, dann
+
+```bash
+python3 tools/bonus_holen.py --ordner ~/Downloads/uploads
+```
+
+**Weg B, von der laufenden alten Website** (solange klhe.de noch online ist):
 
 ```bash
 python3 tools/bonus_holen.py
-python3 build.py --check
 ```
 
-Solange eine Datei fehlt, zeigt die Bonusseite bei diesem Eintrag „folgt“.
+Das Skript meldet am Ende „31 von 31“ oder listet, was fehlt. Übernommen werden nur die 31 bekannten Dateien, nichts sonst aus WordPress. Fehlt eine Datei, steht auf der Bonusseite bei diesem Eintrag „folgt“.
 
 ## Livegang (Jens)
 
-1. `python3 tools/bonus_holen.py` und `python3 build.py --check` ausführen.
-2. Inhalt von `public/` (inklusive `.htaccess`) in das Web-Verzeichnis von klhe.de laden. Die `.htaccess` braucht Apache mit `mod_rewrite` (und optional `mod_headers`). Für Cloudflare Pages oder Netlify liegt dieselbe Liste als `public/_redirects` bei.
-3. HTTPS prüfen, dann in der `.htaccess` die drei auskommentierten Zeilen für `https://www.klhe.de` aktivieren (Quelle: `build.py`, Funktion `write_redirects`).
-4. Stichproben: `/project/nine-to-five/` → Buchseite, `/finance/bonus-download/` → `/bonus/#finanz`, `/wp-login.php` → 410.
-5. Sitemap `https://www.klhe.de/sitemap.xml` in der Search Console einreichen.
-6. WordPress samt Datenbank vollständig löschen, alle alten Zugänge ändern.
+Die Weiterleitungen muss niemand anfassen: Sie stecken komplett in der Datei `public/.htaccess`, die einfach mit hochgeladen wird. Wer danach einen alten Link aufruft (aus einem Buch, von Google, Instagram oder einem Hörbuch), landet automatisch auf der passenden neuen Seite.
+
+1. **Repo holen:** `git clone https://github.com/JCBOOKS/klhe-website.git` und `pip install -r requirements.txt`
+2. **Bonusdateien holen** (siehe oben, Weg A oder B).
+3. **Bauen und prüfen:** `python3 build.py --check` und `python3 tools/test_weiterleitungen.py`. Beide müssen ohne Fehler durchlaufen.
+4. **Hosting prüfen:** Läuft klhe.de bei Hetzner und über Cloudflare wie buchbuddy.de? Der Datenschutztext geht davon aus. Wenn nicht, vor dem Hochladen Bescheid geben, dann wird der Text angepasst. Der Server muss Apache mit `mod_rewrite` sein (bei Hetzner-Webhosting der Fall), sonst wirkt die `.htaccess` nicht.
+5. **Sichern:** WordPress-Ordner und Datenbank komplett sichern (nicht im Web-Verzeichnis ablegen).
+6. **Austauschen:** Alles aus dem Web-Verzeichnis von klhe.de entfernen und den **Inhalt** von `public/` hochladen. Wichtig: `.htaccess` ist eine versteckte Datei; im FTP-Programm versteckte Dateien einblenden und prüfen, dass sie oben liegt.
+7. **Testen:**
+   - `https://www.klhe.de/` zeigt die neue Startseite
+   - `https://www.klhe.de/project/nine-to-five/` landet auf der Buchseite „Nine to five muss nicht sein!“
+   - `https://www.klhe.de/finance/bonus-download/` landet auf `/bonus/` beim Abschnitt Finanzreihe, ein Download dort funktioniert
+   - `https://www.klhe.de/wp-login.php` antwortet mit „Gone“ (410)
+   - eine erfundene Adresse zeigt die Fehlerseite von KLHE
+8. **HTTPS und www:** Wenn `https://www.klhe.de` mit Zertifikat läuft, oben in `build.py` den Schalter `'https_www_erzwingen': False` auf `True` setzen, neu bauen, `.htaccess` erneut hochladen. Danach landen `http://` und `klhe.de` ohne www automatisch auf `https://www.klhe.de`.
+9. **Google:** In der Search Console `https://www.klhe.de/sitemap.xml` einreichen.
+10. **Aufräumen:** WordPress-Datenbank und alte Zugänge (FTP, Datenbank, WordPress-Nutzer) löschen bzw. Passwörter ändern.
+
+Für Cloudflare Pages oder Netlify statt Apache liegt dieselbe Weiterleitungsliste als `public/_redirects` bei.
 
 ## Datenschutz
 
