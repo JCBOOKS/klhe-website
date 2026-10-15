@@ -28,7 +28,7 @@
     </div>
     <div class="seen">
       <p>Unsere Bücher waren unter anderem in</p>
-      <ul><li>Focus Money</li><li>Psychologie Heute</li><li>Der Tagesspiegel</li><li>Prisma</li><li>tina</li><li>Jolie</li><li>Eve</li></ul>
+      <ul><li>Focus Money</li><li>Psychologie Heute</li><li>Der Tagesspiegel</li><li>Prisma</li><li>tina</li><li>Jolie</li><li>Eve</li><li>Chance</li><li>Rhein Main Magazin</li></ul>
     </div>
   </div>
 </section>
@@ -103,7 +103,7 @@
     <div class="press t-apricot">
       <div class="head">
         <div><h2 class="h2">Unsere Bücher in den Medien</h2></div>
-        <p class="small" style="max-width: 40ch; color: var(--ink-2)">Außerdem unter anderem in Psychologie Heute, Jolie, Bank &amp; Umwelt, den Niederrhein Nachrichten, den Fürther Nachrichten und dem Rhein Main Magazin.</p>
+        <div style="display: grid; gap: 10px; justify-items: start; max-width: 40ch"><p class="small" style="color: var(--ink-2)">{{ presse_anzahl }} Berichte über unsere Bücher und Autor:innen, unter anderem in Psychologie Heute, Jolie, Bank &amp; Umwelt, den Niederrhein Nachrichten, den Fürther Nachrichten und dem Rhein Main Magazin.</p><a class="more" href="/presse/">Alle Presseberichte</a></div>
       </div>
       <div class="clips">
         {% for m in clips %}{{ clip(m) }}{% endfor %}
@@ -140,7 +140,7 @@
           <li><span><b>ISBN von KLHE</b> und Eintrag im VLB</span></li>
           <li><span><b>Bestellbar im Buchhandel</b> über Libri, Zeitfracht und Umbreit</span></li>
           <li><span><b>Eigene Verlagsauslieferung</b> für Bestellungen, Versand und Remissionen</span></li>
-          <li><span><b>Mitglied im Börsenverein</b> des Deutschen Buchhandels</span></li>
+          <li><span><b>Seit 2011</b> ein unabhängiger Verlag aus Düsseldorf</span></li>
         </ul>
         <p class="small" style="color: var(--ink-2)">Wir nehmen keine unverlangten Manuskripte an. Neue Bücher bei KLHE entstehen heute mit BuchBuddy.</p>
         <div class="actions"><a class="btn btn--ink" href="/autoren/">So arbeiten wir</a><a class="btn btn--soft" href="{{ site.buchbuddy }}">Zu BuchBuddy</a></div>

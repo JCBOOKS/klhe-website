@@ -19,7 +19,7 @@ Lokal ansehen: `python3 -m http.server 8000 --directory public`, dann http://loc
 |---|---|
 | `data/buecher.csv` | alle Titel: eine Zeile pro Buch (Titel, Autor:in, Kategorie, Reihe, ISBN, Amazon-ASIN, Klappentext …). Lässt sich in Excel oder Numbers bearbeiten, als CSV (UTF-8) speichern. |
 | `data/kategorien.json`, `data/reihen.json` | die sechs Kategorien und fünf Reihen mit ihren Texten |
-| `data/presse.json` | Presseausschnitte (Bild unter `static/img/presse/`) |
+| `data/presse.json` | Presseberichte: Medium, Datum, Anlass, Bild (unter `static/img/presse/`) und die Bücher, zu denen sie gehören. Daraus entstehen `/presse/`, die Presse auf den Buchseiten und auf der Startseite. |
 | `data/bonus.json` | Bonusmaterial: Abschnitte, Dateien, alte Adressen |
 | `data/redirects.csv` | alte WordPress-Adressen → neue Adressen (301) oder 410 |
 | `templates/` | Seitenvorlagen (Jinja2) |
@@ -35,7 +35,6 @@ Lokal ansehen: `python3 -m http.server 8000 --directory public`, dann http://loc
 - `hoerbuch`, `uebersetzt`, `neu`: `ja` oder leer
 - `empfohlen`: Zahl 1–6 = Reihenfolge unter „Neu und empfohlen“ auf der Startseite
 - `cover`: Dateiname ohne Endung in `static/img/cover/` (leer = Platzhalter „Cover folgt“)
-- `presse`: IDs aus `presse.json`, mehrere mit `;`
 
 Neues Buch: Zeile ergänzen, Cover als `static/img/cover/<slug>.webp` ablegen (einheitlich: lange Kante 720 px), bauen.
 

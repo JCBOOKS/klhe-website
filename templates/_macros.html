@@ -30,8 +30,8 @@
 </div>
 {%- endmacro %}
 
-{% macro clip(m) -%}
-<figure class="clip"><div class="clip-img"><img src="{{ m.bild }}" alt="Artikel in {{ m.medium }}" loading="lazy"></div><figcaption><b>{{ m.medium }}</b><span class="num">{{ m.datum }}{% if m.datum %}, {% endif %}{{ m.kurz if m.kurz is defined else m.anlass }}</span></figcaption></figure>
+{% macro clip(m, mit_buch=False) -%}
+<figure class="clip"><div class="clip-img"><img src="{{ m.bild }}" alt="Presseausschnitt{% if m.medium %} aus {{ m.medium }}{% endif %}: {{ m.anlass }}" loading="lazy"></div><figcaption>{% if m.medium %}<b>{{ m.medium }}</b><span class="num">{{ m.datum }}{% if m.datum %}, {% endif %}{{ m.anlass }}</span>{% else %}<b>{{ m.anlass }}</b>{% if m.datum %}<span class="num">{{ m.datum }}</span>{% endif %}{% endif %}{% if mit_buch and m.buch_objs %}<span class="clip-books">Zum Buch: {% for b in m.buch_objs %}<a href="{{ b.url }}">{{ b.voller_titel }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</figcaption></figure>
 {%- endmacro %}
 
 {% macro crumbs(items) -%}

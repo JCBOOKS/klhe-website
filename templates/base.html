@@ -32,7 +32,7 @@
     <div class="top-pill">
       <a class="top-logo" href="/" aria-label="KLHE Startseite"><img src="/img/logo/klhe-schwarz.png" alt="KLHE" width="105" height="24"></a>
       <nav class="top-nav" aria-label="Hauptnavigation">
-        {% set items = [('/buecher/', 'Bücher', 'buecher'), ('/#reihen', 'Reihen', 'reihen'), ('/verlag/', 'Verlag', 'verlag'), ('/#presse', 'Presse', 'presse'), ('/kontakt/', 'Kontakt', 'kontakt')] %}
+        {% set items = [('/buecher/', 'Bücher', 'buecher'), ('/#reihen', 'Reihen', 'reihen'), ('/verlag/', 'Verlag', 'verlag'), ('/presse/', 'Presse', 'presse'), ('/kontakt/', 'Kontakt', 'kontakt')] %}
         {% for href, label, key in items %}<a{% if meta.nav == key %} class="on" aria-current="page"{% endif %} href="{{ href }}">{{ label }}</a>{% endfor %}
         <a class="btn btn--ink" href="/autoren/">Für Autor:innen</a>
         <details class="menu">
@@ -60,13 +60,12 @@
         <p>{{ site.claim }}</p>
         <span>Unabhängiger Verlag aus Düsseldorf, seit 2011. KLHE ist der Verlag hinter <a href="{{ site.buchbuddy }}">BuchBuddy</a>.</span>
       </div>
-      <div><h4>Verlag</h4><ul><li><a href="/buecher/">Bücher</a></li><li><a href="/#reihen">Reihen</a></li><li><a href="/verlag/">Unsere Geschichte</a></li><li><a href="/autoren/">Für Autor:innen</a></li><li><a href="/bonus/">Bonusmaterial</a></li></ul></div>
+      <div><h4>Verlag</h4><ul><li><a href="/buecher/">Bücher</a></li><li><a href="/#reihen">Reihen</a></li><li><a href="/verlag/">Unsere Geschichte</a></li><li><a href="/presse/">Presse</a></li><li><a href="/autoren/">Für Autor:innen</a></li><li><a href="/bonus/">Bonusmaterial</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li><a href="mailto:{{ site.mail }}">{{ site.mail }}</a></li><li class="num"><a href="tel:{{ site.tel_link }}">{{ site.tel }}</a></li><li><a href="/kontakt/">Buchhandel und Presse</a></li></ul></div>
       <div><h4>Folgen</h4><ul><li><a href="{{ site.instagram }}">Instagram</a></li><li><a href="{{ site.facebook }}">Facebook</a></li><li><a href="{{ site.buchbuddy }}">BuchBuddy</a></li></ul></div>
     </div>
     <div class="foot-base">
       <span>{{ site.firma }}, {{ site.strasse }}, {{ site.ort }}</span>
-      <span>Mitglied im Börsenverein des Deutschen Buchhandels</span>
       <span class="sp"></span>
       <a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><span class="num">© {{ site.jahr }} KLHE</span>
     </div>

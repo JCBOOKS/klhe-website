@@ -1,12 +1,258 @@
 [
-  {"id": "focus-money-2018", "medium": "Focus Money", "datum": "Mai 2018", "anlass": "Titelgeschichte zur Faulbär-Strategie", "bild": "/img/presse/focus-money-2018.webp", "start": true},
-  {"id": "tagesspiegel-2025", "medium": "Der Tagesspiegel", "datum": "1. September 2025", "anlass": "„Vorträge halten und Lampenfieber senken. Vater und Sohn geben Tipps, wie’s geht“", "kurz": "Kleine Redner, große Worte", "bild": "/img/presse/tagesspiegel-2025.webp", "start": true},
-  {"id": "prisma-2022", "medium": "Prisma", "datum": "November 2022", "anlass": "Bei Gegenwind loslaufen", "bild": "/img/presse/prisma-2022.webp", "start": true},
-  {"id": "tina-2023", "medium": "tina", "datum": "Dezember 2023", "anlass": "Katrin Lange", "bild": "/img/presse/tina-2023.webp", "start": true},
-  {"id": "eve-2020", "medium": "Eve", "datum": "Januar 2020", "anlass": "Ökoethinvesting", "bild": "/img/presse/eve-2020.webp", "start": true},
-  {"id": "chance-2020", "medium": "Chance", "datum": "März 2020", "anlass": "Glück, der ultimative Ratgeber", "bild": "/img/presse/chance-2020.webp", "start": true},
-  {"id": "jolie", "medium": "Jolie", "datum": "", "anlass": "Artikel „Yeah, ich werd Millionär“", "bild": "/img/presse/jolie.webp", "start": false},
-  {"id": "bank-und-umwelt-2018", "medium": "Bank & Umwelt", "datum": "2018/19", "anlass": "Ökoethinvesting", "bild": "/img/presse/bank-und-umwelt-2018.webp", "start": false},
-  {"id": "rhein-main-magazin-2020", "medium": "Rhein Main Magazin", "datum": "September 2020", "anlass": "Geld sparen und clever reich werden", "bild": "/img/presse/rhein-main-magazin-2020.webp", "start": false},
-  {"id": "fuerther-nachrichten", "medium": "Fürther Nachrichten", "datum": "", "anlass": "Elfe Filia regelt das", "bild": "/img/presse/fuerther-nachrichten.webp", "start": false}
+ {
+  "id": "rhein-main-magazin-2026-02",
+  "medium": "Rhein Main Magazin",
+  "datum": "Februar 2026",
+  "sort": "2026-02",
+  "anlass": "Buchtipps zu fünf KLHE-Titeln",
+  "buecher": [
+   "golf-unnuetzes-wissen",
+   "das-total-verrueckte-suchbuch",
+   "die-grosse-monsterparade",
+   "die-wuselbande-sucht-das-gaehnen",
+   "ein-etwas-anderes-ausmalbuch"
+  ],
+  "start": false,
+  "bild": "/img/presse/rhein-main-magazin-2026-02.webp"
+ },
+ {
+  "id": "landsberg-2025-12",
+  "medium": "Landsberger Zeitung",
+  "datum": "24. Dezember 2025",
+  "sort": "2025-12",
+  "anlass": "„Die Elfe, die mit den Tieren tanzt“",
+  "buecher": [
+   "elfe-filia-regelt-das"
+  ],
+  "start": false,
+  "bild": "/img/presse/landsberg-2025-12.webp"
+ },
+ {
+  "id": "fuerther-nachrichten",
+  "medium": "Fürther Nachrichten",
+  "datum": "4. November 2025",
+  "sort": "2025-11",
+  "anlass": "„Mit Feenzauber und Herzenswärme“",
+  "buecher": [
+   "elfe-filia-regelt-das"
+  ],
+  "start": false,
+  "bild": "/img/presse/fuerther-nachrichten.webp"
+ },
+ {
+  "id": "tagesspiegel-2025",
+  "medium": "Der Tagesspiegel",
+  "datum": "1. September 2025",
+  "sort": "2025-09",
+  "anlass": "„Vorträge halten und Lampenfieber senken. Vater und Sohn geben Tipps, wie’s geht“",
+  "buecher": [
+   "kleine-redner-grosse-worte"
+  ],
+  "start": true,
+  "bild": "/img/presse/tagesspiegel-2025.webp"
+ },
+ {
+  "id": "rhein-main-magazin-2025-08",
+  "medium": "Rhein Main Magazin",
+  "datum": "August 2025",
+  "sort": "2025-08",
+  "anlass": "Buchtipps zu Kleine Redner, große Worte und Becoming Dad",
+  "buecher": [
+   "kleine-redner-grosse-worte",
+   "becoming-dad"
+  ],
+  "start": false,
+  "bild": "/img/presse/rhein-main-magazin-2025-08.webp"
+ },
+ {
+  "id": "psychologie-heute-2025-06",
+  "medium": "Psychologie Heute",
+  "datum": "Juni 2025",
+  "sort": "2025-06",
+  "anlass": "Buchempfehlung: Finde Dein WARUM und lebe!",
+  "buecher": [
+   "finde-dein-warum-und-lebe"
+  ],
+  "start": false,
+  "bild": "/img/presse/psychologie-heute-2025-06.webp"
+ },
+ {
+  "id": "rhein-main-magazin-2025-03",
+  "medium": "Rhein Main Magazin",
+  "datum": "März 2025",
+  "sort": "2025-03",
+  "anlass": "Buchtipps zu Englische Grammatik richtig anwenden, Teil 1 und 2",
+  "buecher": [
+   "englische-grammatik-1",
+   "englische-grammatik-2"
+  ],
+  "start": false,
+  "bild": "/img/presse/rhein-main-magazin-2025-03.webp"
+ },
+ {
+  "id": "wochenpost-2024-12",
+  "medium": "Wochenpost Hohenlohe-Franken",
+  "datum": "Dezember 2024",
+  "sort": "2024-12",
+  "anlass": "Lesetipp „Flucht über die Alpen“ zu Die verlorenen Jahre",
+  "buecher": [
+   "die-verlorenen-jahre"
+  ],
+  "start": false,
+  "bild": "/img/presse/wochenpost-2024-12.webp"
+ },
+ {
+  "id": "kultur-und-leben-2024-05",
+  "medium": "",
+  "datum": "14. Mai 2024",
+  "sort": "2024-05",
+  "anlass": "„Das Leben auf der dunklen Seite der Rennbahn“",
+  "buecher": [
+   "ausgeschieden"
+  ],
+  "start": false,
+  "bild": "/img/presse/kultur-und-leben-2024-05.webp"
+ },
+ {
+  "id": "tina-2023",
+  "medium": "tina",
+  "datum": "Dezember 2023",
+  "sort": "2023-12",
+  "anlass": "Katrin Lange, Bei Gegenwind loslaufen",
+  "buecher": [
+   "bei-gegenwind-loslaufen"
+  ],
+  "start": true,
+  "bild": "/img/presse/tina-2023.webp"
+ },
+ {
+  "id": "prisma-2022",
+  "medium": "Prisma",
+  "datum": "November 2022",
+  "sort": "2022-11",
+  "anlass": "Bei Gegenwind loslaufen",
+  "buecher": [
+   "bei-gegenwind-loslaufen"
+  ],
+  "start": true,
+  "bild": "/img/presse/prisma-2022.webp"
+ },
+ {
+  "id": "psychologie-heute-2022-10",
+  "medium": "Psychologie Heute",
+  "datum": "Oktober 2022",
+  "sort": "2022-10",
+  "anlass": "Buchempfehlung: Mutmacherinnen",
+  "buecher": [
+   "mutmacherinnen"
+  ],
+  "start": true,
+  "bild": "/img/presse/psychologie-heute-2022-10.webp"
+ },
+ {
+  "id": "niederrhein-nachrichten-2022-10",
+  "medium": "Niederrhein Nachrichten",
+  "datum": "8. Oktober 2022",
+  "sort": "2022-10",
+  "anlass": "„Man ist stärker, als man denkt“",
+  "buecher": [
+   "bei-gegenwind-loslaufen"
+  ],
+  "start": false,
+  "bild": "/img/presse/niederrhein-nachrichten-2022-10.webp"
+ },
+ {
+  "id": "kiel-2022-04",
+  "medium": "",
+  "datum": "22. April 2022",
+  "sort": "2022-04",
+  "anlass": "„Die Schockstarre in Mut verwandeln“",
+  "buecher": [
+   "mutmacherinnen"
+  ],
+  "start": false,
+  "bild": "/img/presse/kiel-2022-04.webp"
+ },
+ {
+  "id": "mutmacherinnen-presse-2022",
+  "medium": "",
+  "datum": "",
+  "sort": "2022-00",
+  "anlass": "„Brustkrebs: Betroffene schreiben Buch“",
+  "buecher": [
+   "mutmacherinnen"
+  ],
+  "start": false,
+  "bild": "/img/presse/mutmacherinnen-presse-2022.webp"
+ },
+ {
+  "id": "rhein-main-magazin-2020",
+  "medium": "Rhein Main Magazin",
+  "datum": "September 2020",
+  "sort": "2020-09",
+  "anlass": "Geld sparen und clever reich werden",
+  "buecher": [
+   "geld-sparen-und-clever-reich-werden"
+  ],
+  "start": false,
+  "bild": "/img/presse/rhein-main-magazin-2020.webp"
+ },
+ {
+  "id": "chance-2020",
+  "medium": "Chance",
+  "datum": "März 2020",
+  "sort": "2020-03",
+  "anlass": "Glück, der ultimative Ratgeber",
+  "buecher": [
+   "glueck-der-ultimative-ratgeber"
+  ],
+  "start": true,
+  "bild": "/img/presse/chance-2020.webp"
+ },
+ {
+  "id": "eve-2020",
+  "medium": "Eve",
+  "datum": "Januar 2020",
+  "sort": "2020-01",
+  "anlass": "Ökoethinvesting",
+  "buecher": [
+   "oekoethinvesting"
+  ],
+  "start": true,
+  "bild": "/img/presse/eve-2020.webp"
+ },
+ {
+  "id": "bank-und-umwelt-2018",
+  "medium": "Bank & Umwelt",
+  "datum": "2018/19",
+  "sort": "2018-12",
+  "anlass": "Ökoethinvesting",
+  "buecher": [
+   "oekoethinvesting"
+  ],
+  "start": false,
+  "bild": "/img/presse/bank-und-umwelt-2018.webp"
+ },
+ {
+  "id": "focus-money-2018",
+  "medium": "Focus Money",
+  "datum": "Mai 2018",
+  "sort": "2018-05",
+  "anlass": "Titelgeschichte zur Faulbär-Strategie",
+  "buecher": [
+   "die-faulbaer-strategie-zur-million"
+  ],
+  "start": true,
+  "bild": "/img/presse/focus-money-2018.webp"
+ },
+ {
+  "id": "jolie",
+  "medium": "Jolie",
+  "datum": "",
+  "sort": "0000",
+  "anlass": "Artikel „Yeah, ich werd Millionär“ mit Christopher Klein",
+  "buecher": [],
+  "start": false,
+  "bild": "/img/presse/jolie.webp"
+ }
 ]

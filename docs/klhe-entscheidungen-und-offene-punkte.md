@@ -1,6 +1,6 @@
 # KLHE-Website: Entscheidungen, offene Fragen, To-dos
 
-Stand 15.10.2026, ca. 19 Uhr (Etappe 3: Website gebaut, wartet auf Livegang) · Dieses Dokument ist die Übergabe zwischen Chats: Was hier nicht steht, gilt als nicht entschieden.
+Stand 15.10.2026, ca. 20 Uhr (Etappe 3: Website gebaut, wartet auf Livegang) · Dieses Dokument ist die Übergabe zwischen Chats: Was hier nicht steht, gilt als nicht entschieden.
 
 Grundlagen: `klhe-projekt-briefing.md` · `klhe-bestandsaufnahme.md` · `klhe-url-inventar.md` · `klhe-inhalte-rohmaterial.md` · `klhe-seitenplan.md`
 
@@ -97,6 +97,13 @@ KLHE ist **Aushängeschild für BuchBuddy**: Autor:innen, die in einem Verlag ve
 **Nachgetragen 15.10.2026, 18:54**
 - A61 **Hosting:** klhe.de liegt bei IONOS und läuft über Cloudflare (Auskunft Jens). Datenschutz entsprechend angepasst (IONOS anonymisiert IP-Adressen in den Logfiles und löscht sie nach spätestens acht Wochen; Hinweis auf mögliches Sicherheits-Cookie von Cloudflare). HTTPS und www werden in Cloudflare geregelt, nicht in der `.htaccess`.
 - A62 **Livegang:** Jens übernimmt, Termin noch offen.
+
+**Nachgetragen 15.10.2026, 19:42**
+- A63 **Kein Mitglied im Börsenverein** (mehr). Überall entfernt: Fuß, Impressum, Kontakt, Startseite, Für Autor:innen, Verlagsgeschichte.
+- A64 **Reihenbild Kuschelige Momente** zeigt ein Cover (A+-Grafik „Blumen & Frühling“ mit Cover auf Rosa).
+- A65 **Preisleiste „Wohin der Preis eines Buches geht“** zeigt jetzt auch die Verlagskosten: 10 € Handel, 2 € Auslieferung, 2 € Autor:in, 4–5 € Druck, Lektorat, Marketing, 1–2 € bleiben dem Verlag (hervorgehoben).
+- A66 **Presse ausgebaut:** eigene Seite `/presse/` mit allen 21 Berichten aus den Projektdateien (neu: Psychologie Heute 06/2025 und 10/2022, Rhein Main Magazin 03/25, 08/25, 02/26, Niederrhein Nachrichten, Landsberger Zeitung, Wochenpost, drei Berichte ohne Mediennamen). „Presse“ in der Navigation führt dorthin, Buchseiten zeigen alle Berichte zum Buch.
+- A67 **Cover nachgeliefert:** Michael Jordan und Der erste Tag im Tierkinderhort (F26 erledigt).
 
 **Nur über Amazon (KDP) erhältlich, Stand 15.10.2026** (Rest: im Buchhandel gelistet)
 - Visualisierung mit der Kraft der Gedanken · Glück – der ultimative Ratgeber · Lateinamerikanisches Spanisch lernen · Mama, wer wohnt eigentlich auf dem Bauernhof? · Das total verrückte Suchbuch · Die große Monsterparade · Ein etwas anderes Ausmalbuch · Selbstfürsorge-Planer · Die Wuselbande sucht das Gähnen · Mikroabenteuer in Franken · Das große Fürth Wimmelbuch · Mein Bauch tut weh (offen)
@@ -235,6 +242,8 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 - F35 **ISBN-Abweichungen** zwischen alter Website und Liste (Website zeigt die Liste): Der Hamster verlässt das Rad (alt 978-3966980555, Liste 978-3-947061-81-5), Mit Blockchain zum Krypto-Investor (alt 978-3966980562, Liste 978-3-947061-87-7), Nürnberg Guide (alt 978-3-98538-126-5, Liste 978-3-98538-173-9), Ein etwas anderes Ausmalbuch (alt 978-3985381845, Liste 978-3-98538-185-2), Mutmacherinnen (alt 978-3-98538-008-4, Liste 978-3-98538-026-8).
 - F36 **Auflage „Tag auf Tag im Hamsterrad“:** alte Website „7. Auflage 2020, erstmals erschienen 2013“, Liste und Verlagsgeschichte „6. Auflage“, Gründung 2011 mit diesem Buch. Die Buchseite nennt vorerst keine Auflage.
 - F37 **Kuschelige Momente:** Bandnummern nach der Liste (Hygge Band 3, Sommer Band 4; alte Website: Sommer Band 3). Band 1 heißt auf der Website „Kleine Auszeiten“ wie auf dem Cover, in der Liste „ruhige Motive“.
+- F39 **Presse ohne Mediennamen:** Bei drei Berichten steht kein Zeitungsname auf dem Ausschnitt: „Das Leben auf der dunklen Seite der Rennbahn“ (14. Mai 2024, Ausgeschieden), „Die Schockstarre in Mut verwandeln“ (Kiel, 22. April 2022, Mutmacherinnen), „Brustkrebs: Betroffene schreiben Buch“ (Mutmacherinnen). Welche Zeitungen? Außerdem bestätigen: „Landsberger Zeitung“ (so im Dateinamen; heißt sie genau so?) und „Wochenpost Hohenlohe-Franken“ (aus Logo und E-Mail-Adresse auf der Seite abgeleitet).
+- F40 **Weitere Presse:** Belege für WDR, RTL.de und Cashkurs fehlen weiterhin (T8). Nicht aufgenommen: der Artikel „Onkolotsin hilft mit eigener Erfahrung“ (Thema ist der Verein, nicht das Buch) und der Amazon-Bestseller-Screenshot zu Mutmacherinnen (kein Pressebericht). Ganze Artikel werden nicht zum Lesen angeboten, nur kleine Vorschaubilder (Rechte der Verlage).
 - F38 Autor:innen der Mutmachbücher und des Tarot-Sets sind nicht genannt, weil unbekannt. Nennen?
 
 ## D. To-dos (Material)
@@ -255,10 +264,11 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 | T12 | GetResponse: Inhalte sichern (F5), dann kündigen | Chris | offen |
 | T15 | Bei IONOS prüfen, dass der Vertrag zur Auftragsverarbeitung abgeschlossen ist (der Datenschutz sagt das) | Jens | offen |
 | T14 | Livegang nach `README.md`: Bonusdateien holen, bauen, `public/` hochladen, HTTPS und www prüfen, Stichproben der Weiterleitungen, Sitemap einreichen, WordPress löschen | Jens | offen |
-| T13 | Fehlende Cover: saubere Tierkinderhort-Datei, Originale von Monsterparade und Ein etwas anderes Ausmalbuch, Michael Jordan; flach: Tag auf Tag, Geld sparen, Mein Geldbaum (Mutmachbücher erledigt) | Chris | offen |
+| T13 | **Michael Jordan und Tierkinderhort erledigt (15.10.).** Fehlende Cover: saubere Tierkinderhort-Datei, Originale von Monsterparade und Ein etwas anderes Ausmalbuch, Michael Jordan; flach: Tag auf Tag, Geld sparen, Mein Geldbaum (Mutmachbücher erledigt) | Chris | offen |
 
 ## E. Protokoll
 
+- 15.10.2026, ca. 20 Uhr: Feedback umgesetzt (A63–A67): Börsenverein entfernt, Cover im Reihenbild Kuschelige Momente, Verlagskosten in der Preisleiste, Presseseite mit 21 Berichten, Cover Jordan und Tierkinderhort. Fragen F39, F40 offen.
 - 15.10.2026, ca. 19 Uhr: Etappe 3 umgesetzt (C8, A57–A60). Website im Repo-Ordner gebaut und geprüft (64 Seiten, 222 Weiterleitungen, Linkprüfung ohne Fehler, Desktop- und Mobilansicht angesehen). Nach `jcbooks/klhe-website` gepusht (T9 erledigt). Fragen F32–F38 offen.
 - 15.10.2026, ca. 18 Uhr: Richtung v5 freigegeben (A56). Programm, Buchseite und Bonusmaterial auf v5 umgestellt, Canvas neu geordnet (neun v5-Seiten, Archiv darunter). Ausblick Etappe 3 festgehalten (C7).
 - 15.10.2026, ca. 17 Uhr: Feedback zu v4 (A49–A55). Alle Mutmach-Cover und zwölf A+-Grafiken aus Praxisbuch 1–7 verarbeitet. BuchBuddy-Gestaltung angesehen (Pastellflächen, runde Formen, kräftige Grotesk). Gestaltungsvorschau v5 „Transparentpapier“ mit sechs Seiten veröffentlicht. Frage F31 offen.

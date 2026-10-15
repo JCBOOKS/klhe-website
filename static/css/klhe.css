@@ -553,3 +553,28 @@ a.vol:hover b { text-decoration: underline; text-underline-offset: 4px; }
 }
 .sub-grid--kids { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
 @media (max-width: 900px) { .sub-grid--kids { grid-template-columns: minmax(0, 1fr); } }
+
+/* Presse */
+.clips--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 26px; }
+.clip-books { margin-top: 4px; font-size: 13.5px; }
+.clip-books a { font-weight: 650; text-decoration-color: rgba(140, 118, 222, .55); text-underline-offset: 3px; }
+@media (max-width: 1100px) { .clips--4 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .clips--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Preisleiste mit Verlagskosten */
+.bar--5 { grid-template-columns: 50fr 10fr 10fr 22.5fr 7.5fr; }
+.bar--5 > div { padding: 16px 14px; }
+.bar--5 .bar-verlag { outline: 2px solid var(--rose-ink); outline-offset: -2px; }
+.bar--5 .bar-verlag b { color: var(--rose-ink); }
+.legend--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 1100px) {
+  .bar--5 b { font-size: 1.25rem; }
+  .bar--5 span { font-size: 12.5px; }
+}
+@media (max-width: 900px) {
+  .bar--5 { grid-template-columns: minmax(0, 1fr); grid-template-rows: 50fr 10fr 10fr 22.5fr 7.5fr; height: 540px; }
+  .bar--5 > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 16px; }
+  .bar--5 span { text-align: right; }
+  .legend--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) { .legend--5 { grid-template-columns: minmax(0, 1fr); } }

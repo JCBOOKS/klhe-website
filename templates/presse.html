@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import clip, crumbs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap" style="display: grid; gap: 24px">
+    {{ crumbs([('', 'Presse')]) }}
+    <h1 class="h1">Unsere Bücher in den Medien</h1>
+    <p class="intro" style="max-width: 60ch">{{ presse | length }} Berichte, Buchtipps und Empfehlungen zu Büchern von KLHE und ihren Autorinnen und Autoren, von Focus Money bis Psychologie Heute.</p>
+    {% set medien = [] %}{% for m in presse %}{% if m.medium and m.medium not in medien %}{% set _ = medien.append(m.medium) %}{% endif %}{% endfor %}
+    <div class="seen" style="padding-top: 6px"><p>Berichte unter anderem in</p><ul>{% for x in medien %}<li>{{ x }}</li>{% endfor %}</ul></div>
+    <p class="small" style="color: var(--ink-2)">Rezensionsexemplare und Interviewanfragen: <a href="mailto:{{ site.mail }}">{{ site.mail }}</a></p>
+  </div>
+</section>
+
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="clips clips--4">
+      {% for m in presse %}{{ clip(m, mit_buch=True) }}{% endfor %}
+    </div>
+  </div>
+</section>
+<div class="block"></div>
+{% endblock %}

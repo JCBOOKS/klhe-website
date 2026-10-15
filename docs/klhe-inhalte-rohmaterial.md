@@ -22,7 +22,7 @@ Kennzeichnung: **[öffentlich]** darf sinngemäß auf die Website · **[intern]*
 - **[öffentlich]** Unterschied VLB und Bestellbarkeit: Über das VLB werden Titeldaten gelistet und z. B. auf buchhandel.de angezeigt. Bestellbar im Buchhandel ist ein Buch aber erst über die Verträge mit den Barsortimenten.
 - **[öffentlich]** Eigene **Verlagsauslieferung** (Runge Verlagsauslieferung): übernimmt Bestellungen der Barsortimente und Buchhandlungen, Versand, Fakturierung, Remissionen.
 - **[öffentlich]** Buchhandlungen können auch direkt beim Verlag zu **Händlerkonditionen** bestellen; Versand und Rechnung laufen über die Verlagsauslieferung.
-- **[öffentlich]** Mitglied im Börsenverein des Deutschen Buchhandels (laut Briefing und Footer).
+- ~~Mitglied im Börsenverein des Deutschen Buchhandels~~ – veraltet, KLHE ist kein Mitglied mehr (Chris, 15.10.2026, A63).
 - **[öffentlich]** Diese Begriffe (Verlagsauslieferung, Barsortiment, Buchhändlerrabatt, VLB) dürfen sichtbar sein: Sie zeigen Kompetenz, die viele BuchBuddy-Wettbewerber nicht haben.
 - **[intern]** Die meisten Titel erscheinen heute aus Kostengründen als Print-on-Demand über KDP/Amazon. Läuft ein Titel gut, wird vorgedruckt. Runge akzeptiert auch von Amazon gedruckte Bücher.
 - **[intern]** „Listen“ heißt: Ein Titel wird über Runge an den gesamten Buchhandel ausgeliefert. Einige Titel sind (noch) nur bei Amazon (siehe Entscheidungsdokument).

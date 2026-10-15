@@ -52,7 +52,7 @@ WALL = [
 # Reihenfolge der Reihen-Karten im Programm je Kategorie
 SERIES_IN_CAT = {'ratgeber': ['finanzreihe'], 'kinderbuecher': ['mutmachbuecher', 'mitmachbuecher'], 'ausmalbuecher': ['kuschelige-momente'], 'geschenkbuecher': ['unnuetzes-wissen']}
 FINANZ_PRESSE = ['focus-money-2018', 'jolie', 'eve-2020', 'bank-und-umwelt-2018', 'rhein-main-magazin-2020']
-START_PRESSE = ['focus-money-2018', 'tagesspiegel-2025', 'prisma-2022', 'tina-2023', 'eve-2020', 'chance-2020']
+START_PRESSE = ['focus-money-2018', 'psychologie-heute-2022-10', 'tagesspiegel-2025', 'prisma-2022', 'tina-2023', 'eve-2020']
 TAGCLS = {'ratgeber': 'flieder', 'lebensgeschichten': 'apricot', 'kinderbuecher': 'mint', 'ausmalbuecher': 'rose', 'geschenkbuecher': 'pistazie', 'reisen': 'apricot'}
 KAT_EINZAHL = {'ratgeber': 'Ratgeber', 'lebensgeschichten': 'Lebensgeschichte', 'kinderbuecher': 'Kinderbuch', 'ausmalbuecher': 'Ausmalbuch', 'geschenkbuecher': 'Geschenkbuch', 'reisen': 'Reisen'}
 
@@ -87,6 +87,7 @@ def load():
     bonus = json.loads((DATA / 'bonus.json').read_text(encoding='utf-8'))
     kat_by = {k['id']: k for k in kats}
     reihe_by = {r['id']: r for r in reihen}
+    presse.sort(key=lambda p: p.get('sort', ''), reverse=True)
     presse_by = {p['id']: p for p in presse}
     books = []
     with open(DATA / 'buecher.csv', encoding='utf-8', newline='') as f:
@@ -123,16 +124,20 @@ def load():
                 b['url'] = b['amazon_url']
             b['extern'] = b['seite'] == 'backlist'
             b['badges'] = (['Im Buchhandel'] if b['im_buchhandel'] else []) + (['Hörbuch'] if b['hat_hoerbuch'] else [])
-            b['presse_liste'] = [presse_by[p] for p in b['presse'].split(';') if p.strip() in presse_by]
-            for p in b['presse'].split(';'):
-                if p.strip() and p.strip() not in presse_by:
-                    warn(f'{b["slug"]}: Presse-ID „{p}“ nicht in presse.json')
+            b['presse_liste'] = [p for p in presse if b['slug'] in p.get('buecher', [])]
             if b['seite'] in ('eigen', 'reihe') and not b['amazon_url']:
                 warn(f'{b["slug"]}: kein Amazon-Link')
             books.append(b)
     slug_by = {b['slug']: b for b in books}
     if len(slug_by) != len(books):
         raise SystemExit('buecher.csv: doppelter slug')
+    for p in presse:
+        for sl in p.get('buecher', []):
+            if sl not in slug_by:
+                raise SystemExit(f'presse.json: Buch „{sl}“ bei {p["id"]} gibt es nicht in buecher.csv')
+        p['buch_objs'] = [slug_by[sl] for sl in p.get('buecher', [])]
+        if not (STATIC / p['bild'].lstrip('/')).exists():
+            warn(f'Pressebild fehlt: {p["bild"]}')
     for r in reihen:
         r['buecher'] = sorted([b for b in books if b['reihe'] == r['id']], key=lambda b: (int(b['band']) if b['band'].isdigit() else 99, b['pos']))
         r['url'] = f'/reihen/{r["id"]}/'
@@ -210,7 +215,7 @@ def build():
     picks = sorted([b for b in books if b['empfohlen']], key=lambda b: int(b['empfohlen']) if b['empfohlen'].isdigit() else 99)
     render('index.html', '/', page_meta('KLHE · Bücher, die bewegen.', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, seit 2011: Ratgeber, Lebensgeschichten, Kinder- und Ausmalbücher, bestellbar im Buchhandel.', '/', jsonld=org_jsonld()),
            wall=wall, picks=picks, start_reihen=[r for r in d['reihen'] if r.get('start')], mitmach=reihe_by['mitmachbuecher'],
-           clips=[d['presse_by'][p] for p in START_PRESSE])
+           clips=[d['presse_by'][p] for p in START_PRESSE], presse_anzahl=len(d['presse']))
 
     # Programm
     sections = []
@@ -252,6 +257,10 @@ def build():
             extra['kids'] = pick(['das-witzige-sport-mitmachbuch', 'das-tierische-mitmachbuch', 'die-wuselbande-sucht-das-gaehnen', 'mama-wer-wohnt-eigentlich-auf-dem-bauernhof', 'affe-loki-und-die-reise-zur-schatzinsel', 'das-total-verrueckte-suchbuch'])
         desc = r['text'] if 'intro' not in r else short(r['intro'])
         render(tpl, r['url'], page_meta(f'{r["name"]} · KLHE', desc, r['url'], nav='reihen'), r=r, others=others(r['id']), **extra)
+
+    # Presse
+    render('presse.html', '/presse/', page_meta('Presse · KLHE', f'{len(d["presse"])} Berichte über Bücher von KLHE und ihre Autorinnen und Autoren, von Focus Money bis Psychologie Heute.', '/presse/', nav='presse'),
+           presse=d['presse'])
 
     # Verlag, Autor:innen, Kontakt
     render('verlag.html', '/verlag/', page_meta('Der Verlag · KLHE', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, gegründet 2011 von Christopher Klein und Jens Helbig. Die Geschichte des Verlags.', '/verlag/', nav='verlag'),
