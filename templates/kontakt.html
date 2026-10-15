@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import crumbs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap sub-grid">
+    <div class="sub-copy">
+      {{ crumbs([('', 'Kontakt')]) }}
+      <h1 class="h1">Schreib uns.</h1>
+      <p class="intro">Am schnellsten erreichst Du uns per E-Mail. Wir melden uns so bald wie möglich.</p>
+      <div class="contact-main">
+        <a href="mailto:{{ site.mail }}">{{ site.mail }}</a>
+        <a class="num" href="tel:{{ site.tel_link }}">{{ site.tel }}</a>
+      </div>
+    </div>
+    <div class="pane" style="background: #fff; border: 1px solid var(--line); border-radius: var(--r-l); padding: 30px; display: grid; gap: 10px; align-self: center">
+      <h2 class="h3">KLHE</h2>
+      <address class="small" style="font-style: normal; color: var(--ink-2); font-size: 16px; line-height: 1.6">{{ site.firma }}<br>{{ site.strasse }}<br>{{ site.ort }}</address>
+      <p class="small">Mitglied im Börsenverein des Deutschen Buchhandels</p>
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-card t-flieder" id="leser">
+        <h2 class="h3">Leserinnen und Leser</h2>
+        <p>Fragen zu einem Buch oder zum Bonusmaterial? Schreib uns. Das Zusatzmaterial zu vielen Büchern und Hörbüchern findest Du ohne Anmeldung auf der Seite <a href="/bonus/">Bonusmaterial</a>.</p>
+      </div>
+      <div class="contact-card t-mint" id="buchhandel">
+        <h2 class="h3">Buchhandel</h2>
+        <p>Buchhandlungen bestellen unsere Titel über die Barsortimente Libri, Zeitfracht und Umbreit oder direkt bei uns zu Händlerkonditionen. Versand und Rechnung laufen über unsere Verlagsauslieferung.</p>
+      </div>
+      <div class="contact-card t-apricot" id="presse">
+        <h2 class="h3">Presse</h2>
+        <p>Rezensionsexemplare und Anfragen an unsere Autorinnen und Autoren gern per E-Mail an <a href="mailto:{{ site.mail }}">{{ site.mail }}</a>.</p>
+      </div>
+      <div class="contact-card t-rose" id="autorinnen">
+        <h2 class="h3">Autorinnen und Autoren</h2>
+        <p>Wir nehmen keine unverlangten Manuskripte an. Neue Bücher bei KLHE entstehen heute mit BuchBuddy, unserer Buchagentur. <a href="/autoren/">So arbeiten wir</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="block"></div>
+{% endblock %}

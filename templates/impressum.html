@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import crumbs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap" style="display: grid; gap: 24px">
+    {{ crumbs([('', 'Impressum')]) }}
+    <h1 class="h1">Impressum</h1>
+  </div>
+</section>
+<section class="block block--flush">
+  <div class="wrap"><div class="legal">
+    <div>
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <address>KLHE<br>{{ site.firma }}<br>{{ site.strasse }}<br>{{ site.ort }}<br>Deutschland</address>
+      <p style="margin-top: .8em">Vertreten durch die Gesellschafter Christopher Klein und Jens Helbig.</p>
+    </div>
+    <div>
+      <h2>Kontakt</h2>
+      <p>Telefon: <a href="tel:{{ site.tel_link }}">{{ site.tel }}</a><br>E-Mail: <a href="mailto:{{ site.mail }}">{{ site.mail }}</a></p>
+    </div>
+    <div>
+      <h2>Umsatzsteuer</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: {{ site.ust }}</p>
+    </div>
+    <div>
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>Christopher Klein und Jens Helbig, Anschrift wie oben</p>
+    </div>
+    <div>
+      <h2>Mitgliedschaft</h2>
+      <p>KLHE ist Mitglied im Börsenverein des Deutschen Buchhandels.</p>
+    </div>
+    <div>
+      <h2>Amazon-Partnerprogramm</h2>
+      <p>KLHE ist Teilnehmer des Partnerprogramms von Amazon Europe S.à r.l. und Partner des Werbeprogramms, das zur Bereitstellung eines Mediums für Websites konzipiert wurde, mittels dessen durch die Platzierung von Werbeanzeigen und Links zu amazon.de Werbekostenerstattungen verdient werden können. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+    </div>
+    <div>
+      <h2>Verbraucherstreitbeilegung</h2>
+      <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </div>
+    <div>
+      <h2>Haftung für Inhalte und Links</h2>
+      <p>Wir erstellen die Inhalte dieser Website mit Sorgfalt, können für Richtigkeit, Vollständigkeit und Aktualität aber keine Gewähr übernehmen. Für Inhalte externer Websites, auf die wir verlinken, sind ausschließlich deren Betreiber verantwortlich. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Werden uns Rechtsverletzungen bekannt, entfernen wir die betreffenden Links umgehend.</p>
+    </div>
+    <div>
+      <h2>Bildnachweise</h2>
+      <p>Buchcover und Illustrationen: KLHE und die jeweiligen Autorinnen, Autoren, Illustratorinnen und Illustratoren. Fotos von Christopher Klein und Jens Helbig: KLHE. Presseausschnitte: die jeweils genannten Medien.</p>
+    </div>
+    <p class="stand">Stand: {{ site.stand }}</p>
+  </div></div>
+</section>
+<div class="block"></div>
+{% endblock %}

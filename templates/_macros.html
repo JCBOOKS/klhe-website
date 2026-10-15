@@ -1,0 +1,39 @@
+{% macro cover(b, cls='') -%}
+{% if b.img %}<img{% if cls %} class="{{ cls }}"{% endif %} src="{{ b.img }}" alt="Cover: {{ b.voller_titel }}" loading="lazy">{% else %}<div class="ph"><b>{{ b.titel }}</b><span>Cover folgt</span></div>{% endif %}
+{%- endmacro %}
+
+{% macro buy_attrs() -%} target="_blank" rel="sponsored noopener"{%- endmacro %}
+
+{% macro book_card(b, tags=True, cat=False, amazon=False) -%}
+<a class="bk" id="{{ b.slug }}" href="{{ b.amazon_url if amazon else b.url }}"{% if amazon or b.extern %}{{ buy_attrs() }}{% endif %}>
+  <div class="bk-cover">{{ cover(b) }}</div>
+  <p class="t">{{ b.voller_titel }}</p>
+  {% if b.autoren %}<p class="a">{{ b.autoren }}</p>{% endif %}
+  {% if tags %}
+  <div class="tags">{% if cat %}<span class="tag tag--{{ b.tint }}">{{ b.kat_einzahl }}</span>{% endif %}{% if b.ist_neu %}<span class="tag tag--{{ b.tint }}">Neu</span>{% endif %}{% for bd in b.badges %}<span class="tag">{{ bd }}</span>{% endfor %}</div>
+  {% endif %}
+  {% if amazon %}<span class="buy">Bei Amazon ansehen</span>{% endif %}
+</a>
+{%- endmacro %}
+
+{% macro series_card(r) -%}
+<a class="bk" href="{{ r.url }}">
+  <div class="bk-series t-{{ r.tint }}"><span class="lbl">Reihe</span>{% for src in r.fach_imgs %}<img src="{{ src }}" alt="" loading="lazy">{% endfor %}</div>
+  <p class="t">{{ r.name }}</p>
+  <p class="a">{{ r.unter }}</p>
+</a>
+{%- endmacro %}
+
+{% macro minis(rs) -%}
+<div class="minis">
+  {% for s in rs %}<a class="mini" href="{{ s.url }}"><img src="{{ s.bild }}" alt="" loading="lazy"><b>{{ s.kurzname }}</b><span>{{ s.art }}</span></a>{% endfor %}
+</div>
+{%- endmacro %}
+
+{% macro clip(m) -%}
+<figure class="clip"><div class="clip-img"><img src="{{ m.bild }}" alt="Artikel in {{ m.medium }}" loading="lazy"></div><figcaption><b>{{ m.medium }}</b><span class="num">{{ m.datum }}{% if m.datum %}, {% endif %}{{ m.kurz if m.kurz is defined else m.anlass }}</span></figcaption></figure>
+{%- endmacro %}
+
+{% macro crumbs(items) -%}
+<p class="crumbs"><a href="/">Start</a>{% for href, label in items %}<span>/</span>{% if href %}<a href="{{ href }}">{{ label }}</a>{% else %}<span>{{ label }}</span>{% endif %}{% endfor %}</p>
+{%- endmacro %}

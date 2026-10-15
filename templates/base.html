@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.desc }}">
+{% if meta.noindex %}<meta name="robots" content="noindex, follow">
+{% endif %}
+<link rel="canonical" href="{{ meta.canonical }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="KLHE">
+<meta property="og:title" content="{{ meta.title }}">
+<meta property="og:description" content="{{ meta.desc }}">
+<meta property="og:url" content="{{ meta.canonical }}">
+<meta property="og:image" content="{{ meta.og_image }}">
+<meta name="theme-color" content="#fcfbfa">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/instrument-sans-latin.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/klhe.css">
+{% if meta.jsonld %}<script type="application/ld+json">{{ meta.jsonld | safe }}</script>
+{% endif %}
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<div class="page">
+<header class="top">
+  <div class="wrap">
+    <div class="top-pill">
+      <a class="top-logo" href="/" aria-label="KLHE Startseite"><img src="/img/logo/klhe-schwarz.png" alt="KLHE" width="105" height="24"></a>
+      <nav class="top-nav" aria-label="Hauptnavigation">
+        {% set items = [('/buecher/', 'Bücher', 'buecher'), ('/#reihen', 'Reihen', 'reihen'), ('/verlag/', 'Verlag', 'verlag'), ('/#presse', 'Presse', 'presse'), ('/kontakt/', 'Kontakt', 'kontakt')] %}
+        {% for href, label, key in items %}<a{% if meta.nav == key %} class="on" aria-current="page"{% endif %} href="{{ href }}">{{ label }}</a>{% endfor %}
+        <a class="btn btn--ink" href="/autoren/">Für Autor:innen</a>
+        <details class="menu">
+          <summary>Menü</summary>
+          <div class="menu-panel">
+            {% for href, label, key in items %}<a{% if meta.nav == key %} class="on"{% endif %} href="{{ href }}">{{ label }}</a>{% endfor %}
+            <a href="/autoren/">Für Autor:innen</a>
+            <a href="/bonus/">Bonusmaterial</a>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="inhalt">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="foot" id="kontakt">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-claim">
+        <img src="/img/logo/klhe-weiss.png" alt="KLHE" width="105" height="24">
+        <p>{{ site.claim }}</p>
+        <span>Unabhängiger Verlag aus Düsseldorf, seit 2011. KLHE ist der Verlag hinter <a href="{{ site.buchbuddy }}">BuchBuddy</a>.</span>
+      </div>
+      <div><h4>Verlag</h4><ul><li><a href="/buecher/">Bücher</a></li><li><a href="/#reihen">Reihen</a></li><li><a href="/verlag/">Unsere Geschichte</a></li><li><a href="/autoren/">Für Autor:innen</a></li><li><a href="/bonus/">Bonusmaterial</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="mailto:{{ site.mail }}">{{ site.mail }}</a></li><li class="num"><a href="tel:{{ site.tel_link }}">{{ site.tel }}</a></li><li><a href="/kontakt/">Buchhandel und Presse</a></li></ul></div>
+      <div><h4>Folgen</h4><ul><li><a href="{{ site.instagram }}">Instagram</a></li><li><a href="{{ site.facebook }}">Facebook</a></li><li><a href="{{ site.buchbuddy }}">BuchBuddy</a></li></ul></div>
+    </div>
+    <div class="foot-base">
+      <span>{{ site.firma }}, {{ site.strasse }}, {{ site.ort }}</span>
+      <span>Mitglied im Börsenverein des Deutschen Buchhandels</span>
+      <span class="sp"></span>
+      <a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><span class="num">© {{ site.jahr }} KLHE</span>
+    </div>
+    <p class="small" style="margin-top: 14px; color: rgba(255,255,255,.55)">Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+  </div>
+</footer>
+</div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

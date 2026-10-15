@@ -1,0 +1,379 @@
+[
+ {
+  "id": "finanz",
+  "tint": "flieder",
+  "name": "Finanzreihe von Chris und Jens",
+  "gruppen": [
+   {
+    "h": "Buchbonus zur Finanzreihe",
+    "items": [
+     {
+      "titel": "E-Book-Paket",
+      "text": "Drei E-Books zu passivem Einkommen, Finanzplanung und Geldsystem",
+      "format": "ZIP",
+      "datei": "finanzreihe-ebooks.zip",
+      "alt": "/wp-content/uploads/2019/03/KLHE-Ebooks-Bouns.zip"
+     },
+     {
+      "titel": "Excel-Tools",
+      "text": "",
+      "format": "ZIP",
+      "datei": "finanzreihe-excel-tools.zip",
+      "alt": "/wp-content/uploads/2019/03/KLHE finance - Excel Bonus.zip"
+     },
+     {
+      "titel": "Vergleichsreports",
+      "text": "Depot- und P2P-Vergleiche",
+      "format": "ZIP",
+      "datei": "finanzreihe-vergleichsreports.zip",
+      "alt": "/wp-content/uploads/2019/03/KLHE-Vergleichsreports-Bouns.zip"
+     }
+    ]
+   },
+   {
+    "h": "Zum Hörbuch",
+    "items": [
+     {
+      "titel": "Tag auf Tag im Hamsterrad",
+      "text": "Begleitmaterial zum Hörbuch",
+      "format": "PDF",
+      "datei": "hoerbuch-tag-auf-tag-im-hamsterrad.pdf",
+      "alt": "/wp-content/uploads/2021/05/KLHE-Zusatzmaterial-Hörbuch-Tag-auf-Tag.pdf"
+     },
+     {
+      "titel": "Einmal Dividende bitte!",
+      "text": "Begleitmaterial zum Hörbuch",
+      "format": "PDF",
+      "datei": "hoerbuch-einmal-dividende-bitte.pdf",
+      "alt": "/wp-content/uploads/2020/04/KLHE-Zusatzmaterial-Hörbuch-Einmal-Dividende-bitte.pdf"
+     },
+     {
+      "titel": "Die Faulbär-Strategie zur Million",
+      "text": "Begleitmaterial zum Hörbuch",
+      "format": "PDF",
+      "datei": "hoerbuch-die-faulbaer-strategie-zur-million.pdf",
+      "alt": "/wp-content/uploads/2019/11/KLHE Zusatzmaterial Hörbuch - Faulbär.pdf"
+     },
+     {
+      "titel": "Mit Blockchain zum Krypto-Investor",
+      "text": "Begleitmaterial zum Hörbuch",
+      "format": "PDF",
+      "datei": "hoerbuch-mit-blockchain-zum-krypto-investor.pdf",
+      "alt": "/wp-content/uploads/2019/06/Blockchain-Audiobook-Content.pdf"
+     },
+     {
+      "titel": "Ökoethinvesting",
+      "text": "Begleitmaterial zum Hörbuch",
+      "format": "PDF",
+      "datei": "hoerbuch-oekoethinvesting.pdf",
+      "alt": "/wp-content/uploads/2019/09/Oekoethinvesting-Audiobook-Content.pdf"
+     },
+     {
+      "titel": "Vermögensfalle Eigenheim?",
+      "text": "Begleitmaterial zum Hörbuch",
+      "format": "PDF",
+      "datei": "hoerbuch-vermoegensfalle-eigenheim.pdf",
+      "alt": "/wp-content/uploads/2021/12/KLHE-Zusatzmaterial-Hörbuch-Vermögensfalle-Eigenheim-1.pdf"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ratgeber",
+  "tint": "flieder",
+  "name": "Ratgeber",
+  "gruppen": [
+   {
+    "h": "Zum Buch",
+    "items": [
+     {
+      "titel": "Glück, Ziele finden und Übungsbuch",
+      "text": "E-Book-Paket zu den Ratgebern",
+      "format": "ZIP",
+      "datei": "ratgeber-ebooks.zip",
+      "alt": "/wp-content/uploads/2019/12/KLHE helper Bonus eBooks.zip"
+     },
+     {
+      "titel": "Hermetik",
+      "text": "Bonus zum Buch",
+      "format": "PDF",
+      "datei": "hermetik-bonus.pdf",
+      "alt": "/wp-content/uploads/2019/12/Hermetik, Hermetische Gesetze, Universelle Urprinzipien - Bonus zum Buch.pdf"
+     },
+     {
+      "titel": "Finde Dein WARUM und lebe!",
+      "text": "Arbeitshilfen",
+      "format": "PDF",
+      "datei": "finde-dein-warum-arbeitshilfen.pdf",
+      "alt": "/wp-content/uploads/2025/01/finde_dein_warum_und_lebe_arbeitshilfen.pdf"
+     },
+     {
+      "titel": "Englische Grammatik richtig anwenden",
+      "text": "Bonusmaterial",
+      "format": "ZIP",
+      "datei": "englische-grammatik-bonus.zip",
+      "alt": "/wp-content/uploads/2024/05/Englische-Grammatik-Bonusmaterial.zip"
+     },
+     {
+      "titel": "Mutmacherinnen",
+      "text": "Material wird gerade zusammengestellt",
+      "format": "",
+      "datei": "",
+      "alt": ""
+     }
+    ]
+   },
+   {
+    "h": "Zum Hörbuch",
+    "items": [
+     {
+      "titel": "Akupressur mit Oma Ling",
+      "text": "Begleitmaterial zum Hörbuch",
+      "format": "ZIP",
+      "datei": "hoerbuch-akupressur-oma-ling.zip",
+      "alt": "/wp-content/uploads/2025/06/KLHE_Zusatzmaterial-Akupressur-mit-Oma-Ling.zip"
+     },
+     {
+      "titel": "Psychedelika",
+      "text": "Material wird gerade zusammengestellt",
+      "format": "",
+      "datei": "",
+      "alt": ""
+     },
+     {
+      "titel": "Michael „Air“ Jordan: der GOAT",
+      "text": "Material wird gerade zusammengestellt",
+      "format": "",
+      "datei": "",
+      "alt": ""
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lebensgeschichten",
+  "tint": "apricot",
+  "name": "Lebensgeschichten",
+  "gruppen": [
+   {
+    "h": "Zum Buch",
+    "items": [
+     {
+      "titel": "Bei Gegenwind loslaufen",
+      "text": "Grafiken und Anwendungsdateien von Katrin Lange",
+      "format": "PDF",
+      "datei": "bei-gegenwind-loslaufen-bonus.pdf",
+      "alt": "/wp-content/uploads/2022/09/Katrin-Bonusmaterial.pdf"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "kinder",
+  "tint": "mint",
+  "name": "Kinderbücher",
+  "gruppen": [
+   {
+    "h": "Zum Buch",
+    "items": [
+     {
+      "titel": "Zwei Bücher gratis als PDF",
+      "text": "Das witzige Sport-Mitmachbuch und Mama, wer wohnt eigentlich im Meer?",
+      "format": "ZIP",
+      "datei": "kinderbuecher-gratis.zip",
+      "alt": "/wp-content/uploads/2023/01/KLHE_kids_bonus_PDFs.zip"
+     },
+     {
+      "titel": "Bonus-Inhalte",
+      "text": "Grafiken, Checkliste Abendroutine für Eltern, Memory-Spiel",
+      "format": "PDF",
+      "datei": "kinderbuecher-bonus.pdf",
+      "alt": "/wp-content/uploads/2023/02/KLHE-kids-Bonus-Content-1.pdf"
+     },
+     {
+      "titel": "Kleine Redner, große Worte",
+      "text": "Übungen und Ideen auf sprechburg.de",
+      "format": "LINK",
+      "url": "https://sprechburg.de/",
+      "datei": "",
+      "alt": ""
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "english",
+  "tint": "rose",
+  "name": "English",
+  "lang": "en",
+  "gruppen": [
+   {
+    "h": "KLHE helper and kids",
+    "items": [
+     {
+      "titel": "KLHE helper bonus",
+      "text": "E-books and workbook",
+      "format": "ZIP",
+      "datei": "en-helper-bonus.zip",
+      "alt": "/wp-content/uploads/2021/11/Bonus-Englisch.zip"
+     },
+     {
+      "titel": "Infographic",
+      "text": "Hermetic principles",
+      "format": "PNG",
+      "datei": "en-hermetic-infographic.png",
+      "alt": "/wp-content/uploads/2021/11/Infografik-EN.png"
+     },
+     {
+      "titel": "KLHE kids: free books",
+      "text": "Two books as PDF",
+      "format": "PDF",
+      "datei": "en-kids-books.pdf",
+      "alt": "/wp-content/uploads/2023/03/Bonus-Buecher-Englisch.pdf"
+     },
+     {
+      "titel": "KLHE kids: bonus content",
+      "text": "Graphics, checklist and memory game",
+      "format": "PDF",
+      "datei": "en-kids-bonus.pdf",
+      "alt": "/wp-content/uploads/2023/03/Bonus-Content-Englisch.pdf"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "espanol",
+  "tint": "pistazie",
+  "name": "Español",
+  "lang": "es",
+  "gruppen": [
+   {
+    "h": "Finanzas, helper y kids",
+    "items": [
+     {
+      "titel": "Finanzas: e-books",
+      "text": "",
+      "format": "ZIP",
+      "datei": "finanzreihe-ebooks.zip",
+      "alt": ""
+     },
+     {
+      "titel": "Finanzas: herramientas de Excel",
+      "text": "",
+      "format": "ZIP",
+      "datei": "es-finanzas-excel.zip",
+      "alt": "/wp-content/uploads/2019/03/KLHE-Excel-Anwendungen-Bouns.zip"
+     },
+     {
+      "titel": "Finanzas: informes comparativos",
+      "text": "",
+      "format": "ZIP",
+      "datei": "finanzreihe-vergleichsreports.zip",
+      "alt": ""
+     },
+     {
+      "titel": "KLHE helper: bonus",
+      "text": "",
+      "format": "ZIP",
+      "datei": "es-helper-bonus.zip",
+      "alt": "/wp-content/uploads/2021/11/Bonus-Spanisch.zip"
+     },
+     {
+      "titel": "Infografía",
+      "text": "",
+      "format": "PNG",
+      "datei": "es-infografia.png",
+      "alt": "/wp-content/uploads/2021/11/Infografik-ES.png"
+     },
+     {
+      "titel": "KLHE kids: libros",
+      "text": "",
+      "format": "PDF",
+      "datei": "es-kids-libros.pdf",
+      "alt": "/wp-content/uploads/2023/03/klhe_kids_buecher_espanol-1.pdf"
+     },
+     {
+      "titel": "KLHE kids: bonus",
+      "text": "",
+      "format": "ZIP",
+      "datei": "kinderbuecher-gratis.zip",
+      "alt": ""
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "italiano",
+  "tint": "apricot",
+  "name": "Italiano",
+  "lang": "it",
+  "gruppen": [
+   {
+    "h": "KLHE helper",
+    "items": [
+     {
+      "titel": "Bonus KLHE helper",
+      "text": "",
+      "format": "ZIP",
+      "datei": "it-helper-bonus.zip",
+      "alt": "/wp-content/uploads/2021/11/Bonus-Italienisch.zip"
+     },
+     {
+      "titel": "Infografica",
+      "text": "",
+      "format": "PNG",
+      "datei": "it-infografica.png",
+      "alt": "/wp-content/uploads/2021/11/Infografik-IT.png"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "francais",
+  "tint": "rose",
+  "name": "Français",
+  "lang": "fr",
+  "gruppen": [
+   {
+    "h": "KLHE helper et finance",
+    "items": [
+     {
+      "titel": "Bonus KLHE helper",
+      "text": "",
+      "format": "ZIP",
+      "datei": "fr-helper-bonus.zip",
+      "alt": "/wp-content/uploads/2022/05/Bonusmaterial-FR.zip"
+     },
+     {
+      "titel": "Hermétisme",
+      "text": "",
+      "format": "PDF",
+      "datei": "fr-hermetisme.pdf",
+      "alt": "/wp-content/uploads/2022/05/Hermetik-Hermetische-Gesetze-Universelle-Urprinzipien-FR.pdf"
+     },
+     {
+      "titel": "Trouver, fixer et atteindre ses objectifs",
+      "text": "",
+      "format": "PDF",
+      "datei": "fr-objectifs.pdf",
+      "alt": "/wp-content/uploads/2022/05/Ziele-finden_-setzen-und-erreichen-10.12.2019-fr.pdf"
+     },
+     {
+      "titel": "Millionnaire avec la stratégie du paresseux",
+      "text": "Contenu du livre audio",
+      "format": "PDF",
+      "datei": "fr-livre-audio-paresseux.pdf",
+      "alt": "/wp-content/uploads/2020/08/KLHE Zusatzmaterial Hörbuch - strategie paresseux.pdf"
+     }
+    ]
+   }
+  ]
+ }
+]

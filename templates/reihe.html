@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import book_card, minis, crumbs %}
+{% block main %}
+{% set nur_reihe = r.buecher and r.buecher[0].seite == 'reihe' %}
+<section class="sub-hero">
+  <div class="wrap sub-grid">
+    <div class="sub-copy">
+      {{ crumbs([('/#reihen', 'Reihen'), ('', r.kurzname)]) }}
+      <p class="kicker">{{ r.art }}</p>
+      <h1 class="h1">{{ r.name }}</h1>
+      <p class="intro">{{ r.intro if r.intro is defined else r.text }}</p>
+      <div class="actions"><a class="btn btn--ink" href="#titel">Alle Bücher der Reihe</a></div>
+    </div>
+    <div class="vellum" style="padding: 30px">
+      <span class="sheet t-{{ r.tint }}" style="inset: 0 10% 4% 0; transform: rotate(-4deg)"></span>
+      <span class="sheet t-flieder" style="inset: 16% 0 0 14%; transform: rotate(3deg)"></span>
+      <div class="fan fan--{{ r.buecher | length }}" style="position: relative; z-index: 1">
+        {% for b in r.buecher %}<img src="{{ b.img }}" alt="">{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="titel" style="padding-top: 72px">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Die Bücher</h2></div></div>
+    <div class="books books--4">
+      {% for b in r.buecher %}{{ book_card(b, amazon=nur_reihe) }}{% endfor %}
+    </div>
+    {% if nur_reihe %}
+    <div class="prose" style="margin-top: 36px; display: grid; gap: 12px">
+      {% for b in r.buecher %}<p><b>{{ b.titel }}.</b> {{ b.klappentext }}</p>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if r.einblick is defined %}
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Ein Blick hinein</h2></div></div>
+    <div class="peek">
+      {% for e in r.einblick %}<figure><img src="{{ e.bild }}" alt="{{ e.text }}" loading="lazy"><figcaption>{{ e.text }}</figcaption></figure>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="block">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Weitere Reihen</h2></div></div>
+    {{ minis(others) }}
+  </div>
+</section>
+{% endblock %}

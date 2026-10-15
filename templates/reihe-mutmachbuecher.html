@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import book_card, crumbs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap sub-grid sub-grid--kids">
+    <div class="sub-copy">
+      {{ crumbs([('/#reihen', 'Reihen'), ('', 'Mutmachbücher')]) }}
+      <p class="kicker">Kinderbuch-Reihe</p>
+      <h1 class="h1">{{ r.name }}</h1>
+      <p class="intro">Von Hand illustrierte Geschichten, die Kindern erklären, was beim Termin passiert, und Eltern helfen, aus Unsicherheit Vertrauen zu machen.</p>
+      <ul class="tags"><li class="tag tag--mint">Von Hand illustriert, ohne KI</li><li class="tag">Zum Vorlesen</li><li class="tag">Für Kinder, Eltern und Praxen</li></ul>
+      <div class="actions"><a class="btn btn--ink" href="#titel">Alle Bücher der Reihe</a><a class="btn btn--soft" href="#welten">Die Welten der Bücher</a></div>
+    </div>
+    <div class="kid-stage">
+      <span class="sheet a t-mint"></span><span class="sheet b t-pistazie"></span>
+      <img class="main" src="/img/aplus/mm-kinderarzt.webp" alt="Illustration aus „Mein Besuch beim Kinderarzt“">
+      <img class="float-cover" src="/img/cover/mein-besuch-beim-kinderarzt.webp" alt="Cover: Mein Besuch beim Kinderarzt">
+    </div>
+  </div>
+</section>
+
+<section class="block" id="titel" style="padding-top: 72px">
+  <div class="wrap">
+    <div class="head">
+      <div><h2 class="h2">Für jeden Termin ein Buch</h2><p class="intro">Vom ersten Pieks bis zur Zahnspange. Jedes Buch führt direkt zu Amazon.</p></div>
+    </div>
+    <div class="books">
+      {% for b in r.buecher %}{{ book_card(b, tags=False, amazon=True) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block" id="welten">
+  <div class="wrap">
+    <div class="head">
+      <div><h2 class="h2">Jedes Buch hat seine eigene Welt</h2><p class="intro">In Pfotenhausen, Spangenhausen oder Muthausen helfen kleine Helfer dabei, zu verstehen, was beim Termin passiert.</p></div>
+    </div>
+    <div class="worlds">
+      {% for name, file, book in [('Muthausen', 'muthausen', 'Meine erste Impfung'), ('Pfotenhausen', 'pfotenhausen', 'Mein Besuch beim Tierarzt'), ('Spangenhausen', 'spangenhausen', 'Mein Besuch bei der Kieferorthopädie'), ('Sehhausen', 'sehhausen', 'Mein Besuch beim Augenarzt'), ('Körperhausen', 'koerperhausen', 'Mein Besuch beim Kinderarzt'), ('Bauchhausen', 'bauchhausen', 'Mein Bauch tut weh')] %}
+      <figure class="world"><img src="/img/aplus/mm-{{ file }}.webp" alt="{{ name }}, Illustration aus „{{ book }}“" loading="lazy"><figcaption><b>{{ name }}</b><span>aus „{{ book }}“</span></figcaption></figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="trade-panel t-mint">
+      <div class="head" style="margin-bottom: 0"><div><h2 class="h2">Damit aus Angst Neugier wird</h2></div></div>
+      <div class="goods">
+        <div class="good"><b>Erklären, ohne Angst zu machen</b><p>Kinder erfahren Schritt für Schritt, was beim Termin passiert.</p></div>
+        <div class="good"><b>Stärken das Vertrauen</b><p>in Ärztin, Arzt, Praxisteam und Behandlung.</p></div>
+        <div class="good"><b>Zum Vorlesen</b><p>zu Hause vor dem Termin oder direkt im Wartezimmer.</p></div>
+        <div class="good"><b>Von Hand illustriert</b><p>liebevoll gezeichnet, ohne KI.</p></div>
+      </div>
+      <p class="hint" style="background: rgba(255,255,255,.7)"><b>Für Praxen:</b> Die Mutmachbücher gibt es auch als personalisierte Praxis-Ausgabe. Mehr dazu auf <a href="https://www.praxis-kinderbuch.de/">praxis-kinderbuch.de</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <div><h2 class="h2">Mehr für Kinder</h2><p class="intro">Zum Mitmachen, Suchen und Vorlesen.</p></div>
+      <a class="more" href="/reihen/kuschelige-momente/">Zu den Ausmalbüchern</a>
+    </div>
+    <div class="books">
+      {% for b in kids %}{{ book_card(b, tags=False) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

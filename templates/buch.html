@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import book_card, cover, crumbs, buy_attrs %}
+{% block main %}
+<div class="wrap">
+  <div style="padding-top: 40px">{{ crumbs([('/buecher/', 'Bücher'), (b.reihe_obj.url, b.reihe_obj.kurzname) if b.reihe_obj else (b.kat.url, b.kat.name), ('', b.titel)]) }}</div>
+  <section class="book-stage">
+    <div class="cover-stack">
+      <span class="sheet a t-{{ b.tint }}"></span><span class="sheet b t-{{ 'flieder' if b.tint != 'flieder' else 'apricot' }}"></span>
+      {{ cover(b) }}
+    </div>
+    <div class="book-info">
+      <p class="kicker">{% if b.reihe_obj %}{{ b.reihe_obj.name }}{% if b.band %}, Band {{ b.band }}{% endif %}{% else %}{{ b.kat_einzahl }}{% endif %}</p>
+      <h1 class="h1">{{ b.titel }}</h1>
+      {% if b.untertitel %}<p class="subtitle">{{ b.untertitel }}</p>{% endif %}
+      {% if b.autoren %}<p class="byline">{{ b.autoren }}</p>{% endif %}
+      <ul class="tags"><li class="tag tag--{{ b.tint }}">{{ b.kat_einzahl }}</li>{% for f in b.formate_liste %}<li class="tag">{{ f }}</li>{% endfor %}{% for bd in b.badges %}<li class="tag">{{ bd }}</li>{% endfor %}</ul>
+      <div class="actions">
+        {% if b.amazon_url %}<a class="btn btn--ink" href="{{ b.amazon_url }}"{{ buy_attrs() }}>Bei Amazon ansehen</a>{% endif %}
+        {% if b.im_buchhandel %}<span class="small">oder in jeder Buchhandlung mit der ISBN bestellen</span>{% endif %}
+      </div>
+      {% set specs = [] %}
+      {% if b.seiten %}{% set _ = specs.append(('Seiten', b.seiten)) %}{% endif %}
+      {% if b.auflage %}{% set _ = specs.append(('Auflage', b.auflage)) %}{% endif %}
+      {% if b.formate_liste %}{% set _ = specs.append(('Format', b.formate_liste | join(', '))) %}{% endif %}
+      {% if b.isbn %}{% set _ = specs.append(('ISBN', b.isbn)) %}{% endif %}
+      {% if specs %}<dl class="specs num">{% for k, v in specs %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>{% endif %}
+    </div>
+  </section>
+
+  <section class="block book-two">
+    <div style="display: grid; gap: 20px; min-width: 0">
+      <h2 class="h2" style="font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.6rem)">Über das Buch</h2>
+      <div class="prose"><p>{{ b.klappentext }}</p></div>
+      {% if b.extra %}<p class="extra">{% if b.extra_url %}<a href="{{ b.extra_url }}">{{ b.extra }}</a>{% else %}{{ b.extra }}{% endif %}</p>{% endif %}
+    </div>
+    <div class="pane t-{{ b.tint }}">
+      <h3 class="h3">So bekommst Du das Buch</h3>
+      <ul class="learn">
+        {% if b.amazon_url %}<li><b>Bei Amazon</b><span>{% if b.formate_liste %}als {{ b.formate_liste | join(', ') }}, {% endif %}direkt online bestellen</span></li>{% endif %}
+        {% if b.im_buchhandel %}<li><b>In jeder Buchhandlung</b><span>vor Ort oder online, mit der ISBN {{ b.isbn }}</span></li>{% endif %}
+        {% if b.hat_hoerbuch %}<li><b>Als Hörbuch</b><span>bei Audible und über 1.600 weiteren Shops</span></li>{% endif %}
+        {% if b.ist_uebersetzt %}<li><b>In anderen Sprachen</b><span>auch übersetzt erschienen</span></li>{% endif %}
+        {% if b.reihe_obj %}<li><b>Teil einer Reihe</b><span><a href="{{ b.reihe_obj.url }}">{{ b.reihe_obj.name }}</a></span></li>{% endif %}
+      </ul>
+    </div>
+  </section>
+
+  {% for p in b.presse_liste %}
+  <section class="block block--flush press-row">
+    <figure>
+      <img src="{{ p.bild }}" alt="Artikel in {{ p.medium }}" loading="lazy">
+    </figure>
+    <div style="display: grid; gap: 14px; min-width: 0">
+      <p class="kicker">In den Medien</p>
+      <h2 class="h2" style="font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.6rem)">{{ p.medium }}</h2>
+      <div class="prose"><p>{% if p.datum %}{{ p.datum }}: {% endif %}{{ p.anlass }}</p></div>
+    </div>
+  </section>
+  {% endfor %}
+
+  {% if more %}
+  <section class="block">
+    <div class="head"><div><h2 class="h2">{{ more_title }}</h2></div><a class="more" href="{{ more_link }}">Alle ansehen</a></div>
+    <div class="books">
+      {% for x in more %}{{ book_card(x, tags=False) }}{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import book_card, clip, minis, crumbs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap sub-grid">
+    <div class="sub-copy">
+      {{ crumbs([('/#reihen', 'Reihen'), ('', 'Finanzreihe')]) }}
+      <p class="kicker">Die Reihe, mit der alles begann</p>
+      <h1 class="h1">{{ r.name }}</h1>
+      <p class="intro">Geld verstehen, sparen und anlegen. Mit diesen Büchern hat KLHE 2011 angefangen: Amazon-Bestseller, Titelgeschichte in Focus Money und bis heute das Fundament des Verlags.</p>
+      <div class="actions"><a class="btn btn--ink" href="#baende">Alle neun Bände</a><a class="btn btn--soft" href="#die-autoren">Die Autoren</a></div>
+    </div>
+    <div>
+      <div class="pic-stack">
+        <span class="sheet a t-flieder"></span><span class="sheet b t-apricot"></span>
+        <img class="main" src="/img/foto/chris-jens-focus-money.webp" alt="Jens Helbig und Christopher Klein mit „Die Faulbär-Strategie zur Million“ und einem Magazinartikel" style="object-position: center 30%">
+        <img class="clip-float" src="/img/presse/focus-money-2018.webp" alt="Focus Money, Mai 2018, Titel: Die Faulbär-Strategie zur Million">
+      </div>
+      <p class="pic-cap">Jens Helbig und Christopher Klein mit Büchern und Presse zur Reihe</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top: 40px">
+  <div class="wrap">
+    <div class="board" aria-label="Die neun Bände der Finanzreihe">
+      <span class="sheet t-flieder" style="inset: 0; border-radius: 34px"></span>
+      {% for b in r.buecher %}<img src="{{ b.img }}" alt="Cover: {{ b.titel }}" style="position: relative; z-index: 1">{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush" id="baende">
+  <div class="wrap">
+    <div class="head">
+      <div><h2 class="h2">Neun Bücher, ein Thema: Geld</h2></div>
+      <p class="small" style="max-width: 36ch">Einige Bände gibt es auch als Hörbuch und in anderen Sprachen.</p>
+    </div>
+    <div class="books books--5">
+      {% for b in r.buecher %}{{ book_card(b) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="origin t-apricot">
+      <div style="display: grid; gap: 22px">
+        <h2 class="h2">Fragen, auf die das Studium keine Antwort hatte</h2>
+        <div class="prose">
+          <p>Im Auslandsjahr in Mexiko erlebten Christopher Klein und Jens Helbig, wie weit Arm und Reich auseinanderliegen können. Sie fragten sich, warum es immer wieder Krisen gibt, die in der volkswirtschaftlichen Theorie gar nicht vorkommen.</p>
+          <p>Aus ihren Recherchen zu Geld und Geldsystem wurde erst ein Finanzblog und dann ein Buch. Weil sie fürchteten, dass ein fremder Verlag die unbequemen Stellen glätten würde, gründeten sie 2011 ihren eigenen Verlag und druckten 300 Exemplare vor.</p>
+        </div>
+        <div class="actions"><a class="more" href="/verlag/">Die ganze Geschichte lesen</a></div>
+      </div>
+      <div class="origin-book">
+        <a href="/buecher/tag-auf-tag-im-hamsterrad/"><img src="/img/cover/tag-auf-tag-im-hamsterrad.webp" alt="Cover: Tag auf Tag im Hamsterrad"></a>
+        <p>Das erste Buch, heute in der 6. Auflage</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush" id="die-autoren">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Die Autoren</h2><p class="intro">Zwei Volkswirte, die aus eigenen Fragen Bücher gemacht haben und daraus einen Verlag.</p></div></div>
+    <div class="authors">
+      <article class="author t-flieder">
+        <img src="/img/foto/chris-farbe.webp" alt="Christopher Klein" style="object-position: 50% 30%" loading="lazy">
+        <div class="t">
+          <h3 class="h3">Christopher M. Klein</h3>
+          <p>Studium der Internationalen Volkswirtschaftslehre, Master in Finance und Personalmanagement. Mitgründer von KLHE und BuchBuddy.</p>
+          <ul class="tags"><li class="tag">Die Faulbär-Strategie zur Million</li><li class="tag">Nine to five muss nicht sein!</li><li class="tag">Ökoethinvesting</li><li class="tag">Geld sparen und clever reich werden</li></ul>
+        </div>
+      </article>
+      <article class="author t-apricot">
+        <img src="/img/foto/jens-farbe.webp" alt="Jens Helbig" style="object-position: 50% 30%" loading="lazy">
+        <div class="t">
+          <h3 class="h3">Jens M. Helbig</h3>
+          <p>Studium der Internationalen Volkswirtschaftslehre, Master in Politik und Volkswirtschaftslehre. Mitgründer von KLHE und BuchBuddy.</p>
+          <ul class="tags"><li class="tag">Einmal Dividende bitte!</li><li class="tag">Mit Blockchain zum Krypto-Investor</li></ul>
+        </div>
+      </article>
+    </div>
+    <p class="small" style="margin-top: 18px">Gemeinsam geschrieben: Tag auf Tag im Hamsterrad, Der Hamster verlässt das Rad, Mein Geldbaum.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Presse zur Reihe</h2></div></div>
+    <div class="clips clips--5">
+      {% for m in clips %}{{ clip(m) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Weitere Reihen</h2></div></div>
+    {{ minis(others) }}
+  </div>
+</section>
+{% endblock %}

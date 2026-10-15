@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import minis, crumbs, buy_attrs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap sub-grid">
+    <div class="sub-copy">
+      {{ crumbs([('/#reihen', 'Reihen'), ('', 'Kuschelige Momente')]) }}
+      <p class="kicker">Ausmalbuch-Reihe von Jinyi Park</p>
+      <h1 class="h1">{{ r.name }}</h1>
+      <p class="intro">Süße Tiercharaktere bei ihren liebsten Hobbys: von Hand illustrierte Ausmalbücher für kleine Auszeiten. Einfach losmalen, abschalten und den Alltag für einen Augenblick vergessen.</p>
+      <ul class="tags"><li class="tag tag--rose">Von Hand illustrierte Motive</li><li class="tag">Für Erwachsene und Teenager</li></ul>
+      <div class="actions"><a class="btn btn--ink" href="#baende">Die fünf Bände</a><a class="btn btn--soft" href="#einblick">Ein Blick hinein</a></div>
+    </div>
+    <div class="vellum" style="padding: 30px">
+      <span class="sheet t-rose" style="inset: 0 10% 4% 0; transform: rotate(-4deg)"></span>
+      <span class="sheet t-apricot" style="inset: 16% 0 0 14%; transform: rotate(3deg)"></span>
+      <div class="fan" style="position: relative; z-index: 1">
+        {% for b in r.buecher %}<img src="{{ b.img }}" alt="">{% endfor %}
+        <img class="signet" src="/img/aplus/km-signet.webp" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="einblick" style="padding-top: 72px">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Finde Deine innere Ruhe durch Farben</h2></div></div>
+    <div class="peek">
+      <figure><img src="/img/aplus/km-seiten.webp" alt="Ausmalseiten mit Tiercharakteren" loading="lazy"><figcaption>Einfach auszumalen, für jeden geeignet.</figcaption></figure>
+      <figure><img src="/img/aplus/km-tipp.webp" alt="Tipp vor dem Start: ein leeres Blatt hinter die Seite legen" loading="lazy"><figcaption>Ein kleiner Tipp vor dem Start: ein leeres Blatt hinter die Seite legen, damit nichts durchdrückt.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="baende">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Fünf Bücher, fünf Stimmungen</h2></div></div>
+    <div class="vols">
+      {% set aplus = {'1': 'auszeiten', '2': 'fruehling', '3': 'hygge', '4': 'sommer', '5': 'herbst'} %}
+      {% for b in r.buecher %}
+      <a class="vol" id="{{ b.slug }}" href="{{ b.amazon_url }}"{{ buy_attrs() }} style="text-decoration: none"><figure style="margin: 0"><img src="/img/aplus/km-{{ aplus[b.band] }}.webp" alt="Kuschelige Momente: {{ b.untertitel }}, Einblick" loading="lazy"><figcaption><b>{{ b.untertitel }}</b><span>Band {{ b.band }} · bei Amazon ansehen</span></figcaption></figure></a>
+      {% endfor %}
+      <figure class="vol"><img src="/img/aplus/km-seiten2.webp" alt="Weitere Ausmalseiten" loading="lazy"><figcaption><b>Weitere Ausmalseiten</b><span>Einblick</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Noch mehr zum Entdecken</h2></div></div>
+    {{ minis(others) }}
+  </div>
+</section>
+{% endblock %}

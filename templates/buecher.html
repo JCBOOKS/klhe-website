@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import book_card, series_card, crumbs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap" style="display: grid; gap: 24px">
+    {{ crumbs([('', 'Bücher')]) }}
+    <h1 class="h1">Unsere Bücher</h1>
+    <p class="intro" style="max-width: 58ch">Ratgeber, Lebensgeschichten, Kinder- und Ausmalbücher. Alle gibt es bei Amazon, die meisten auch in jeder Buchhandlung, ob online oder vor Ort.</p>
+    <nav class="jump" aria-label="Bereiche">
+      {% for s in sections %}<a class="t-{{ s.k.tint }}" href="#{{ s.k.id }}">{{ s.k.name }}</a>{% endfor %}
+    </nav>
+    <div class="keys">
+      <span><span class="tag">Im Buchhandel</span> in jeder Buchhandlung bestellbar</span>
+      <span><span class="tag">Hörbuch</span> bei Audible und über 1.600 weiteren Shops</span>
+      <span>Einige Titel sind auch auf Englisch, Französisch oder Spanisch erschienen.</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" style="padding-top: 24px">
+  {% for s in sections %}
+  <section class="cat" id="{{ s.k.id }}">
+    <div class="cat-top">
+      <div><span class="dot t-{{ s.k.tint }}"></span><h2 class="h2" style="font-size: clamp(1.9rem, 1.3rem + 1.6vw, 2.8rem)">{{ s.k.name }}</h2></div>
+      <p>{{ s.k.lang }}</p>
+    </div>
+    <div class="books">
+      {% for r in s.series %}{{ series_card(r) }}{% endfor %}
+      {% for b in s.titel %}{{ book_card(b) }}{% endfor %}
+    </div>
+    {% if s.backlist %}
+    <div class="backlist" id="weitere-ratgeber">
+      <h3>Weitere Ratgeber</h3>
+      {% for x in s.backlist %}<a href="{{ x.amazon_url }}" target="_blank" rel="sponsored noopener">{{ x.titel }}<span>bei Amazon</span></a>{% endfor %}
+    </div>
+    {% endif %}
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import book_card, clip %}
+{% block main %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">Unabhängiger Verlag aus Düsseldorf, seit 2011</p>
+      <h1 class="mega">Bücher, die bewegen.</h1>
+      <p class="intro">Ratgeber, Lebensgeschichten, Kinder- und Ausmalbücher von Menschen, die etwas zu erzählen haben. Die meisten unserer Titel kann man in jeder Buchhandlung bestellen.</p>
+      <div class="actions">
+        <a class="btn btn--ink" href="/buecher/">Programm ansehen</a>
+        <a class="btn btn--soft" href="/autoren/">Bei KLHE veröffentlichen</a>
+      </div>
+    </div>
+    <div class="stage vellum" aria-hidden="true">
+      <span class="sheet s1"></span><span class="sheet s2"></span><span class="sheet s3"></span>
+      <div class="wall">
+        {% for col in wall %}<div class="wall-col"><div class="wall-track">{% for src in col + col %}<img src="{{ src }}" alt=""{% if loop.index > 3 %} loading="lazy"{% endif %}>{% endfor %}</div></div>{% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="facts">
+      <div class="fact t-mint"><b class="num">2011</b><span>gegründet, noch während des Studiums</span></div>
+      <div class="fact t-flieder"><b class="num">500.000+</b><span>verkaufte Bücher</span></div>
+      <div class="fact t-rose"><b class="num">3</b><span>große Barsortimente liefern an den Buchhandel: Libri, Zeitfracht und Umbreit</span></div>
+      <div class="fact t-apricot"><b>Bestseller</b><span>bei Amazon</span></div>
+    </div>
+    <div class="seen">
+      <p>Unsere Bücher waren unter anderem in</p>
+      <ul><li>Focus Money</li><li>Psychologie Heute</li><li>Der Tagesspiegel</li><li>Prisma</li><li>tina</li><li>Jolie</li><li>Eve</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="programm">
+  <div class="wrap">
+    <div class="head">
+      <div><h2 class="h2">Was wir verlegen</h2><p class="intro">Von der Finanzstrategie bis zum Mutmachbuch vor dem Arztbesuch.</p></div>
+    </div>
+    <div class="shelves">
+      {% for c in kats %}
+      <a class="fach t-{{ c.tint }}" href="{{ c.url }}">
+        <div class="fach-books" aria-hidden="true">{% for src in c.start_imgs %}<img src="{{ src }}" alt="" loading="lazy">{% endfor %}</div>
+        <div class="fach-body"><h3 class="h3">{{ c.name }}</h3><p>{{ c.kurz }}</p></div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="head">
+      <div><h2 class="h2">Neu und empfohlen</h2></div>
+      <a class="more" href="/buecher/">Alle Bücher ansehen</a>
+    </div>
+    <div class="books">
+      {% for b in picks %}{{ book_card(b, cat=True) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block" id="reihen">
+  <div class="wrap">
+    <div class="head">
+      <div><h2 class="h2">Reihen</h2><p class="intro">Bücher, die zusammengehören, mit einem Blick auf die Seiten.</p></div>
+    </div>
+    <div class="series">
+      {% for s in start_reihen %}
+      <a class="ser" href="{{ s.url }}">
+        <div class="ser-pic"><span class="sheet t-{{ s.tint }}"></span><img class="main" src="{{ s.bild }}" alt="{{ s.bild_alt }}" style="object-position: {{ s.bild_pos if s.bild_pos is defined else 'center' }}" loading="lazy"></div>
+        <div class="ser-text"><h3 class="h3">{{ s.name }}</h3><p>{{ s.text }}</p></div>
+      </a>
+      {% endfor %}
+      <a class="ser ser--wide" href="{{ mitmach.url }}">
+        <div class="ser-text"><h3 class="h3">{{ mitmach.name }}</h3><p>{{ mitmach.text }}</p></div>
+        <div class="ser-shelf" aria-hidden="true"><span class="sheet t-apricot"></span>{% for b in mitmach.buecher %}<img src="{{ b.img }}" alt="" loading="lazy">{% endfor %}</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush" id="buchhandel">
+  <div class="wrap">
+    <div class="trade-panel t-flieder">
+      <div class="head" style="margin-bottom: 0">
+        <div><h2 class="h2">In jeder Buchhandlung bestellbar</h2><p class="intro">Von thalia.de bis zur kleinsten Buchhandlung in Buxtehude. So kommt ein Buch von KLHE in den Handel:</p></div>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><span class="who">Verzeichnis lieferbarer Bücher</span><b>Titeldaten im VLB</b><p>Mit einer ISBN von KLHE steht das Buch im VLB. Dort finden es Buchhandlungen und Portale wie buchhandel.de.</p></div>
+        <div class="flow-step"><span class="who">Libri, Zeitfracht, Umbreit</span><b>Bestellung beim Barsortiment</b><p>Buchhandlungen bestellen über die Barsortimente. Erst die Verträge mit ihnen machen ein Buch im Handel bestellbar.</p></div>
+        <div class="flow-step"><span class="who">Verlagsauslieferung</span><b>Versand und Rechnung</b><p>Unsere Verlagsauslieferung übernimmt Versand, Rechnungen und Remissionen.</p></div>
+        <div class="flow-step"><span class="who">Buchhandlung</span><b>Beim Leser</b><p>Leserinnen und Leser holen das Buch in ihrer Buchhandlung ab oder bestellen es online.</p></div>
+      </div>
+      <div class="shops"><span class="lead-in">Außerdem erhältlich bei</span><span>Thalia</span><span>Hugendubel</span><span>buch7</span><span>Amazon</span><span>Audible</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="presse">
+  <div class="wrap">
+    <div class="press t-apricot">
+      <div class="head">
+        <div><h2 class="h2">Unsere Bücher in den Medien</h2></div>
+        <p class="small" style="max-width: 40ch; color: var(--ink-2)">Außerdem unter anderem in Psychologie Heute, Jolie, Bank &amp; Umwelt, den Niederrhein Nachrichten, den Fürther Nachrichten und dem Rhein Main Magazin.</p>
+      </div>
+      <div class="clips">
+        {% for m in clips %}{{ clip(m) }}{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush" id="verleger">
+  <div class="wrap people">
+    <div class="duo-pics">
+      <span class="sheet a"></span><span class="sheet b"></span>
+      <figure class="p1"><img src="/img/foto/chris-farbe.webp" alt="Christopher Klein" style="object-position: 50% 30%" loading="lazy"><figcaption><b>Christopher Klein</b>, Verleger und Autor</figcaption></figure>
+      <figure class="p2"><img src="/img/foto/jens-farbe.webp" alt="Jens Helbig" style="object-position: 50% 30%" loading="lazy"><figcaption><b>Jens Helbig</b>, Verleger und Autor</figcaption></figure>
+    </div>
+    <div class="people-text">
+      <h2 class="h2">Hinter KLHE stehen Christopher Klein und Jens Helbig.</h2>
+      <div class="prose">
+        <p>Kennengelernt haben sich die beiden im Studium der Volkswirtschaft. 2011, noch im Master, gründeten sie ihren eigenen Verlag, mit 300 vorgedruckten Büchern und Geld, das sie nicht hatten.</p>
+        <p>Aus ihrer Finanzreihe wurde ein Verlag für viele Autorinnen und Autoren und später die Buchagentur BuchBuddy.</p>
+      </div>
+      <div class="actions"><a class="more" href="/verlag/">Unsere Geschichte lesen</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="autoren">
+  <div class="wrap">
+    <div class="cta t-mint">
+      <div class="cta-pic"><img src="/img/foto/chris-jens-buehne.webp" alt="Christopher Klein und Jens Helbig bei einem Vortrag" loading="lazy"></div>
+      <div class="cta-body">
+        <h2 class="h2">Bei einem Verlag erscheinen.</h2>
+        <ul class="checks">
+          <li><span><b>ISBN von KLHE</b> und Eintrag im VLB</span></li>
+          <li><span><b>Bestellbar im Buchhandel</b> über Libri, Zeitfracht und Umbreit</span></li>
+          <li><span><b>Eigene Verlagsauslieferung</b> für Bestellungen, Versand und Remissionen</span></li>
+          <li><span><b>Mitglied im Börsenverein</b> des Deutschen Buchhandels</span></li>
+        </ul>
+        <p class="small" style="color: var(--ink-2)">Wir nehmen keine unverlangten Manuskripte an. Neue Bücher bei KLHE entstehen heute mit BuchBuddy.</p>
+        <div class="actions"><a class="btn btn--ink" href="/autoren/">So arbeiten wir</a><a class="btn btn--soft" href="{{ site.buchbuddy }}">Zu BuchBuddy</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

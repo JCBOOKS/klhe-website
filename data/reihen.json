@@ -1,0 +1,20 @@
+[
+  {"id": "mutmachbuecher", "name": "Mutmachbücher vor dem Arztbesuch", "kurzname": "Mutmachbücher", "kategorie": "kinderbuecher", "tint": "mint", "art": "Kinderbuch-Reihe",
+   "text": "Von Hand illustrierte Geschichten, die Kindern erklären, was beim Kinderarzt, beim Zahnarzt oder im Krankenhaus passiert.",
+   "unter": "Von Hand illustriert", "bild": "/img/aplus/mm-kinderarzt.webp", "bild_alt": "Illustration aus „Mein Besuch beim Kinderarzt“", "fach": ["mein-besuch-beim-tierarzt", "mein-besuch-beim-kinderarzt", "mein-besuch-beim-augenarzt"], "start": true},
+  {"id": "kuschelige-momente", "name": "Kuschelige Momente", "kurzname": "Kuschelige Momente", "kategorie": "ausmalbuecher", "tint": "rose", "art": "Ausmalbuch-Reihe",
+   "text": "Süße Tiercharaktere bei ihren liebsten Hobbys: fünf Ausmalbücher für kleine Auszeiten.",
+   "unter": "Jinyi Park", "bild": "/img/aplus/km-seiten.webp", "bild_alt": "Ausmalseiten aus „Kuschelige Momente“", "fach": ["kuschelige-momente-2", "kuschelige-momente-4", "kuschelige-momente-5"], "start": true},
+  {"id": "unnuetzes-wissen", "name": "Unnützes Wissen", "kurzname": "Unnützes Wissen", "kategorie": "geschenkbuecher", "tint": "pistazie", "art": "Geschenkbuch-Reihe",
+   "text": "Kuriose Fakten und humorvolle Geschichten für Golfer, Tennisspieler und Western-Fans.",
+   "unter": "Golf, Tennis, Wilder Westen", "bild": "/img/aplus/golf.webp", "bild_alt": "GOLF: unnützes Wissen, Buch auf dem Rasen", "fach": ["tennis-unnuetzes-wissen", "golf-unnuetzes-wissen", "unnuetzes-wissen-wilder-westen"], "start": true,
+   "intro": "Kuriose Regeln, erstaunliche Fakten und humorvolle Geschichten rund um das eigene Hobby, liebevoll von Hand illustriert. Das Geschenk für alle, die ihren Sport lieben und gern etwas zu erzählen haben.",
+   "einblick": [{"bild": "/img/aplus/golf-fakten.webp", "text": "Aus „GOLF: unnützes Wissen für Tee, Tresen und das 19. Loch“"}, {"bild": "/img/aplus/tennis-innen.webp", "text": "Aus „Tennis: unnützes Wissen für Tennisspieler“"}]},
+  {"id": "finanzreihe", "name": "Die Finanzreihe von Chris und Jens", "kurzname": "Die Finanzreihe", "kategorie": "ratgeber", "tint": "flieder", "art": "Ratgeber-Reihe",
+   "text": "Geld verstehen, sparen und anlegen. Mit diesen Büchern hat KLHE angefangen: Amazon-Bestseller und Titelgeschichte in Focus Money.",
+   "unter": "Christopher Klein und Jens Helbig", "bild": "/img/foto/chris-jens-focus-money.webp", "bild_alt": "Jens Helbig und Christopher Klein mit Büchern der Finanzreihe", "bild_pos": "center 30%", "fach": ["die-faulbaer-strategie-zur-million", "nine-to-five-muss-nicht-sein", "einmal-dividende-bitte"], "start": true},
+  {"id": "mitmachbuecher", "name": "Mitmachbücher", "kurzname": "Mitmachbücher", "kategorie": "kinderbuecher", "tint": "apricot", "art": "Kinderbuch-Reihe",
+   "text": "Zum Bewegen, Pusten, Schütteln und Lachen, für die Kleinsten.",
+   "unter": "Zum Bewegen, Pusten und Lachen", "bild": "/img/cover/das-witzige-sport-mitmachbuch.webp", "bild_alt": "", "fach": ["das-witzige-sport-mitmachbuch", "das-tierische-mitmachbuch", "die-wuselbande-sucht-das-gaehnen"], "start": false,
+   "intro": "In diesen Büchern reicht Zuhören nicht: Kinder helfen ihren Freunden mit Bewegungen, Pusten und Schütteln durch jede Herausforderung. Zum gemeinsamen Mitmachen, für die Kleinsten."}
+]

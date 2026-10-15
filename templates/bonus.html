@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import crumbs %}
+{% block main %}
+<section class="sub-hero">
+  <div class="wrap">
+    <div class="bonus-head t-flieder">
+      {{ crumbs([('', 'Bonusmaterial')]) }}
+      <h1 class="h1">Zusatzmaterial zu Deinem Buch</h1>
+      <p class="intro" style="max-width: 56ch">Du hast im Buch oder im Hörbuch einen Link hierher gefunden? Hier liegt alles an einem Ort. Ohne Anmeldung, einfach herunterladen.</p>
+      <p class="small" style="color: var(--ink-2)">Fehlt etwas? Schreib uns an <a href="mailto:{{ site.mail }}">{{ site.mail }}</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block block--flush">
+  <div class="wrap">
+    <div class="acc">
+      {% for s in bonus %}
+      <details class="acc-item" id="{{ s.id }}"{% if loop.first %} open{% endif %}{% if s.lang is defined %} lang="{{ s.lang }}"{% endif %}>
+        <summary class="acc-btn">
+          <span class="an"><i class="t-{{ s.tint }}"></i>{{ s.name }}</span>
+          <span style="display: flex; align-items: center; gap: 18px"><span class="ac">{{ s.count }}</span><span class="pm" aria-hidden="true"></span></span>
+        </summary>
+        <div class="acc-body">
+          {% for g in s.gruppen %}
+          <div class="dl-group">
+            <h4>{{ g.h }}</h4>
+            {% for it in g['items'] %}
+            <div class="dl">
+              <div style="display: grid; gap: 2px; min-width: 0"><span class="dl-t">{{ it.titel }}</span>{% if it.text %}<span class="dl-b">{{ it.text }}</span>{% endif %}</div>
+              {% if it.href %}<span class="fmt">{{ it.format }}</span><a class="go" href="{{ it.href }}"{% if it.format != 'LINK' %} download{% endif %}>{{ it.go }}</a>{% else %}<span class="fmt" style="visibility: hidden">–</span><span class="soon">folgt</span>{% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<div class="block"></div>
+{% endblock %}
+{% block scripts %}
+<script>
+/* Abschnitt aus der Adresse (z. B. /bonus/#english) automatisch öffnen */
+(function () {
+  function openHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id && document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  openHash();
+  window.addEventListener('hashchange', openHash);
+})();
+</script>
+{% endblock %}
