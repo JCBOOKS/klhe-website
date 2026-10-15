@@ -578,3 +578,109 @@ a.vol:hover b { text-decoration: underline; text-underline-offset: 4px; }
   .legend--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) { .legend--5 { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Presse v2: Seitenstapel, Buch-Mockups, Medienleiste, Bestseller ---------- */
+.t-weiss { background: rgba(255, 255, 255, .62); }
+a.fact { text-decoration: none; color: inherit; }
+a.fact:hover span { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Leiste „Zu sehen, zu hören und zu lesen bei“ */
+.known { display: grid; gap: 14px; padding-top: 34px; }
+.known p { margin: 0; font-size: 15px; color: var(--mute); }
+.known ul { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; margin: 0; padding: 0; list-style: none; }
+.known li { font-size: 1.22rem; font-weight: 650; letter-spacing: -.015em; color: #767676; font-variation-settings: "wdth" 85; line-height: 1.2; }
+.known-logo img { height: 26px; width: auto; opacity: .92; }
+.sub-hero .known { padding-top: 4px; }
+
+/* Raster */
+.pks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 28px; align-items: start; }
+.pks--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 24px; }
+.pks--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.press .pks { margin-top: 8px; }
+
+/* Karte */
+.pk { margin: 0; display: grid; gap: 14px; align-content: start; scroll-margin-top: 90px; }
+.pk-stage { position: relative; aspect-ratio: 5 / 4; border-radius: var(--r-l); overflow: hidden; isolation: isolate; }
+.pk figcaption { display: grid; gap: 3px; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.pk figcaption b { font-size: 1.08rem; color: var(--ink); }
+.pk-date { font-size: 13.5px; color: var(--mute); }
+
+/* Seiten: erste Seite vorn, weitere dahinter aufgefächert */
+.pk-pages img { position: absolute; width: 50%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; object-position: top center; background: #fff; border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(34, 35, 42, .1), 0 18px 26px -14px rgba(34, 35, 42, .5); }
+.pk-pages--1 img { left: 9%; top: 9%; transform: rotate(-3deg); }
+.pk-pages--2 img:nth-child(1) { left: 27%; top: 6%; transform: rotate(6deg); }
+.pk-pages--2 img:nth-child(2) { left: 7%; top: 11%; transform: rotate(-4deg); }
+.pk-pages--3 img:nth-child(1) { left: 36%; top: 5%; transform: rotate(9deg); }
+.pk-pages--3 img:nth-child(2) { left: 22%; top: 8%; transform: rotate(2deg); }
+.pk-pages--3 img:nth-child(3) { left: 6%; top: 12%; transform: rotate(-5deg); }
+.pk-stage--quer .pk-pages img { width: 68%; aspect-ratio: auto; max-height: 76%; object-fit: cover; }
+.pk-stage--quer .pk-pages--1 img { left: 7%; top: 12%; transform: rotate(-2.5deg); }
+
+/* Sendung ohne Ausschnitt: Logo und Sendungsname auf einer Karte */
+.pk-show { position: absolute; left: 8%; top: 16%; width: 58%; aspect-ratio: 16 / 10; display: grid; align-content: center; justify-items: start; gap: 12px; padding: 0 9%;
+  background: #fff; border-radius: 14px; box-shadow: 0 1px 1px rgba(34, 35, 42, .08), 0 22px 30px -18px rgba(34, 35, 42, .45); transform: rotate(-2deg); }
+.pk-show img { height: 30px; width: auto; max-width: 100%; }
+.pk-show b { font-size: clamp(1rem, .85rem + .4vw, 1.25rem); line-height: 1.15; letter-spacing: -.015em; color: var(--ink); font-variation-settings: "wdth" 85; }
+.pk-art { position: absolute; z-index: 6; right: 12px; top: 12px; font-size: 12.5px; font-weight: 650; line-height: 1; padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, .85); color: var(--ink-2); }
+
+/* Bücher als Mockups unten rechts */
+.pk-books { position: absolute; z-index: 5; right: 7%; bottom: 8%; width: 25%; }
+.pk-books .bm { position: absolute; right: 0; bottom: 0; width: 100%; }
+.pk-books .bm:nth-child(2) { right: 62%; z-index: -1; }
+.pk-books .bm:nth-child(3) { right: 124%; z-index: -2; }
+.pk-books--2 .bm:nth-child(1), .pk-books--3 .bm:nth-child(1) { z-index: 2; }
+
+/* 3D-Buch: Vorderseite, Rücken, Lichtkante */
+.bm { display: block; perspective: 900px; }
+.bm-in { position: relative; display: block; transform-style: preserve-3d; transform: rotateY(26deg); }
+.bm-front { position: relative; display: block; width: 100%; height: auto; border-radius: 1px 3px 3px 1px; transform: translateZ(5px); }
+.bm-spine { position: absolute; left: -10px; top: 0; width: 10px; height: 100%; object-fit: cover; object-position: left center; transform-origin: right center; transform: translateZ(5px) rotateY(-90deg); filter: brightness(.72); }
+.bm-in::after { content: ""; position: absolute; inset: 0; border-radius: 1px 3px 3px 1px; transform: translateZ(5.5px); pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .2) 0, rgba(255, 255, 255, .3) 2.5%, rgba(0, 0, 0, .08) 5%, rgba(255, 255, 255, 0) 11%), linear-gradient(160deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, 0) 38%); }
+.bm::after { content: ""; display: block; height: 14px; margin: -8px -6% 0 8%; border-radius: 50%; background: radial-gradient(closest-side, rgba(34, 35, 42, .38), rgba(34, 35, 42, 0)); }
+
+/* Bestseller-Beleg */
+.best { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 60px); align-items: center; padding: clamp(24px, 3.5vw, 48px); border-radius: var(--r-xl); background: var(--apricot); scroll-margin-top: 90px; }
+.best-shot { margin: 0; }
+.best-shot img { width: 100%; border-radius: 12px; box-shadow: 0 1px 1px rgba(34, 35, 42, .1), 0 30px 40px -26px rgba(34, 35, 42, .55); background: #fff; }
+.best-copy { display: grid; gap: 14px; justify-items: start; min-width: 0; }
+.best-copy p { margin: 0; color: var(--ink-2); max-width: 40ch; }
+.best-title { font-size: clamp(2rem, 1.3rem + 2vw, 3.2rem); }
+.best-foot { display: flex; align-items: flex-end; gap: 28px; margin-top: 6px; }
+.best-book { width: 120px; }
+.best-note { margin-top: 14px; color: var(--ink-2); }
+.best-note a { font-weight: 650; }
+.best--kompakt { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: 40px; padding: 0; background: none; border-radius: 0; }
+.best--kompakt .best-copy p { font-size: 15.5px; }
+
+/* Buchseite: ein Beitrag */
+.press-row .pk { max-width: 520px; }
+
+@media (max-width: 1100px) {
+  .pks--4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .pks, .pks--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 20px; }
+  .best, .best--kompakt { grid-template-columns: minmax(0, 1fr); }
+  .known-logo img { height: 22px; }
+}
+@media (max-width: 560px) {
+  .pks, .pks--4, .pks--2 { grid-template-columns: minmax(0, 1fr); }
+  .known ul { gap: 12px 22px; }
+  .known li { font-size: 1.08rem; }
+  .best-book { width: 96px; }
+}
+.pk-stage--show .pk-show { top: 9%; width: 60%; }
+.pk-stage--show .pk-books { width: 21%; bottom: 7%; right: 6%; }
+.pk-stage--show .pk-books .bm:nth-child(2) { right: 58%; }
+.pk-stage--show .pk-books .bm:nth-child(3) { right: 116%; }
+.pk-stage { container-type: inline-size; }
+@container (min-width: 300px) {
+  .pk-show img { height: clamp(30px, 8.5cqw, 46px); }
+  .pk-show b { font-size: clamp(1.1rem, 4.4cqw, 1.9rem); }
+}
+.pks--2 .pk-stage--show .pk-books { width: 24%; }
+.best-shot { display: grid; gap: 10px; }
+.best-shot a { display: block; border-radius: 12px; }
+.best-shot figcaption { font-size: 13px; color: var(--mute); }

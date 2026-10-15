@@ -51,8 +51,11 @@ WALL = [
 ]
 # Reihenfolge der Reihen-Karten im Programm je Kategorie
 SERIES_IN_CAT = {'ratgeber': ['finanzreihe'], 'kinderbuecher': ['mutmachbuecher', 'mitmachbuecher'], 'ausmalbuecher': ['kuschelige-momente'], 'geschenkbuecher': ['unnuetzes-wissen']}
-FINANZ_PRESSE = ['focus-money-2018', 'jolie', 'eve-2020', 'bank-und-umwelt-2018', 'rhein-main-magazin-2020']
-START_PRESSE = ['focus-money-2018', 'psychologie-heute-2022-10', 'tagesspiegel-2025', 'prisma-2022', 'tina-2023', 'eve-2020']
+FINANZ_PRESSE = ['focus-money-2018', 'rtl-de', 'cashkurs', 'jolie', 'eve-2020', 'bank-und-umwelt-2018', 'rhein-main-magazin-2020']
+START_PRESSE = ['wdr-hier-und-heute-2023', 'focus-money-2018', 'rtl-de', 'psychologie-heute-2022-10', 'tagesspiegel-2025', 'tina-2023']
+# Leiste „Zu sehen, zu hören und zu lesen bei“: erst die Logos, dann die Namen der Zeitungen und Zeitschriften
+MEDIEN_REIHENFOLGE = ['Focus Money', 'Psychologie Heute', 'Der Tagesspiegel', 'Prisma', 'tina', 'Eve', 'Chance', 'Bank & Umwelt', 'Rhein Main Magazin',
+                      'Niederrhein Nachrichten', 'Fürther Nachrichten', 'Landsberger Zeitung', 'Wochenpost Hohenlohe-Franken']
 TAGCLS = {'ratgeber': 'flieder', 'lebensgeschichten': 'apricot', 'kinderbuecher': 'mint', 'ausmalbuecher': 'rose', 'geschenkbuecher': 'pistazie', 'reisen': 'apricot'}
 KAT_EINZAHL = {'ratgeber': 'Ratgeber', 'lebensgeschichten': 'Lebensgeschichte', 'kinderbuecher': 'Kinderbuch', 'ausmalbuecher': 'Ausmalbuch', 'geschenkbuecher': 'Geschenkbuch', 'reisen': 'Reisen'}
 
@@ -125,6 +128,7 @@ def load():
             b['extern'] = b['seite'] == 'backlist'
             b['badges'] = (['Im Buchhandel'] if b['im_buchhandel'] else []) + (['Hörbuch'] if b['hat_hoerbuch'] else [])
             b['presse_liste'] = [p for p in presse if b['slug'] in p.get('buecher', [])]
+            b['bestseller'] = None
             if b['seite'] in ('eigen', 'reihe') and not b['amazon_url']:
                 warn(f'{b["slug"]}: kein Amazon-Link')
             books.append(b)
@@ -136,8 +140,32 @@ def load():
             if sl not in slug_by:
                 raise SystemExit(f'presse.json: Buch „{sl}“ bei {p["id"]} gibt es nicht in buecher.csv')
         p['buch_objs'] = [slug_by[sl] for sl in p.get('buecher', [])]
-        if not (STATIC / p['bild'].lstrip('/')).exists():
-            warn(f'Pressebild fehlt: {p["bild"]}')
+        for k, v in (('quer', False), ('art', ''), ('logo', ''), ('sendung', ''), ('medium', ''), ('datum', '')):
+            p.setdefault(k, v)
+        # Seiten: erste Seite = Titel bzw. Ausschnitt, weitere Seiten liegen dahinter (Stapel)
+        p['seiten'] = p.get('seiten') or ([p['bild']] if p.get('bild') else [])
+        for f in p['seiten'] + ([p['logo']] if p.get('logo') else []):
+            if not (STATIC / f.lstrip('/')).exists():
+                warn(f'Pressebild fehlt: {f}')
+        if not p['seiten'] and not p.get('logo'):
+            raise SystemExit(f'presse.json: {p["id"]} braucht ein Bild (bild/seiten) oder ein Logo')
+        # Buch-Mockups: ausdrücklich angegeben oder die Bücher des Berichts, höchstens drei
+        for sl in p.get('mockups', []):
+            if sl not in slug_by:
+                raise SystemExit(f'presse.json: Mockup „{sl}“ bei {p["id"]} gibt es nicht in buecher.csv')
+        p['mock_objs'] = [slug_by[sl] for sl in (p.get('mockups') or p.get('buecher', [])) if slug_by[sl]['img']][:3]
+        if p.get('reihe') and p['reihe'] not in reihe_by:
+            raise SystemExit(f'presse.json: unbekannte Reihe „{p["reihe"]}“ bei {p["id"]}')
+        p['reihe_obj'] = reihe_by.get(p.get('reihe'))
+        p['ist_medien'] = bool(p.get('art'))  # Fernsehen, Radio, Online
+    bestseller = json.loads((DATA / 'bestseller.json').read_text(encoding='utf-8'))
+    for sl, bs in bestseller.items():
+        if sl not in slug_by:
+            raise SystemExit(f'bestseller.json: Buch „{sl}“ gibt es nicht in buecher.csv')
+        if not (STATIC / bs['bild'].lstrip('/')).exists():
+            warn(f'Bestseller-Bild fehlt: {bs["bild"]}')
+        bs['buch_obj'] = slug_by[sl]
+        slug_by[sl]['bestseller'] = bs
     for r in reihen:
         r['buecher'] = sorted([b for b in books if b['reihe'] == r['id']], key=lambda b: (int(b['band']) if b['band'].isdigit() else 99, b['pos']))
         r['url'] = f'/reihen/{r["id"]}/'
@@ -145,7 +173,7 @@ def load():
     for k in kats:
         k['url'] = f'/buecher/#{k["id"]}'
         k['start_imgs'] = [slug_by[s]['img'] for s in k['start'] if slug_by.get(s) and slug_by[s]['img']]
-    return dict(kats=kats, kat_by=kat_by, reihen=reihen, reihe_by=reihe_by, presse=presse, presse_by=presse_by, bonus=bonus, books=books, slug_by=slug_by)
+    return dict(kats=kats, kat_by=kat_by, reihen=reihen, reihe_by=reihe_by, presse=presse, presse_by=presse_by, bestseller=bestseller, bonus=bonus, books=books, slug_by=slug_by)
 
 
 # ---------------------------------------------------------------- Seiten
@@ -197,7 +225,14 @@ def build():
     shutil.copytree(STATIC, OUT, ignore=shutil.ignore_patterns('.gitkeep', '.DS_Store'))
 
     env = Environment(loader=FileSystemLoader(TPL), autoescape=True, undefined=StrictUndefined, trim_blocks=True, lstrip_blocks=True)
-    env.globals.update(site=SITE, reihen=d['reihen'], kats=d['kats'])
+    # Medienleiste: Logos (aus presse.json, ohne Doppelte) und Namen der Zeitungen und Zeitschriften
+    logos, namen = [], []
+    for p in d['presse']:
+        if p.get('logo') and p['logo'] not in [l['src'] for l in logos]:
+            logos.append({'src': p['logo'], 'alt': p['medium'].split(' ')[0] if p['medium'].startswith('WDR') else p['medium']})
+    ohne_logo = [p['medium'] for p in d['presse'] if p['medium'] and not p.get('logo')]
+    namen = [m for m in MEDIEN_REIHENFOLGE if m in ohne_logo] + sorted({m for m in ohne_logo if m not in MEDIEN_REIHENFOLGE})
+    env.globals.update(site=SITE, reihen=d['reihen'], kats=d['kats'], medien={'logos': logos, 'namen': namen})
     env.filters['urlq'] = lambda s: quote(s)
     pages = []
 
@@ -215,7 +250,7 @@ def build():
     picks = sorted([b for b in books if b['empfohlen']], key=lambda b: int(b['empfohlen']) if b['empfohlen'].isdigit() else 99)
     render('index.html', '/', page_meta('KLHE · Bücher, die bewegen.', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, seit 2011: Ratgeber, Lebensgeschichten, Kinder- und Ausmalbücher, bestellbar im Buchhandel.', '/', jsonld=org_jsonld()),
            wall=wall, picks=picks, start_reihen=[r for r in d['reihen'] if r.get('start')], mitmach=reihe_by['mitmachbuecher'],
-           clips=[d['presse_by'][p] for p in START_PRESSE], presse_anzahl=len(d['presse']))
+           clips=[d['presse_by'][p] for p in START_PRESSE], presse_anzahl=len(d['presse']), bestseller=d['bestseller']['mutmacherinnen'])
 
     # Programm
     sections = []
@@ -260,7 +295,8 @@ def build():
 
     # Presse
     render('presse.html', '/presse/', page_meta('Presse · KLHE', f'{len(d["presse"])} Berichte über Bücher von KLHE und ihre Autorinnen und Autoren, von Focus Money bis Psychologie Heute.', '/presse/', nav='presse'),
-           presse=d['presse'])
+           presse=d['presse'], medien_items=[p for p in d['presse'] if p['ist_medien']], print_items=[p for p in d['presse'] if not p['ist_medien']],
+           bestseller=d['bestseller']['mutmacherinnen'], finanzreihe=reihe_by['finanzreihe'])
 
     # Verlag, Autor:innen, Kontakt
     render('verlag.html', '/verlag/', page_meta('Der Verlag · KLHE', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, gegründet 2011 von Christopher Klein und Jens Helbig. Die Geschichte des Verlags.', '/verlag/', nav='verlag'),

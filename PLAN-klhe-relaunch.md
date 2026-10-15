@@ -9,7 +9,7 @@ klhe.de zieht von der gehackten WordPress-Installation auf eine statische Websit
 `python3 build.py` erzeugt `public/` ohne Fehler; alle internen Links in `public/` zeigen auf vorhandene Dateien (Prüfung `python3 build.py --check`); jede alte Adresse aus `docs/klhe-url-inventar.md` hat eine Regel in `public/.htaccess`.
 
 ## Kontext
-- Entscheidungen und offene Punkte: `docs/klhe-entscheidungen-und-offene-punkte.md` (A1–A56).
+- Entscheidungen und offene Punkte: `docs/klhe-entscheidungen-und-offene-punkte.md` (A1–A72).
 - Seitenplan: `docs/klhe-seitenplan.md`. Alte Adressen: `docs/klhe-url-inventar.md`.
 - Gestaltung: v5-Entwürfe im Projektordner unter `entwurf/seiten-v5/` (Canvas „KLHE Website“).
 - Keine Cookies, kein Tracking, keine externen Schriften (Instrument Sans liegt unter `static/fonts/`).
@@ -39,3 +39,4 @@ klhe.de zieht von der gehackten WordPress-Installation auf eine statische Websit
 ## Protokoll
 - 15.10.2026: Plan erstellt, Repo `jcbooks/klhe-website` angelegt (leer).
 - 15.10.2026: H1–H7 erledigt. 69 Cover vereinheitlicht, 77 Titel mit Klappentexten, Vorlagen nach v5, Rechtstexte, 222 Weiterleitungen. `python3 build.py --check` und `python3 tools/test_weiterleitungen.py` laufen ohne Fehler. Nach `jcbooks/klhe-website` gepusht. Offen: Bonusdateien holen (T1), Livegang (T14).
+- 15.10.2026, ca. 21 Uhr: Presse ausgebaut (A68–A72): 25 Beiträge, Logos, Bestseller-Beleg, Pressekarten mit Seitenstapeln und Buch-Mockups. Prüfungen ohne Fehler, gepusht.

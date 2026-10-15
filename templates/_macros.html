@@ -34,6 +34,61 @@
 <figure class="clip"><div class="clip-img"><img src="{{ m.bild }}" alt="Presseausschnitt{% if m.medium %} aus {{ m.medium }}{% endif %}: {{ m.anlass }}" loading="lazy"></div><figcaption>{% if m.medium %}<b>{{ m.medium }}</b><span class="num">{{ m.datum }}{% if m.datum %}, {% endif %}{{ m.anlass }}</span>{% else %}<b>{{ m.anlass }}</b>{% if m.datum %}<span class="num">{{ m.datum }}</span>{% endif %}{% endif %}{% if mit_buch and m.buch_objs %}<span class="clip-books">Zum Buch: {% for b in m.buch_objs %}<a href="{{ b.url }}">{{ b.voller_titel }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</figcaption></figure>
 {%- endmacro %}
 
+{# Buch als 3D-Mockup: Vorderseite und Buchrücken (linker Rand des Covers, abgedunkelt) #}
+{% macro mock(b) -%}
+<span class="bm"><span class="bm-in"><img class="bm-front" src="{{ b.img }}" alt="" loading="lazy"><img class="bm-spine" src="{{ b.img }}" alt="" loading="lazy"></span></span>
+{%- endmacro %}
+
+{# Pressekarte: Seiten als Stapel oder Logo, davor die Bücher als Mockups #}
+{% macro pk(m, tint='apricot', links=True) -%}
+{% set alt = ('Presseausschnitt aus ' ~ m.medium ~ ': ' if m.medium else 'Presseausschnitt: ') ~ m.anlass %}
+<figure class="pk" id="{{ m.id }}">
+  <div class="pk-stage t-{{ tint }}{% if m.quer %} pk-stage--quer{% endif %}{% if not m.seiten %} pk-stage--show{% endif %}">
+    {% if m.seiten %}
+    <div class="pk-pages pk-pages--{{ m.seiten | length }}">{% for s in m.seiten | reverse %}<img src="{{ s }}" alt="{{ alt if loop.last else '' }}" loading="lazy">{% endfor %}</div>
+    {% else %}
+    <div class="pk-show"><img src="{{ m.logo }}" alt="{{ m.medium }}"><b>{{ m.sendung }}</b></div>
+    {% endif %}
+    {% if m.art %}<span class="pk-art">{{ m.art }}</span>{% endif %}
+    {% if m.mock_objs %}<div class="pk-books pk-books--{{ m.mock_objs | length }}">{% for b in m.mock_objs %}{{ mock(b) }}{% endfor %}</div>{% endif %}
+  </div>
+  <figcaption>
+    <b>{{ m.medium or m.anlass }}</b>
+    {% if m.datum %}<span class="num pk-date">{{ m.datum }}</span>{% endif %}
+    {% if m.medium %}<span>{{ m.anlass }}</span>{% endif %}
+    {% if links and m.buch_objs %}<span class="clip-books">Zum Buch: {% for b in m.buch_objs %}<a href="{{ b.url }}">{{ b.voller_titel }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>
+    {% elif links and m.reihe_obj %}<span class="clip-books">Zur Reihe: <a href="{{ m.reihe_obj.url }}">{{ m.reihe_obj.name }}</a></span>{% endif %}
+  </figcaption>
+</figure>
+{%- endmacro %}
+
+{# Leiste mit Logos und Namen der Medien #}
+{% macro medienleiste(kurz=False, label='Zu sehen, zu hören und zu lesen bei') -%}
+<div class="known">
+  <p>{{ label }}</p>
+  <ul>
+    {% for l in medien.logos %}<li class="known-logo"><img src="{{ l.src }}" alt="{{ l.alt }}"></li>{% endfor %}
+    {% for n in (medien.namen[:6] if kurz else medien.namen) %}<li>{{ n }}</li>{% endfor %}
+  </ul>
+</div>
+{%- endmacro %}
+
+{# Bestseller-Beleg: Bildschirmfoto von Amazon mit Buch-Mockup #}
+{% macro bestseller_box(bs, heading='h2', mehr=True) -%}
+<div class="best" id="bestseller">
+  <figure class="best-shot"><a href="{{ bs.bild }}" title="Bildschirmfoto in voller Größe öffnen"><img src="{{ bs.bild }}" alt="{{ bs.alt }}" loading="lazy"></a><figcaption>Bildschirmfoto von amazon.de</figcaption></figure>
+  <div class="best-copy">
+    <p class="kicker">Amazon-Bestseller</p>
+    <{{ heading }} class="h2 best-title">{{ bs.titel }}</{{ heading }}>
+    <p>{{ bs.text }}</p>
+    <div class="best-foot">
+      <div class="best-book">{{ mock(bs.buch_obj) }}</div>
+      {% if mehr %}<a class="more" href="{{ bs.buch_obj.url }}">Zum Buch</a>{% endif %}
+    </div>
+  </div>
+</div>
+{%- endmacro %}
+
 {% macro crumbs(items) -%}
 <p class="crumbs"><a href="/">Start</a>{% for href, label in items %}<span>/</span>{% if href %}<a href="{{ href }}">{{ label }}</a>{% else %}<span>{{ label }}</span>{% endif %}{% endfor %}</p>
 {%- endmacro %}

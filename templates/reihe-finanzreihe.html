@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import book_card, clip, minis, crumbs %}
+{% from '_macros.html' import pk, book_card, clip, minis, crumbs %}
 {% block main %}
 <section class="sub-hero">
   <div class="wrap sub-grid">
@@ -7,7 +7,7 @@
       {{ crumbs([('/#reihen', 'Reihen'), ('', 'Finanzreihe')]) }}
       <p class="kicker">Die Reihe, mit der alles begann</p>
       <h1 class="h1">{{ r.name }}</h1>
-      <p class="intro">Geld verstehen, sparen und anlegen. Mit diesen Büchern hat KLHE 2011 angefangen: Amazon-Bestseller, Titelgeschichte in Focus Money und bis heute das Fundament des Verlags.</p>
+      <p class="intro">Geld verstehen, sparen und anlegen. Mit diesen Büchern hat KLHE 2011 angefangen: Amazon-Bestseller und in den Amazon Top 100, Titelgeschichte in Focus Money, Online-Serie bei RTL.de und bis heute das Fundament des Verlags.</p>
       <div class="actions"><a class="btn btn--ink" href="#baende">Alle neun Bände</a><a class="btn btn--soft" href="#die-autoren">Die Autoren</a></div>
     </div>
     <div>
@@ -89,8 +89,8 @@
 <section class="block">
   <div class="wrap">
     <div class="head"><div><h2 class="h2">Presse zur Reihe</h2></div></div>
-    <div class="clips clips--5">
-      {% for m in clips %}{{ clip(m) }}{% endfor %}
+    <div class="pks pks--4">
+      {% for m in clips %}{{ pk(m, ['apricot', 'flieder', 'mint', 'rose', 'pistazie'][loop.index0 % 5], links=False) }}{% endfor %}
     </div>
   </div>
 </section>

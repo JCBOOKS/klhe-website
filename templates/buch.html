@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import book_card, cover, crumbs, buy_attrs, clip %}
+{% from '_macros.html' import pk, bestseller_box, book_card, cover, crumbs, buy_attrs, clip %}
 {% block main %}
 <div class="wrap">
   <div style="padding-top: 40px">{{ crumbs([('/buecher/', 'Bücher'), (b.reihe_obj.url, b.reihe_obj.kurzname) if b.reihe_obj else (b.kat.url, b.kat.name), ('', b.titel)]) }}</div>
@@ -45,13 +45,15 @@
     </div>
   </section>
 
+  {% if b.bestseller %}
+  <section class="block block--flush">{{ bestseller_box(b.bestseller, mehr=False) }}</section>
+  {% endif %}
+
   {% if b.presse_liste | length == 1 %}{% set p = b.presse_liste[0] %}
   <section class="block block--flush press-row">
-    <figure>
-      <img src="{{ p.bild }}" alt="Presseausschnitt{% if p.medium %} aus {{ p.medium }}{% endif %}" loading="lazy">
-    </figure>
+    {{ pk(p, 'apricot', links=False) }}
     <div style="display: grid; gap: 14px; min-width: 0">
-      <p class="kicker">In den Medien</p>
+      <p class="kicker">In den Medien{% if p.art %}: {{ p.art }}{% endif %}</p>
       <h2 class="h2" style="font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.6rem)">{{ p.medium or p.anlass }}</h2>
       <div class="prose"><p>{% if p.datum %}{{ p.datum }}{% if p.medium %}: {% endif %}{% endif %}{% if p.medium %}{{ p.anlass }}{% endif %}</p></div>
       <a class="more" href="/presse/">Alle Presseberichte</a>
@@ -59,8 +61,8 @@
   </section>
   {% elif b.presse_liste %}
   <section class="block block--flush">
-    <div class="head"><div><p class="kicker">In den Medien</p><h2 class="h2" style="font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.6rem)">{{ b.presse_liste | length }} Berichte zu diesem Buch</h2></div><a class="more" href="/presse/">Alle Presseberichte</a></div>
-    <div class="clips clips--4">{% for p in b.presse_liste %}{{ clip(p) }}{% endfor %}</div>
+    <div class="head"><div><p class="kicker">In den Medien</p><h2 class="h2" style="font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.6rem)">{{ b.presse_liste | length }} Beiträge zu diesem Buch</h2></div><a class="more" href="/presse/">Alle Presseberichte</a></div>
+    <div class="pks{% if b.presse_liste | length == 2 %} pks--2{% endif %}">{% for p in b.presse_liste %}{{ pk(p, ['apricot', 'flieder', 'mint', 'rose', 'pistazie'][loop.index0 % 5], links=False) }}{% endfor %}</div>
   </section>
   {% endif %}
 

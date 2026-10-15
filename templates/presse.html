@@ -1,23 +1,39 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import clip, crumbs %}
+{% from '_macros.html' import pk, crumbs, medienleiste, bestseller_box %}
+{% set tints = ['apricot', 'flieder', 'mint', 'rose', 'pistazie'] %}
 {% block main %}
 <section class="sub-hero">
   <div class="wrap" style="display: grid; gap: 24px">
     {{ crumbs([('', 'Presse')]) }}
     <h1 class="h1">Unsere Bücher in den Medien</h1>
-    <p class="intro" style="max-width: 60ch">{{ presse | length }} Berichte, Buchtipps und Empfehlungen zu Büchern von KLHE und ihren Autorinnen und Autoren, von Focus Money bis Psychologie Heute.</p>
-    {% set medien = [] %}{% for m in presse %}{% if m.medium and m.medium not in medien %}{% set _ = medien.append(m.medium) %}{% endif %}{% endfor %}
-    <div class="seen" style="padding-top: 6px"><p>Berichte unter anderem in</p><ul>{% for x in medien %}<li>{{ x }}</li>{% endfor %}</ul></div>
+    <p class="intro" style="max-width: 60ch">{{ presse | length }} Beiträge im Fernsehen, im Radio, online und in Zeitungen und Zeitschriften über Bücher von KLHE und ihre Autorinnen und Autoren, vom WDR bis Focus Money.</p>
+    {{ medienleiste() }}
     <p class="small" style="color: var(--ink-2)">Rezensionsexemplare und Interviewanfragen: <a href="mailto:{{ site.mail }}">{{ site.mail }}</a></p>
   </div>
 </section>
 
 <section class="block block--flush">
   <div class="wrap">
-    <div class="clips clips--4">
-      {% for m in presse %}{{ clip(m, mit_buch=True) }}{% endfor %}
+    {{ bestseller_box(bestseller) }}
+    <p class="best-note small">Auch unsere <a href="{{ finanzreihe.url }}">Finanzreihe</a> war Amazon-Bestseller und in den Amazon Top 100.</p>
+  </div>
+</section>
+
+<section class="block" id="fernsehen-radio-online">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Fernsehen, Radio und online</h2></div></div>
+    <div class="pks pks--4">
+      {% for m in medien_items %}{{ pk(m, tints[loop.index0 % 5]) }}{% endfor %}
     </div>
   </div>
 </section>
-<div class="block"></div>
+
+<section class="block block--flush" id="zeitungen-und-zeitschriften">
+  <div class="wrap">
+    <div class="head"><div><h2 class="h2">Zeitungen und Zeitschriften</h2></div></div>
+    <div class="pks">
+      {% for m in print_items %}{{ pk(m, tints[loop.index0 % 5]) }}{% endfor %}
+    </div>
+  </div>
+</section>
 {% endblock %}

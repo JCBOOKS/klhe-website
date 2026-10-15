@@ -37,7 +37,8 @@
    "elfe-filia-regelt-das"
   ],
   "start": false,
-  "bild": "/img/presse/fuerther-nachrichten.webp"
+  "bild": "/img/presse/fuerther-nachrichten.webp",
+  "quer": true
  },
  {
   "id": "tagesspiegel-2025",
@@ -49,7 +50,8 @@
    "kleine-redner-grosse-worte"
   ],
   "start": true,
-  "bild": "/img/presse/tagesspiegel-2025.webp"
+  "bild": "/img/presse/tagesspiegel-2025.webp",
+  "quer": true
  },
  {
   "id": "rhein-main-magazin-2025-08",
@@ -123,7 +125,11 @@
    "bei-gegenwind-loslaufen"
   ],
   "start": true,
-  "bild": "/img/presse/tina-2023.webp"
+  "bild": "/img/presse/tina-2023.webp",
+  "seiten": [
+   "/img/presse/tina-2023.webp",
+   "/img/presse/tina-2023-2.webp"
+  ]
  },
  {
   "id": "prisma-2022",
@@ -135,7 +141,11 @@
    "bei-gegenwind-loslaufen"
   ],
   "start": true,
-  "bild": "/img/presse/prisma-2022.webp"
+  "bild": "/img/presse/prisma-2022.webp",
+  "seiten": [
+   "/img/presse/prisma-2022.webp",
+   "/img/presse/prisma-2022-2.webp"
+  ]
  },
  {
   "id": "psychologie-heute-2022-10",
@@ -195,7 +205,11 @@
    "geld-sparen-und-clever-reich-werden"
   ],
   "start": false,
-  "bild": "/img/presse/rhein-main-magazin-2020.webp"
+  "bild": "/img/presse/rhein-main-magazin-2020.webp",
+  "seiten": [
+   "/img/presse/rhein-main-magazin-2020.webp",
+   "/img/presse/rhein-main-magazin-2020-2.webp"
+  ]
  },
  {
   "id": "chance-2020",
@@ -207,7 +221,11 @@
    "glueck-der-ultimative-ratgeber"
   ],
   "start": true,
-  "bild": "/img/presse/chance-2020.webp"
+  "bild": "/img/presse/chance-2020.webp",
+  "seiten": [
+   "/img/presse/chance-2020.webp",
+   "/img/presse/chance-2020-2.webp"
+  ]
  },
  {
   "id": "eve-2020",
@@ -219,7 +237,11 @@
    "oekoethinvesting"
   ],
   "start": true,
-  "bild": "/img/presse/eve-2020.webp"
+  "bild": "/img/presse/eve-2020.webp",
+  "seiten": [
+   "/img/presse/eve-2020.webp",
+   "/img/presse/eve-2020-2.webp"
+  ]
  },
  {
   "id": "bank-und-umwelt-2018",
@@ -231,28 +253,107 @@
    "oekoethinvesting"
   ],
   "start": false,
-  "bild": "/img/presse/bank-und-umwelt-2018.webp"
+  "bild": "/img/presse/bank-und-umwelt-2018.webp",
+  "seiten": [
+   "/img/presse/bank-und-umwelt-2018.webp",
+   "/img/presse/bank-und-umwelt-2018-2.webp"
+  ]
  },
  {
   "id": "focus-money-2018",
   "medium": "Focus Money",
   "datum": "Mai 2018",
   "sort": "2018-05",
-  "anlass": "Titelgeschichte zur Faulbär-Strategie",
+  "anlass": "Titelgeschichte „Die Faulbär-Strategie zur Million“, sechs Seiten",
   "buecher": [
    "die-faulbaer-strategie-zur-million"
   ],
   "start": true,
-  "bild": "/img/presse/focus-money-2018.webp"
+  "bild": "/img/presse/focus-money-2018.webp",
+  "seiten": [
+   "/img/presse/focus-money-2018.webp",
+   "/img/presse/focus-money-2018-2.webp",
+   "/img/presse/focus-money-2018-3.webp"
+  ]
  },
  {
   "id": "jolie",
   "medium": "Jolie",
   "datum": "",
   "sort": "0000",
-  "anlass": "Artikel „Yeah, ich werd Millionär“ mit Christopher Klein",
+  "anlass": "„Yeah, ich werd Millionär“: Christopher Klein als Experte zitiert",
   "buecher": [],
+  "reihe": "finanzreihe",
+  "mockups": [
+   "die-faulbaer-strategie-zur-million",
+   "geld-sparen-und-clever-reich-werden"
+  ],
   "start": false,
+  "logo": "/img/logos/jolie.webp",
   "bild": "/img/presse/jolie.webp"
+ },
+ {
+  "id": "wdr-hier-und-heute-2023",
+  "medium": "WDR",
+  "sendung": "„Hier und heute“",
+  "art": "Fernsehen",
+  "datum": "27. Oktober 2023",
+  "sort": "2023-10",
+  "anlass": "„Hier und heute“: Celine Stüker zu Gast mit „Einmal Himmel und zurück zu mir“",
+  "buecher": [
+   "einmal-himmel-und-zurueck-zu-mir"
+  ],
+  "start": true,
+  "logo": "/img/logos/wdr.webp"
+ },
+ {
+  "id": "wdr2-sonntagsfragen",
+  "medium": "WDR 2",
+  "sendung": "„Sonntagsfragen“ auf WDR 2",
+  "art": "Radio und Podcast",
+  "datum": "",
+  "sort": "2023-10",
+  "anlass": "„Sonntagsfragen“ mit Gisela Steinhauer: Celine Stüker über die Reise ihres Lebens",
+  "buecher": [
+   "einmal-himmel-und-zurueck-zu-mir"
+  ],
+  "start": false,
+  "logo": "/img/logos/wdr.webp"
+ },
+ {
+  "id": "rtl-de",
+  "medium": "RTL.de",
+  "sendung": "Online-Serie",
+  "art": "Online",
+  "datum": "",
+  "sort": "0002",
+  "anlass": "Online-Serie von Chris und Jens mit Spar- und Investmenttipps aus ihren Büchern",
+  "buecher": [],
+  "reihe": "finanzreihe",
+  "mockups": [
+   "geld-sparen-und-clever-reich-werden",
+   "die-faulbaer-strategie-zur-million",
+   "einmal-dividende-bitte"
+  ],
+  "start": true,
+  "logo": "/img/logos/rtl.webp"
+ },
+ {
+  "id": "cashkurs",
+  "medium": "Cashkurs",
+  "sendung": "Zu Gast",
+  "art": "Online",
+  "datum": "",
+  "sort": "0001",
+  "anlass": "Christopher Klein und Jens Helbig zu Gast",
+  "buecher": [],
+  "reihe": "finanzreihe",
+  "mockups": [
+   "die-faulbaer-strategie-zur-million",
+   "oekoethinvesting",
+   "mit-blockchain-zum-krypto-investor"
+  ],
+  "start": false,
+  "logo": "/img/logos/cashkurs.webp"
  }
 ]

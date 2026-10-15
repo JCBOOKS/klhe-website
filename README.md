@@ -19,7 +19,8 @@ Lokal ansehen: `python3 -m http.server 8000 --directory public`, dann http://loc
 |---|---|
 | `data/buecher.csv` | alle Titel: eine Zeile pro Buch (Titel, Autor:in, Kategorie, Reihe, ISBN, Amazon-ASIN, Klappentext …). Lässt sich in Excel oder Numbers bearbeiten, als CSV (UTF-8) speichern. |
 | `data/kategorien.json`, `data/reihen.json` | die sechs Kategorien und fünf Reihen mit ihren Texten |
-| `data/presse.json` | Presseberichte: Medium, Datum, Anlass, Bild (unter `static/img/presse/`) und die Bücher, zu denen sie gehören. Daraus entstehen `/presse/`, die Presse auf den Buchseiten und auf der Startseite. |
+| `data/presse.json` | Presse, Fernsehen, Radio, online: Medium, Datum, Anlass und die Bücher, zu denen ein Beitrag gehört. Daraus entstehen `/presse/`, die Presse auf den Buchseiten, der Finanzreihe und der Startseite. Felder siehe unten. |
+| `data/bestseller.json` | Bestseller-Belege (Bildschirmfoto, Text) je Buch; erscheinen auf `/presse/#bestseller`, der Startseite und der Buchseite. |
 | `data/bonus.json` | Bonusmaterial: Abschnitte, Dateien, alte Adressen |
 | `data/redirects.csv` | alte WordPress-Adressen → neue Adressen (301) oder 410 |
 | `templates/` | Seitenvorlagen (Jinja2) |
@@ -37,6 +38,15 @@ Lokal ansehen: `python3 -m http.server 8000 --directory public`, dann http://loc
 - `cover`: Dateiname ohne Endung in `static/img/cover/` (leer = Platzhalter „Cover folgt“)
 
 Neues Buch: Zeile ergänzen, Cover als `static/img/cover/<slug>.webp` ablegen (einheitlich: lange Kante 720 px), bauen.
+
+### Felder in `presse.json`
+
+- `bild` oder `seiten`: ein Ausschnitt oder mehrere Seiten (erste Seite vorn, die weiteren dahinter aufgefächert), Bilder unter `static/img/presse/`
+- `logo` und `sendung`: für Fernsehen, Radio und online ohne Ausschnitt (Logo unter `static/img/logos/`); Logos erscheinen auch in der Medienleiste
+- `art`: z. B. `Fernsehen`, `Radio und Podcast`, `Online`; Beiträge mit `art` stehen unter „Fernsehen, Radio und online“
+- `buecher`: Slugs aus `buecher.csv`, verlinkt als „Zum Buch“ und als 3D-Mockup gezeigt (höchstens drei); `mockups` überschreibt die gezeigten Cover, `reihe` verlinkt stattdessen „Zur Reihe“
+- `quer`: `true` für Ausschnitte im Querformat
+- `sort`: `JJJJ-MM` für die Reihenfolge (neueste zuerst)
 
 ## Bonusmaterial
 

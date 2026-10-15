@@ -1,6 +1,6 @@
 # KLHE-Website: Entscheidungen, offene Fragen, To-dos
 
-Stand 15.10.2026, ca. 20 Uhr (Etappe 3: Website gebaut, wartet auf Livegang) · Dieses Dokument ist die Übergabe zwischen Chats: Was hier nicht steht, gilt als nicht entschieden.
+Stand 15.10.2026, ca. 21 Uhr (Etappe 3: Website gebaut, wartet auf Livegang) · Dieses Dokument ist die Übergabe zwischen Chats: Was hier nicht steht, gilt als nicht entschieden.
 
 Grundlagen: `klhe-projekt-briefing.md` · `klhe-bestandsaufnahme.md` · `klhe-url-inventar.md` · `klhe-inhalte-rohmaterial.md` · `klhe-seitenplan.md`
 
@@ -104,6 +104,13 @@ KLHE ist **Aushängeschild für BuchBuddy**: Autor:innen, die in einem Verlag ve
 - A65 **Preisleiste „Wohin der Preis eines Buches geht“** zeigt jetzt auch die Verlagskosten: 10 € Handel, 2 € Auslieferung, 2 € Autor:in, 4–5 € Druck, Lektorat, Marketing, 1–2 € bleiben dem Verlag (hervorgehoben).
 - A66 **Presse ausgebaut:** eigene Seite `/presse/` mit allen 21 Berichten aus den Projektdateien (neu: Psychologie Heute 06/2025 und 10/2022, Rhein Main Magazin 03/25, 08/25, 02/26, Niederrhein Nachrichten, Landsberger Zeitung, Wochenpost, drei Berichte ohne Mediennamen). „Presse“ in der Navigation führt dorthin, Buchseiten zeigen alle Berichte zum Buch.
 - A67 **Cover nachgeliefert:** Michael Jordan und Der erste Tag im Tierkinderhort (F26 erledigt).
+
+**Nachgetragen 15.10.2026, 20:14 (Presse und Belege)**
+- A68 **Logos sind Pflicht:** WDR, RTL, Cashkurs und Jolie als echte Logos (grau, von buchbuddy.de übernommen) in der Leiste „Zu sehen, zu hören und zu lesen bei“ auf Start- und Presseseite. Zeitungen und Zeitschriften stehen dort als Namen; ihre Titelköpfe sind auf den Ausschnitten selbst zu sehen. Aus den Scans freigestellte Titelköpfe (Eve, Prisma, Bank & Umwelt, Niederrhein Nachrichten) waren nicht sauber genug und wurden nicht verwendet.
+- A69 **Bestseller-Beleg kommt rein:** Bildschirmfoto von amazon.de, „Bestseller in Brust & Brustkrebs“, Mutmacherinnen auf Platz 1. Ausschnitt bis zur ersten Reihe, Plätze 2 und 3 (fremde Titel) aufgehellt, sonst unverändert. Steht auf `/presse/#bestseller`, auf der Startseite im Pressebereich und auf der Buchseite Mutmacherinnen; die Kennzahl „Bestseller bei Amazon“ verlinkt dorthin. Kein Datum genannt (F41). Ergänzend nach buchbuddy.de: Die Finanzreihe war Amazon-Bestseller und in den Amazon Top 100.
+- A70 **Neue Beiträge (25 statt 21):** WDR „Hier und heute“, 27.10.2023, Celine Stüker zu Gast mit „Einmal Himmel und zurück zu mir“ (Beleg: buchbuddy.de und Sendungsseite bei fernsehserien.de); WDR 2 „Sonntagsfragen“ mit Gisela Steinhauer, Celine Stüker über die Reise ihres Lebens (Beleg: Bildschirmfoto mit Link zur ARD Audiothek; ohne Datum und ohne Link, F42); RTL.de, Online-Serie von Chris und Jens mit Spar- und Investmenttipps aus ihren Büchern; Cashkurs, Chris und Jens zu Gast (beide Wortlaut wie auf buchbuddy.de, ohne Datum). Jolie mit Logo, Text wie auf buchbuddy.de („Christopher Klein als Experte zitiert“). Focus Money: „Titelgeschichte, sechs Seiten“.
+- A71 **Pressekarten neu:** Jede Karte zeigt den Ausschnitt auf einer Pastellfläche, mehrseitige Belege als aufgefächerter Stapel (Focus Money mit drei Seiten; Eve, Bank & Umwelt, Chance, Prisma, Rhein Main Magazin 09/2020 und tina mit zwei Seiten), davor die besprochenen Bücher als 3D-Mockup (höchstens drei). Fernsehen, Radio und Online ohne Ausschnitt: Logo und Sendungsname auf einer Karte. Die Presseseite trennt „Fernsehen, Radio und online“ von „Zeitungen und Zeitschriften“. Bei RTL.de, Cashkurs und Jolie zeigen die Mockups Bücher der Finanzreihe und verlinken auf die Reihe, nicht auf ein einzelnes Buch, weil nicht belegt ist, um welches Buch es ging.
+- A72 **Startseite:** Pressebereich mit sechs Karten (WDR, Focus Money, RTL.de, Psychologie Heute, Tagesspiegel, tina) und dem Bestseller-Beleg. Finanzreihe: „Presse zur Reihe“ mit Focus Money, RTL.de, Cashkurs, Jolie, Eve, Bank & Umwelt, Rhein Main Magazin.
 
 **Nur über Amazon (KDP) erhältlich, Stand 15.10.2026** (Rest: im Buchhandel gelistet)
 - Visualisierung mit der Kraft der Gedanken · Glück – der ultimative Ratgeber · Lateinamerikanisches Spanisch lernen · Mama, wer wohnt eigentlich auf dem Bauernhof? · Das total verrückte Suchbuch · Die große Monsterparade · Ein etwas anderes Ausmalbuch · Selbstfürsorge-Planer · Die Wuselbande sucht das Gähnen · Mikroabenteuer in Franken · Das große Fürth Wimmelbuch · Mein Bauch tut weh (offen)
@@ -243,7 +250,9 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 - F36 **Auflage „Tag auf Tag im Hamsterrad“:** alte Website „7. Auflage 2020, erstmals erschienen 2013“, Liste und Verlagsgeschichte „6. Auflage“, Gründung 2011 mit diesem Buch. Die Buchseite nennt vorerst keine Auflage.
 - F37 **Kuschelige Momente:** Bandnummern nach der Liste (Hygge Band 3, Sommer Band 4; alte Website: Sommer Band 3). Band 1 heißt auf der Website „Kleine Auszeiten“ wie auf dem Cover, in der Liste „ruhige Motive“.
 - F39 **Presse ohne Mediennamen:** Bei drei Berichten steht kein Zeitungsname auf dem Ausschnitt: „Das Leben auf der dunklen Seite der Rennbahn“ (14. Mai 2024, Ausgeschieden), „Die Schockstarre in Mut verwandeln“ (Kiel, 22. April 2022, Mutmacherinnen), „Brustkrebs: Betroffene schreiben Buch“ (Mutmacherinnen). Welche Zeitungen? Außerdem bestätigen: „Landsberger Zeitung“ (so im Dateinamen; heißt sie genau so?) und „Wochenpost Hohenlohe-Franken“ (aus Logo und E-Mail-Adresse auf der Seite abgeleitet).
-- F40 **Weitere Presse:** Belege für WDR, RTL.de und Cashkurs fehlen weiterhin (T8). Nicht aufgenommen: der Artikel „Onkolotsin hilft mit eigener Erfahrung“ (Thema ist der Verein, nicht das Buch) und der Amazon-Bestseller-Screenshot zu Mutmacherinnen (kein Pressebericht). Ganze Artikel werden nicht zum Lesen angeboten, nur kleine Vorschaubilder (Rechte der Verlage).
+- F40 **Weitere Presse:** WDR, WDR 2, RTL.de und Cashkurs sind jetzt drin (A70), Bestseller-Bildschirmfoto auch (A69). Weiter offen: Datum und Thema von RTL.de und Cashkurs; Artikel zu Ausgeschieden, Die verlorenen Jahre, Finde dein Warum (T8). Nicht aufgenommen: „Onkolotsin hilft mit eigener Erfahrung“ (Thema ist der Verein, nicht das Buch). Ganze Artikel werden nicht zum Lesen angeboten, nur Vorschaubilder (Rechte der Verlage).
+- F41 **Bestseller-Datum:** Wann entstand das Amazon-Bildschirmfoto zu Mutmacherinnen? Mit Datum („Platz 1 im Mai 2022“ o. ä.) wirkt der Beleg noch stärker.
+- F42 **WDR 2 „Sonntagsfragen“:** Sendedatum? Ist die Folge in der ARD Audiothek noch abrufbar (von hier aus nicht prüfbar)? Dann setzen wir den Link. Außerdem: Gibt es saubere Logos (SVG/PNG) von Focus Money, Psychologie Heute, Tagesspiegel, Prisma usw.? Dann kommen sie in die Leiste.
 - F38 Autor:innen der Mutmachbücher und des Tarot-Sets sind nicht genannt, weil unbekannt. Nennen?
 
 ## D. To-dos (Material)
@@ -257,7 +266,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 | T5 | Datentabelle `buecher.csv` als Entwurf aus Liste, Website und Flyern | Claude | erledigt 15.10. (Feinschliff nach Livegang, A58) |
 | T6 | Klappentexte kürzen und vereinheitlichen | Claude | erledigt 15.10. (A59) |
 | T7 | Freigaben für Namen, Fotos, Zitate von Autor:innen | Chris | offen |
-| T8 | Fehlende Presse-Belege bzw. Quellen (WDR, RTL.de, Cashkurs; Artikel zu Ausgeschieden, Die verlorenen Jahre, Finde dein Warum) | Chris | offen |
+| T8 | Presse-Belege: WDR, RTL.de, Cashkurs erledigt (Logos und Angaben von buchbuddy.de, 15.10.). Offen: Daten zu RTL.de, Cashkurs, WDR 2 (F42), Bestseller-Datum (F41), Artikel zu Ausgeschieden, Die verlorenen Jahre, Finde dein Warum | Chris | teilweise |
 | T9 | **Erledigt 15.10.:** Website liegt in `jcbooks/klhe-website`, Push funktioniert. Früher: Zugang BuchBuddy-Repo, Hosting und Deploy-Weg wie bei buchbuddy.de. Stand 15.10.: Mit dem verknüpften GitHub-Konto sind nur Repos von Buuk-Publishing und JCBOOKS sichtbar; für `BuchBuddy/buchbuddy-website` muss die Claude-GitHub-App in der Organisation BuchBuddy Zugriff auf das Repo bekommen | Chris/Jens | offen |
 | T10 | Search Console prüfen: Hat der Hack Spam-Seiten in den Google-Index gebracht? Liste exportieren, die neue Seite antwortet darauf mit 410 | Jens | offen |
 | T11 | Vor dem Löschen von WordPress: prüfen, ob Bestell- oder Kundendaten aufbewahrt werden müssen | Chris/Jens | offen |
@@ -268,6 +277,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 
 ## E. Protokoll
 
+- 15.10.2026, ca. 21 Uhr: Presse-Feedback umgesetzt (A68–A72): Logos WDR, RTL, Cashkurs, Jolie; Bestseller-Beleg; vier neue Beiträge (25 statt 21); Pressekarten mit Seitenstapeln und 3D-Buch-Mockups auf Start, Presse, Buchseiten und Finanzreihe. Build, Linkprüfung und Weiterleitungstest ohne Fehler, Desktop und Mobil angesehen. Fragen F41, F42 neu.
 - 15.10.2026, ca. 20 Uhr: Feedback umgesetzt (A63–A67): Börsenverein entfernt, Cover im Reihenbild Kuschelige Momente, Verlagskosten in der Preisleiste, Presseseite mit 21 Berichten, Cover Jordan und Tierkinderhort. Fragen F39, F40 offen.
 - 15.10.2026, ca. 19 Uhr: Etappe 3 umgesetzt (C8, A57–A60). Website im Repo-Ordner gebaut und geprüft (64 Seiten, 222 Weiterleitungen, Linkprüfung ohne Fehler, Desktop- und Mobilansicht angesehen). Nach `jcbooks/klhe-website` gepusht (T9 erledigt). Fragen F32–F38 offen.
 - 15.10.2026, ca. 18 Uhr: Richtung v5 freigegeben (A56). Programm, Buchseite und Bonusmaterial auf v5 umgestellt, Canvas neu geordnet (neun v5-Seiten, Archiv darunter). Ausblick Etappe 3 festgehalten (C7).

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import book_card, clip %}
+{% from '_macros.html' import book_card, pk, medienleiste %}
 {% block main %}
 <section class="hero">
   <div class="wrap hero-grid">
@@ -24,12 +24,9 @@
       <div class="fact t-mint"><b class="num">2011</b><span>gegründet, noch während des Studiums</span></div>
       <div class="fact t-flieder"><b class="num">500.000+</b><span>verkaufte Bücher</span></div>
       <div class="fact t-rose"><b class="num">3</b><span>große Barsortimente liefern an den Buchhandel: Libri, Zeitfracht und Umbreit</span></div>
-      <div class="fact t-apricot"><b>Bestseller</b><span>bei Amazon</span></div>
+      <a class="fact t-apricot" href="/presse/#bestseller"><b>Bestseller</b><span>bei Amazon, zum Beispiel Platz&nbsp;1 in Brust &amp; Brustkrebs</span></a>
     </div>
-    <div class="seen">
-      <p>Unsere Bücher waren unter anderem in</p>
-      <ul><li>Focus Money</li><li>Psychologie Heute</li><li>Der Tagesspiegel</li><li>Prisma</li><li>tina</li><li>Jolie</li><li>Eve</li><li>Chance</li><li>Rhein Main Magazin</li></ul>
-    </div>
+    {{ medienleiste(kurz=True) }}
   </div>
 </section>
 
@@ -103,10 +100,19 @@
     <div class="press t-apricot">
       <div class="head">
         <div><h2 class="h2">Unsere Bücher in den Medien</h2></div>
-        <div style="display: grid; gap: 10px; justify-items: start; max-width: 40ch"><p class="small" style="color: var(--ink-2)">{{ presse_anzahl }} Berichte über unsere Bücher und Autor:innen, unter anderem in Psychologie Heute, Jolie, Bank &amp; Umwelt, den Niederrhein Nachrichten, den Fürther Nachrichten und dem Rhein Main Magazin.</p><a class="more" href="/presse/">Alle Presseberichte</a></div>
+        <div style="display: grid; gap: 10px; justify-items: start; max-width: 42ch"><p class="small" style="color: var(--ink-2)">{{ presse_anzahl }} Beiträge über unsere Bücher und Autor:innen: im WDR-Fernsehen und auf WDR 2, bei RTL.de und Cashkurs, in Focus Money, Psychologie Heute, dem Tagesspiegel und vielen Zeitungen und Zeitschriften.</p><a class="more" href="/presse/">Alle Presseberichte</a></div>
       </div>
-      <div class="clips">
-        {% for m in clips %}{{ clip(m) }}{% endfor %}
+      <div class="pks pks--start">
+        {% for m in clips %}{{ pk(m, 'weiss', links=False) }}{% endfor %}
+      </div>
+      <div class="best best--kompakt">
+        <figure class="best-shot"><a href="{{ bestseller.bild }}" title="Bildschirmfoto in voller Größe öffnen"><img src="{{ bestseller.bild }}" alt="{{ bestseller.alt }}" loading="lazy"></a><figcaption>Bildschirmfoto von amazon.de</figcaption></figure>
+        <div class="best-copy">
+          <p class="kicker">Amazon-Bestseller</p>
+          <h3 class="h3">{{ bestseller.titel }}: {{ bestseller.buch_obj.titel }}</h3>
+          <p>{{ bestseller.text }} Auch unsere Finanzreihe war Amazon-Bestseller und in den Amazon Top 100.</p>
+          <a class="more" href="{{ bestseller.buch_obj.url }}">Zum Buch</a>
+        </div>
       </div>
     </div>
   </div>
