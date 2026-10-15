@@ -94,6 +94,10 @@ KLHE ist **Aushängeschild für BuchBuddy**: Autor:innen, die in einem Verlag ve
 - A59 **Klappentexte schreibt und kürzt Claude** ohne Einzelfreigabe (ersetzt in A11 „Chris gibt frei“).
 - A60 **Cover:** Hauptsache einheitlich.
 
+**Nachgetragen 15.10.2026, 18:54**
+- A61 **Hosting:** klhe.de liegt bei IONOS und läuft über Cloudflare (Auskunft Jens). Datenschutz entsprechend angepasst (IONOS anonymisiert IP-Adressen in den Logfiles und löscht sie nach spätestens acht Wochen; Hinweis auf mögliches Sicherheits-Cookie von Cloudflare). HTTPS und www werden in Cloudflare geregelt, nicht in der `.htaccess`.
+- A62 **Livegang:** Jens übernimmt, Termin noch offen.
+
 **Nur über Amazon (KDP) erhältlich, Stand 15.10.2026** (Rest: im Buchhandel gelistet)
 - Visualisierung mit der Kraft der Gedanken · Glück – der ultimative Ratgeber · Lateinamerikanisches Spanisch lernen · Mama, wer wohnt eigentlich auf dem Bauernhof? · Das total verrückte Suchbuch · Die große Monsterparade · Ein etwas anderes Ausmalbuch · Selbstfürsorge-Planer · Die Wuselbande sucht das Gähnen · Mikroabenteuer in Franken · Das große Fürth Wimmelbuch · Mein Bauch tut weh (offen)
 - Geplant zu listen (bis dahin Amazon only): Kuschelige Momente (alle Bände), Tennis, Unnützes Wissen Wilder Westen, vermutlich alle Mutmachbücher. Umstellung später = eine Zelle in der Datentabelle.
@@ -225,7 +229,7 @@ Code im Repo `jcbooks/klhe-website` (Branch `main`), Kopie im Projektordner unte
 - **Technik:** Schrift Instrument Sans selbst gehostet, kein externes Skript, keine Cookies. Neues Favicon (K auf Pastellbögen). Mobilansicht mit Menü-Knopf.
 
 Offen aus Etappe 3 (vor dem Livegang klären):
-- F32 **Hosting:** Der Datenschutz geht von Hetzner (Gunzenhausen) und Cloudflare aus, wie bei BuchBuddy. Stimmt das für klhe.de? Sonst Abschnitt 2 und 3 anpassen.
+- ~~F32 Hosting~~ → A61
 - F33 **Verantwortlich nach § 18 Abs. 2 MStV:** eingetragen sind Chris und Jens gemeinsam. Oder nur eine Person?
 - F34 **Hauptadresse:** gebaut für `https://www.klhe.de` (wie bisher). Oder ohne www?
 - F35 **ISBN-Abweichungen** zwischen alter Website und Liste (Website zeigt die Liste): Der Hamster verlässt das Rad (alt 978-3966980555, Liste 978-3-947061-81-5), Mit Blockchain zum Krypto-Investor (alt 978-3966980562, Liste 978-3-947061-87-7), Nürnberg Guide (alt 978-3-98538-126-5, Liste 978-3-98538-173-9), Ein etwas anderes Ausmalbuch (alt 978-3985381845, Liste 978-3-98538-185-2), Mutmacherinnen (alt 978-3-98538-008-4, Liste 978-3-98538-026-8).
@@ -249,6 +253,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 | T10 | Search Console prüfen: Hat der Hack Spam-Seiten in den Google-Index gebracht? Liste exportieren, die neue Seite antwortet darauf mit 410 | Jens | offen |
 | T11 | Vor dem Löschen von WordPress: prüfen, ob Bestell- oder Kundendaten aufbewahrt werden müssen | Chris/Jens | offen |
 | T12 | GetResponse: Inhalte sichern (F5), dann kündigen | Chris | offen |
+| T15 | Bei IONOS prüfen, dass der Vertrag zur Auftragsverarbeitung abgeschlossen ist (der Datenschutz sagt das) | Jens | offen |
 | T14 | Livegang nach `README.md`: Bonusdateien holen, bauen, `public/` hochladen, HTTPS und www prüfen, Stichproben der Weiterleitungen, Sitemap einreichen, WordPress löschen | Jens | offen |
 | T13 | Fehlende Cover: saubere Tierkinderhort-Datei, Originale von Monsterparade und Ein etwas anderes Ausmalbuch, Michael Jordan; flach: Tag auf Tag, Geld sparen, Mein Geldbaum (Mutmachbücher erledigt) | Chris | offen |
 

@@ -3,6 +3,7 @@
 
     python3 build.py           baut die Website nach public/
     python3 build.py --check   baut und prüft zusätzlich alle internen Links
+    python3 build.py --lokal   baut zusätzlich vorschau-lokal/ zum Öffnen per Doppelklick (ohne Server)
 
 Quellen: data/*.csv und data/*.json (Inhalte), templates/ (Seiten), static/ (CSS, Schrift, Bilder, Bonusdateien).
 """
@@ -332,7 +333,6 @@ def write_redirects():
         '# KLHE · erzeugt von build.py, nicht von Hand ändern (Quelle: data/redirects.csv)',
         'ErrorDocument 404 /404.html',
         'ErrorDocument 410 /404.html',
-        'Options -Indexes',
         'AddDefaultCharset utf-8',
         'AddType font/woff .woff',
         'AddType image/webp .webp',
@@ -347,6 +347,7 @@ def write_redirects():
         '</IfModule>',
         '',
         'RewriteEngine On',
+        'RewriteBase /',
         '',
         '# Hauptadresse erzwingen (Schalter https_www_erzwingen in build.py)',
         *([] if SITE['https_www_erzwingen'] else ['# (noch aus)']),
@@ -423,11 +424,45 @@ def check_links():
     return bad
 
 
+# ---------------------------------------------------------------- Vorschau ohne Server
+def make_local(target=ROOT / 'vorschau-lokal'):
+    """Kopie von public/, die per Doppelklick auf index.html im Browser läuft (file://):
+    alle Links relativ, Ordner-Links zeigen auf index.html, Schrift ins CSS eingebettet."""
+    import base64
+    import os
+    if target.exists():
+        shutil.rmtree(target)
+    shutil.copytree(OUT, target, ignore=shutil.ignore_patterns('.htaccess', '_redirects', 'sitemap.xml', 'robots.txt'))
+
+    def rel(url, here_dir):
+        if not url.startswith('/') or url.startswith('//'):
+            return url
+        parts = urlsplit(url)
+        path = parts.path
+        if path.endswith('/'):
+            path += 'index.html'
+        r = os.path.relpath(target / path.lstrip('/'), here_dir).replace(os.sep, '/')
+        return r + (f'#{parts.fragment}' if parts.fragment else '')
+
+    for f in target.rglob('*.html'):
+        text = f.read_text(encoding='utf-8')
+        text = re.sub(r'(href|src)="(/[^"]*)"', lambda m: f'{m.group(1)}="{rel(m.group(2), f.parent)}"', text)
+        text = re.sub(r'<link rel="preload"[^>]*>\n?', '', text)
+        f.write_text(text, encoding='utf-8')
+    css = target / 'css' / 'klhe.css'
+    font = base64.b64encode((STATIC / 'fonts' / 'instrument-sans-latin.woff').read_bytes()).decode()
+    css.write_text(css.read_text(encoding='utf-8').replace('url("/fonts/instrument-sans-latin.woff")', f'url("data:font/woff;base64,{font}")'), encoding='utf-8')
+    return target
+
+
 if __name__ == '__main__':
     pages = build()
     print(f'{len(pages)} Seiten nach {OUT.relative_to(ROOT)}/ geschrieben.')
     for w in warnings:
         print('Hinweis:', w)
+    if '--lokal' in sys.argv:
+        t = make_local()
+        print(f'Vorschau ohne Server: {t.relative_to(ROOT)}/index.html per Doppelklick öffnen.')
     if '--check' in sys.argv:
         bad = check_links()
         if bad:

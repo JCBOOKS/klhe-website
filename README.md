@@ -64,7 +64,7 @@ Die Weiterleitungen muss niemand anfassen: Sie stecken komplett in der Datei `pu
 1. **Repo holen:** `git clone https://github.com/JCBOOKS/klhe-website.git` und `pip install -r requirements.txt`
 2. **Bonusdateien holen** (siehe oben, Weg A oder B).
 3. **Bauen und prüfen:** `python3 build.py --check` und `python3 tools/test_weiterleitungen.py`. Beide müssen ohne Fehler durchlaufen.
-4. **Hosting prüfen:** Läuft klhe.de bei Hetzner und über Cloudflare wie buchbuddy.de? Der Datenschutztext geht davon aus. Wenn nicht, vor dem Hochladen Bescheid geben, dann wird der Text angepasst. Der Server muss Apache mit `mod_rewrite` sein (bei Hetzner-Webhosting der Fall), sonst wirkt die `.htaccess` nicht.
+4. **Hosting:** klhe.de liegt bei IONOS (Webhosting, Apache) und läuft über Cloudflare. So steht es auch im Datenschutz. Bei IONOS im Kundenbereich prüfen, dass der Vertrag zur Auftragsverarbeitung (AVV) abgeschlossen ist.
 5. **Sichern:** WordPress-Ordner und Datenbank komplett sichern (nicht im Web-Verzeichnis ablegen).
 6. **Austauschen:** Alles aus dem Web-Verzeichnis von klhe.de entfernen und den **Inhalt** von `public/` hochladen. Wichtig: `.htaccess` ist eine versteckte Datei; im FTP-Programm versteckte Dateien einblenden und prüfen, dass sie oben liegt.
 7. **Testen:**
@@ -73,7 +73,7 @@ Die Weiterleitungen muss niemand anfassen: Sie stecken komplett in der Datei `pu
    - `https://www.klhe.de/finance/bonus-download/` landet auf `/bonus/` beim Abschnitt Finanzreihe, ein Download dort funktioniert
    - `https://www.klhe.de/wp-login.php` antwortet mit „Gone“ (410)
    - eine erfundene Adresse zeigt die Fehlerseite von KLHE
-8. **HTTPS und www:** Wenn `https://www.klhe.de` mit Zertifikat läuft, oben in `build.py` den Schalter `'https_www_erzwingen': False` auf `True` setzen, neu bauen, `.htaccess` erneut hochladen. Danach landen `http://` und `klhe.de` ohne www automatisch auf `https://www.klhe.de`.
+8. **HTTPS und www:** Das am besten in Cloudflare regeln, nicht in der `.htaccess`: SSL-Modus „Full (strict)“ (oder „Full“), „Always Use HTTPS“ an und eine Weiterleitungsregel `klhe.de/*` → `https://www.klhe.de/$1`. Den Schalter `https_www_erzwingen` in `build.py` dann auf `False` lassen. Achtung: Steht Cloudflare auf „Flexible“ und der Schalter auf `True`, entsteht eine Endlosschleife. Nach jedem Hochladen in Cloudflare den Cache leeren („Purge Everything“).
 9. **Google:** In der Search Console `https://www.klhe.de/sitemap.xml` einreichen.
 10. **Aufräumen:** WordPress-Datenbank und alte Zugänge (FTP, Datenbank, WordPress-Nutzer) löschen bzw. Passwörter ändern.
 
