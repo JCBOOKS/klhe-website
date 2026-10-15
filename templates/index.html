@@ -15,7 +15,7 @@
     <div class="stage vellum" aria-hidden="true">
       <span class="sheet s1"></span><span class="sheet s2"></span><span class="sheet s3"></span>
       <div class="wall">
-        {% for col in wall %}<div class="wall-col"><div class="wall-track">{% for src in col + col %}<img src="{{ src }}" alt=""{% if loop.index > 3 %} loading="lazy"{% endif %}>{% endfor %}</div></div>{% endfor %}
+        {% for col in wall %}<div class="wall-col"><div class="wall-track">{% for c in col + col %}<img src="{{ c.src }}" alt=""{% if c.w %} width="{{ c.w }}" height="{{ c.h }}"{% endif %} decoding="async"{% if loop.index > 3 %} fetchpriority="low"{% endif %}>{% endfor %}</div></div>{% endfor %}
       </div>
     </div>
   </div>

@@ -83,6 +83,25 @@ def amazon(asin):
     return f'https://www.amazon.de/dp/{asin}?tag={SITE["amazon_tag"]}' if asin else ''
 
 
+def webp_size(path):
+    """Breite und Höhe einer WebP-Datei aus dem Dateikopf (VP8, VP8L, VP8X), sonst (0, 0)."""
+    try:
+        d = Path(path).read_bytes()[:40]
+        if d[:4] != b'RIFF' or d[8:12] != b'WEBP':
+            return 0, 0
+        kind = d[12:16]
+        if kind == b'VP8 ':
+            return int.from_bytes(d[26:28], 'little') & 0x3fff, int.from_bytes(d[28:30], 'little') & 0x3fff
+        if kind == b'VP8L':
+            b0, b1, b2, b3 = d[21:25]
+            return 1 + (b0 | (b1 & 0x3f) << 8), 1 + ((b1 >> 6) | b2 << 2 | (b3 & 0x0f) << 10)
+        if kind == b'VP8X':
+            return 1 + int.from_bytes(d[24:27], 'little'), 1 + int.from_bytes(d[27:30], 'little')
+    except OSError:
+        pass
+    return 0, 0
+
+
 def load():
     kats = json.loads((DATA / 'kategorien.json').read_text(encoding='utf-8'))
     reihen = json.loads((DATA / 'reihen.json').read_text(encoding='utf-8'))
@@ -246,7 +265,8 @@ def build():
         return [slug_by[s] for s in slugs if s in slug_by]
 
     # Startseite
-    wall = [[slug_by[s]['img'] for s in col if slug_by.get(s) and slug_by[s]['img']] for col in WALL]
+    # Coverwand: mit Breite und Höhe, damit der Platz vor dem Laden feststeht und die Endlos-Animation nicht springt
+    wall = [[dict(zip(('src', 'w', 'h'), (slug_by[s]['img'],) + webp_size(STATIC / slug_by[s]['img'].lstrip('/')))) for s in col if slug_by.get(s) and slug_by[s]['img']] for col in WALL]
     picks = sorted([b for b in books if b['empfohlen']], key=lambda b: int(b['empfohlen']) if b['empfohlen'].isdigit() else 99)
     render('index.html', '/', page_meta('KLHE · Bücher, die bewegen.', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, seit 2011: Ratgeber, Lebensgeschichten, Kinder- und Ausmalbücher, bestellbar im Buchhandel.', '/', jsonld=org_jsonld()),
            wall=wall, picks=picks, start_reihen=[r for r in d['reihen'] if r.get('start')], mitmach=reihe_by['mitmachbuecher'],
