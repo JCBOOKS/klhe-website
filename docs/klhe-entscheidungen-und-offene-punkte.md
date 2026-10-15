@@ -212,7 +212,7 @@ Was Etappe 3 braucht, bevor gebaut wird:
 
 ## C8. Etappe 3: Website gebaut (15.10.2026)
 
-Repo-Inhalt liegt im Projektordner unter `~/Projekte/klhe-website/website/` (Push nach GitHub wartet auf T9). Anleitung in `README.md`, Arbeitsplan in `PLAN-klhe-relaunch.md`.
+Code im Repo `jcbooks/klhe-website` (Branch `main`), Kopie im Projektordner unter `~/Projekte/klhe-website/website/`. Anleitung in `README.md`, Arbeitsplan in `PLAN-klhe-relaunch.md`.
 
 - **Generator:** `build.py` (Python + Jinja2) baut 64 Seiten nach `public/`: Start, Programm, 51 Buchseiten, 5 Reihenseiten, Verlag, Für Autor:innen, Kontakt, Bonusmaterial, Impressum, Datenschutz, 404. Dazu `sitemap.xml`, `robots.txt`, `.htaccess`. Linkprüfung: alle internen Links und Anker in Ordnung.
 - **Daten:** alle 77 Titel in `data/buecher.csv` (51 mit eigener Seite, 20 nur auf Reihenseiten, 6 als „Weitere Ratgeber“). Liste von Chris ist maßgeblich für ISBN und Amazon-Link. Die drei falschen Amazon-Links sind korrigiert (ISBN-10), für Fürth und Mikroabenteuer ist der Link aus der ISBN erzeugt.
@@ -245,7 +245,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 | T6 | Klappentexte kürzen und vereinheitlichen | Claude | erledigt 15.10. (A59) |
 | T7 | Freigaben für Namen, Fotos, Zitate von Autor:innen | Chris | offen |
 | T8 | Fehlende Presse-Belege bzw. Quellen (WDR, RTL.de, Cashkurs; Artikel zu Ausgeschieden, Die verlorenen Jahre, Finde dein Warum) | Chris | offen |
-| T9 | **Neu:** Push nach `jcbooks/klhe-website` wird abgelehnt, weil die Claude-GitHub-App keinen Zugriff auf JCBOOKS hat. Freischalten unter github.com/apps/claude/installations/select_target. Bisher: Zugang BuchBuddy-Repo, Hosting und Deploy-Weg wie bei buchbuddy.de. Stand 15.10.: Mit dem verknüpften GitHub-Konto sind nur Repos von Buuk-Publishing und JCBOOKS sichtbar; für `BuchBuddy/buchbuddy-website` muss die Claude-GitHub-App in der Organisation BuchBuddy Zugriff auf das Repo bekommen | Chris/Jens | offen |
+| T9 | **Erledigt 15.10.:** Website liegt in `jcbooks/klhe-website`, Push funktioniert. Früher: Zugang BuchBuddy-Repo, Hosting und Deploy-Weg wie bei buchbuddy.de. Stand 15.10.: Mit dem verknüpften GitHub-Konto sind nur Repos von Buuk-Publishing und JCBOOKS sichtbar; für `BuchBuddy/buchbuddy-website` muss die Claude-GitHub-App in der Organisation BuchBuddy Zugriff auf das Repo bekommen | Chris/Jens | offen |
 | T10 | Search Console prüfen: Hat der Hack Spam-Seiten in den Google-Index gebracht? Liste exportieren, die neue Seite antwortet darauf mit 410 | Jens | offen |
 | T11 | Vor dem Löschen von WordPress: prüfen, ob Bestell- oder Kundendaten aufbewahrt werden müssen | Chris/Jens | offen |
 | T12 | GetResponse: Inhalte sichern (F5), dann kündigen | Chris | offen |
@@ -254,7 +254,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 
 ## E. Protokoll
 
-- 15.10.2026, ca. 19 Uhr: Etappe 3 umgesetzt (C8, A57–A60). Website im Repo-Ordner gebaut und geprüft (64 Seiten, 222 Weiterleitungen, Linkprüfung ohne Fehler, Desktop- und Mobilansicht angesehen). Push wartet auf GitHub-Zugriff (T9). Fragen F32–F38 offen.
+- 15.10.2026, ca. 19 Uhr: Etappe 3 umgesetzt (C8, A57–A60). Website im Repo-Ordner gebaut und geprüft (64 Seiten, 222 Weiterleitungen, Linkprüfung ohne Fehler, Desktop- und Mobilansicht angesehen). Nach `jcbooks/klhe-website` gepusht (T9 erledigt). Fragen F32–F38 offen.
 - 15.10.2026, ca. 18 Uhr: Richtung v5 freigegeben (A56). Programm, Buchseite und Bonusmaterial auf v5 umgestellt, Canvas neu geordnet (neun v5-Seiten, Archiv darunter). Ausblick Etappe 3 festgehalten (C7).
 - 15.10.2026, ca. 17 Uhr: Feedback zu v4 (A49–A55). Alle Mutmach-Cover und zwölf A+-Grafiken aus Praxisbuch 1–7 verarbeitet. BuchBuddy-Gestaltung angesehen (Pastellflächen, runde Formen, kräftige Grotesk). Gestaltungsvorschau v5 „Transparentpapier“ mit sechs Seiten veröffentlicht. Frage F31 offen.
 - 15.10.2026, ca. 16 Uhr: Feedback zu v3 (A45–A48). Neue Cover und A+-Grafiken verarbeitet (Golf, Tennis, Wilder Westen, Mitmachbücher, Bauernhof, Affe Loki, Einmal Himmel, Weniger ist auch gut genug, Mikroabenteuer Franken, Kuschelige Momente und Zahnarzt A+). Gestaltungsvorschau v4 mit neuem Ansatz veröffentlicht (Start, Verlag, Finanzreihe, Mutmachbücher, Kuschelige Momente). Fragen F24–F30 offen.

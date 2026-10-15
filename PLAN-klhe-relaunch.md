@@ -1,6 +1,6 @@
 # Plan: Relaunch klhe.de als statische Website
 
-Stand: 15.10.2026 · Status: gebaut, wartet auf Livegang (T1, T9, T14)
+Stand: 15.10.2026 · Status: gebaut und im Repo, wartet auf Livegang (T1, T14)
 
 ## Ziel
 klhe.de zieht von der gehackten WordPress-Installation auf eine statische Website um, gebaut mit einem kleinen Python-Generator wie bei buchbuddy.de. Gestaltung nach der freigegebenen Vorschau v5 „Transparentpapier“. Schneller Umzug hat Vorrang, Feinschliff (Bücherliste, Texte) folgt nach dem Livegang.
@@ -38,4 +38,4 @@ klhe.de zieht von der gehackten WordPress-Installation auf eine statische Websit
 
 ## Protokoll
 - 15.10.2026: Plan erstellt, Repo `jcbooks/klhe-website` angelegt (leer).
-- 15.10.2026: H1–H7 erledigt. 69 Cover vereinheitlicht, 77 Titel mit Klappentexten, Vorlagen nach v5, Rechtstexte, 222 Weiterleitungen. `python3 build.py --check` und `python3 tools/test_weiterleitungen.py` laufen ohne Fehler. Offen: Bonusdateien holen (T1), GitHub-Zugriff (T9), Livegang (T14).
+- 15.10.2026: H1–H7 erledigt. 69 Cover vereinheitlicht, 77 Titel mit Klappentexten, Vorlagen nach v5, Rechtstexte, 222 Weiterleitungen. `python3 build.py --check` und `python3 tools/test_weiterleitungen.py` laufen ohne Fehler. Nach `jcbooks/klhe-website` gepusht. Offen: Bonusdateien holen (T1), Livegang (T14).
