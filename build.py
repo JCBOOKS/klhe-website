@@ -38,7 +38,7 @@ SITE = {
     'facebook': 'https://www.facebook.com/KLHE.Verlag/',
     'buchbuddy': 'https://buchbuddy.de/',
     'jahr': date.today().year,
-    'stand': '15. Oktober 2026',
+    'stand': '16. Oktober 2026',
     # erst auf True setzen, wenn https://www.klhe.de mit Zertifikat läuft: leitet http:// und klhe.de ohne www dorthin um
     'https_www_erzwingen': False,
 }
