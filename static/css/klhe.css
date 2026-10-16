@@ -700,3 +700,16 @@ a.fact:hover span { text-decoration: underline; text-underline-offset: 3px; }
 .best-mini figcaption a { font-weight: 650; }
 @media (max-width: 900px) { .best-minis { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .best-more img { height: 64px; } }
+
+/* Leistungen mit fünf Karten: drei oben, zwei breite unten */
+.goods--5 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.goods--5 > .good { grid-column: span 2; }
+.goods--5 > .good:nth-child(n+4) { grid-column: span 3; }
+@media (max-width: 900px) {
+  .goods--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .goods--5 > .good, .goods--5 > .good:nth-child(n+4) { grid-column: auto; }
+  .goods--5 > .good:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .goods--5 { grid-template-columns: minmax(0, 1fr); }
+}

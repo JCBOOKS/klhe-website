@@ -64,3 +64,4 @@ Kennzeichnung: **[öffentlich]** darf sinngemäß auf die Website · **[intern]*
 - **[öffentlich]** Die Mutmachbücher sind von Hand illustriert, keine KI (aus der Bücherliste); ebenso Suchbuch und Monsterparade.
 - **[öffentlich]** „Nürnberg Guide“ entstand mit dem Instagram-Kanal „Nürnberg Hotspots“ (aus der Bücherliste).
 - **[öffentlich, nur als Hinweis]** Mehrere Titel wurden wegen ihres Erfolgs in Deutschland übersetzt (Englisch, Französisch, Spanisch).
+- **[öffentlich]** KLHE verschickt die Pflichtexemplare an die Deutsche Nationalbibliothek (Chris, 16.10.2026).

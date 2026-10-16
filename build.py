@@ -324,7 +324,7 @@ def build():
     # Verlag, Autor:innen, Kontakt
     render('verlag.html', '/verlag/', page_meta('Der Verlag · KLHE', 'KLHE ist ein unabhängiger Verlag aus Düsseldorf, gegründet 2011 von Christopher Klein und Jens Helbig. Die Geschichte des Verlags.', '/verlag/', nav='verlag'),
            heute=pick(['bei-gegenwind-loslaufen', 'einmal-himmel-und-zurueck-zu-mir', 'mein-besuch-beim-kinderarzt', 'elfe-filia-regelt-das']))
-    render('autoren.html', '/autoren/', page_meta('Für Autorinnen und Autoren · KLHE', 'Bei einem Verlag erscheinen: ISBN, Eintrag im VLB, Barsortimente Libri, Zeitfracht und Umbreit und eine eigene Verlagsauslieferung.', '/autoren/', nav='autoren'),
+    render('autoren.html', '/autoren/', page_meta('Für Autorinnen und Autoren · KLHE', 'Bei einem Verlag erscheinen: ISBN, Eintrag im VLB, Barsortimente Libri, Zeitfracht und Umbreit, eine eigene Verlagsauslieferung und Pflichtexemplare an die Deutsche Nationalbibliothek.', '/autoren/', nav='autoren'),
            shelf=pick(['bei-gegenwind-loslaufen', 'einmal-himmel-und-zurueck-zu-mir', 'kleine-redner-grosse-worte', 'elfe-filia-regelt-das', 'ausgeschieden', 'englische-grammatik-1']))
     render('kontakt.html', '/kontakt/', page_meta('Kontakt · KLHE', 'So erreichst Du KLHE: per E-Mail an info@klhe.de oder telefonisch. Für Leserinnen und Leser, Buchhandel, Presse und Autorinnen und Autoren.', '/kontakt/', nav='kontakt'))
 
@@ -492,6 +492,44 @@ def check_links():
     return bad
 
 
+def check_structure():
+    """Prüft, ob in jeder Seite alle Elemente sauber geschlossen sind (z. B. kein überzähliges </div>)."""
+    from html.parser import HTMLParser
+    leer = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'}
+    bad = []
+
+    class P(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=True)
+            self.stack, self.err = [], None
+
+        def handle_starttag(self, tag, attrs):
+            if tag not in leer:
+                self.stack.append((tag, self.getpos()[0]))
+
+        def handle_startendtag(self, tag, attrs):
+            pass
+
+        def handle_endtag(self, tag):
+            if tag in leer or self.err:
+                return
+            if not self.stack or self.stack[-1][0] != tag:
+                offen = self.stack[-1] if self.stack else ('nichts', 0)
+                self.err = f'Zeile {self.getpos()[0]}: </{tag}> schließt <{offen[0]}> aus Zeile {offen[1]}'
+                return
+            self.stack.pop()
+
+    for f in sorted(OUT.rglob('*.html')):
+        p = P()
+        p.feed(f.read_text(encoding='utf-8'))
+        p.close()
+        if p.err:
+            bad.append(f'{f.relative_to(OUT)}: {p.err}')
+        elif p.stack:
+            bad.append(f'{f.relative_to(OUT)}: nicht geschlossen: <{p.stack[-1][0]}> aus Zeile {p.stack[-1][1]}')
+    return bad
+
+
 # ---------------------------------------------------------------- Vorschau ohne Server
 def make_local(target=ROOT / 'vorschau-lokal'):
     """Kopie von public/, die per Doppelklick auf index.html im Browser läuft (file://):
@@ -539,3 +577,10 @@ if __name__ == '__main__':
                 print('  ', b)
             sys.exit(1)
         print('Linkprüfung: alle internen Links und Anker in Ordnung.')
+        kaputt = check_structure()
+        if kaputt:
+            print(f'{len(kaputt)} Seiten mit fehlerhaftem HTML-Aufbau:')
+            for b in kaputt:
+                print('  ', b)
+            sys.exit(1)
+        print('Strukturprüfung: alle Seiten sauber verschachtelt.')

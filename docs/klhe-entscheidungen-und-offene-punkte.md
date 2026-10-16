@@ -1,6 +1,6 @@
 # KLHE-Website: Entscheidungen, offene Fragen, To-dos
 
-Stand 15.10.2026, ca. 21 Uhr (Etappe 3: Website gebaut, wartet auf Livegang) · Dieses Dokument ist die Übergabe zwischen Chats: Was hier nicht steht, gilt als nicht entschieden.
+Stand 16.10.2026, ca. 10:30 Uhr (Etappe 3: Website gebaut, wartet auf Livegang) · Dieses Dokument ist die Übergabe zwischen Chats: Was hier nicht steht, gilt als nicht entschieden.
 
 Grundlagen: `klhe-projekt-briefing.md` · `klhe-bestandsaufnahme.md` · `klhe-url-inventar.md` · `klhe-inhalte-rohmaterial.md` · `klhe-seitenplan.md`
 
@@ -112,6 +112,10 @@ KLHE ist **Aushängeschild für BuchBuddy**: Autor:innen, die in einem Verlag ve
 - A71 **Pressekarten neu:** Jede Karte zeigt den Ausschnitt auf einer Pastellfläche, mehrseitige Belege als aufgefächerter Stapel (Focus Money mit drei Seiten; Eve, Bank & Umwelt, Chance, Prisma, Rhein Main Magazin 09/2020 und tina mit zwei Seiten), davor die besprochenen Bücher als 3D-Mockup (höchstens drei). Fernsehen, Radio und Online ohne Ausschnitt: Logo und Sendungsname auf einer Karte. Die Presseseite trennt „Fernsehen, Radio und online“ von „Zeitungen und Zeitschriften“. Bei RTL.de, Cashkurs und Jolie zeigen die Mockups Bücher der Finanzreihe und verlinken auf die Reihe, nicht auf ein einzelnes Buch, weil nicht belegt ist, um welches Buch es ging.
 - A72 **Startseite:** Pressebereich mit sechs Karten (WDR, Focus Money, RTL.de, Psychologie Heute, Tagesspiegel, tina) und dem Bestseller-Beleg. Finanzreihe: „Presse zur Reihe“ mit Focus Money, RTL.de, Cashkurs, Jolie, Eve, Bank & Umwelt, Rhein Main Magazin.
 - A73 **Zweiter Bestseller-Beleg (15.10., 21:02):** „Nine to five muss nicht sein!“ auf Platz 1 der Amazon-Bestseller in Geldanlage & Vermögensaufbau, vor „Rich Dad Poor Dad“ und „Souverän investieren“ (Bildschirmfoto vom 18. Juli 2017, Datum aus der Taskleiste; Taskleiste und Seitenleiste abgeschnitten, Plätze 2 und 3 bewusst sichtbar). Dazu drei kleine Belege: Nr. 1 in Betriebswirtschaft, E-Commerce, Online-Marketing; Nr. 1 in Geldanlage & Vermögensaufbau (Kindle); Bestseller-Kennzeichnung. Hinweis „frühere Auflage (Kindle-Ausgabe)“ steht dabei. Zu sehen auf `/presse/#bestseller`, auf der Buchseite, auf der Finanzreihe und als Kurzform auf der Startseite (beide Belege nebeneinander). Kennzahl Startseite: „Bestseller bei Amazon, mehrfach auf Platz 1 ihrer Kategorie“.
+
+**Nachgetragen 16.10.2026, 10:20**
+- A74 **Pflichtexemplare an die Deutsche Nationalbibliothek** als Verlagsleistung genannt, neben ISBN/VLB, Barsortimenten und Verlagsauslieferung: eigene Karte unter „Was KLHE für Dein Buch leistet“ (`/autoren/`), Punkt in der Liste „Bei einem Verlag erscheinen“ auf der Startseite, Seitenbeschreibung von `/autoren/`. Text: DNB archiviert dauerhaft und verzeichnet in der Deutschen Nationalbibliografie. Landesbibliothek (NRW) bewusst nicht genannt, siehe F44.
+- A75 **Fehler behoben:** Seit dem Umbau am 15.10. abends stand auf der Startseite ein überzähliges `</div>`. Dadurch lag alles ab „Unsere Verleger“ außerhalb des Seitenrahmens (Schrift fiel auf Times zurück). Repariert; `build.py --check` prüft jetzt zusätzlich, ob alle Seiten sauber verschachtelt sind.
 
 **Nur über Amazon (KDP) erhältlich, Stand 15.10.2026** (Rest: im Buchhandel gelistet)
 - Visualisierung mit der Kraft der Gedanken · Glück – der ultimative Ratgeber · Lateinamerikanisches Spanisch lernen · Mama, wer wohnt eigentlich auf dem Bauernhof? · Das total verrückte Suchbuch · Die große Monsterparade · Ein etwas anderes Ausmalbuch · Selbstfürsorge-Planer · Die Wuselbande sucht das Gähnen · Mikroabenteuer in Franken · Das große Fürth Wimmelbuch · Mein Bauch tut weh (offen)
@@ -254,6 +258,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 - F40 **Weitere Presse:** WDR, WDR 2, RTL.de und Cashkurs sind jetzt drin (A70), Bestseller-Bildschirmfoto auch (A69). Weiter offen: Datum und Thema von RTL.de und Cashkurs; Artikel zu Ausgeschieden, Die verlorenen Jahre, Finde dein Warum (T8). Nicht aufgenommen: „Onkolotsin hilft mit eigener Erfahrung“ (Thema ist der Verein, nicht das Buch). Ganze Artikel werden nicht zum Lesen angeboten, nur Vorschaubilder (Rechte der Verlage).
 - F41 **Bestseller-Datum:** Wann entstand das Amazon-Bildschirmfoto zu Mutmacherinnen? Mit Datum („Platz 1 im Mai 2022“ o. ä.) wirkt der Beleg noch stärker.
 - F43 **Beleg für „Amazon Top 100“:** Die neuen Bildschirmfotos zeigen Platz 1 in Kategorien und Rang 383 bzw. 735 im Kindle-Shop insgesamt, also nicht die Top 100. Die Aussage „Finanzreihe in den Amazon Top 100“ (von buchbuddy.de) steht weiter als Satz ohne Bild. Auf der alten klhe.de stand: „Der Hamster verlässt das Rad“ 2018 auf Platz 2 im Kindle-Shop. Gibt es davon ein Bildschirmfoto? Das wäre der stärkste Beleg.
+- F44 **Landes-Pflichtexemplar:** Neben der DNB verlangt NRW-Landesrecht ein Exemplar für die zuständige Landesbibliothek (nach dem Gesetz von 2013 für Verlage im Regierungsbezirk Düsseldorf die ULB Düsseldorf; das Gesetz wurde zum 1.1.2022 neu gefasst). Macht KLHE das? Dann ergänzen wir es.
 - F42 **WDR 2 „Sonntagsfragen“:** Sendedatum? Ist die Folge in der ARD Audiothek noch abrufbar (von hier aus nicht prüfbar)? Dann setzen wir den Link. Außerdem: Gibt es saubere Logos (SVG/PNG) von Focus Money, Psychologie Heute, Tagesspiegel, Prisma usw.? Dann kommen sie in die Leiste.
 - F38 Autor:innen der Mutmachbücher und des Tarot-Sets sind nicht genannt, weil unbekannt. Nennen?
 
@@ -279,6 +284,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 
 ## E. Protokoll
 
+- 16.10.2026, ca. 10:30 Uhr: Pflichtexemplare DNB ergänzt (A74), Startseiten-Fehler behoben und Strukturprüfung eingebaut (A75). Frage F44 neu.
 - 15.10.2026, ca. 21:10 Uhr: Coverwand auf der Startseite repariert (Lücken durch verzögert geladene Cover ohne feste Größe). Bestseller-Belege zu Nine to five eingebaut (A73), Frage F43 neu.
 - 15.10.2026, ca. 21 Uhr: Presse-Feedback umgesetzt (A68–A72): Logos WDR, RTL, Cashkurs, Jolie; Bestseller-Beleg; vier neue Beiträge (25 statt 21); Pressekarten mit Seitenstapeln und 3D-Buch-Mockups auf Start, Presse, Buchseiten und Finanzreihe. Build, Linkprüfung und Weiterleitungstest ohne Fehler, Desktop und Mobil angesehen. Fragen F41, F42 neu.
 - 15.10.2026, ca. 20 Uhr: Feedback umgesetzt (A63–A67): Börsenverein entfernt, Cover im Reihenbild Kuschelige Momente, Verlagskosten in der Preisleiste, Presseseite mit 21 Berichten, Cover Jordan und Tierkinderhort. Fragen F39, F40 offen.
