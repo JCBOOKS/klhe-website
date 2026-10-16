@@ -90,4 +90,14 @@ Für Cloudflare Pages oder Netlify statt Apache liegt dieselbe Weiterleitungslis
 
 ## Datenschutz
 
-Keine Cookies, kein Tracking, keine externen Schriften oder Skripte. Einziges JavaScript: öffnet auf der Bonusseite den Abschnitt aus der Adresse (`/bonus/#english`).
+Keine Cookies, kein Tracking, keine externen Schriften oder Skripte. JavaScript gibt es nur an zwei Stellen, beide ohne Verbindung nach außen: Die Bonusseite öffnet den Abschnitt aus der Adresse (`/bonus/#english`), und „Buch teilen“ auf den Buchseiten öffnet das Teilen-Menü des Geräts oder kopiert den Link. WhatsApp, Facebook und E-Mail sind dort einfache Links.
+
+## Vorschaubilder für geteilte Links
+
+Wird eine Buchseite geteilt (WhatsApp, Facebook, LinkedIn, Messenger), erscheint ein Vorschaubild aus `static/img/teilen/<slug>.jpg` (1200 × 630, Cover auf der Farbe der Kategorie). Für neue Bücher oder neue Cover einmal ausführen (braucht Pillow):
+
+```bash
+pip install pillow
+python3 tools/teilen_bilder.py
+```
+

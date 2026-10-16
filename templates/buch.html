@@ -18,6 +18,17 @@
         {% if b.amazon_url %}<a class="btn btn--ink" href="{{ b.amazon_url }}"{{ buy_attrs() }}>Bei Amazon ansehen</a>{% endif %}
         {% if b.im_buchhandel %}<span class="small">oder in jeder Buchhandlung mit der ISBN bestellen</span>{% endif %}
       </div>
+      {% set share_url = site.url ~ b.url %}
+      {% set share_text = '„' ~ b.titel ~ '“' ~ (' von ' ~ b.autoren if b.autoren else '') %}
+      <div class="share" data-url="{{ share_url }}" data-title="{{ b.titel }}" data-text="{{ share_text }}">
+        <span class="share-lead">Buch teilen</span>
+        <button type="button" class="share-btn share-native" hidden>Teilen …</button>
+        <a class="share-btn" href="https://wa.me/?text={{ (share_text ~ ': ' ~ share_url) | urlenc }}" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | urlenc }}" target="_blank" rel="noopener">Facebook</a>
+        <a class="share-btn" href="mailto:?subject={{ ('Buchtipp: ' ~ b.titel) | urlenc }}&amp;body={{ ('Schau mal: ' ~ share_text ~ '\n' ~ share_url) | urlenc }}">E-Mail</a>
+        <button type="button" class="share-btn share-copy" hidden>Link kopieren</button>
+        <span class="share-ok" role="status" aria-live="polite"></span>
+      </div>
       {% set specs = [] %}
       {% if b.seiten %}{% set _ = specs.append(('Seiten', b.seiten)) %}{% endif %}
       {% if b.auflage %}{% set _ = specs.append(('Auflage', b.auflage)) %}{% endif %}
@@ -75,4 +86,32 @@
   </section>
   {% endif %}
 </div>
+<script>
+/* Buch teilen: Teilen-Menü des Geräts, sonst Link kopieren. Keine Daten an Dritte. */
+(function () {
+  var box = document.querySelector('.share');
+  if (!box) return;
+  var url = box.getAttribute('data-url'), ok = box.querySelector('.share-ok');
+  var nativ = box.querySelector('.share-native'), kopie = box.querySelector('.share-copy');
+  function melden(t) { ok.textContent = t; clearTimeout(melden.t); melden.t = setTimeout(function () { ok.textContent = ''; }, 2600); }
+  function ersatz() {
+    var f = document.createElement('textarea');
+    f.value = url; f.setAttribute('readonly', ''); f.style.position = 'absolute'; f.style.left = '-9999px';
+    document.body.appendChild(f); f.select();
+    try { document.execCommand('copy'); melden('Link kopiert'); } catch (e) { melden(url); }
+    document.body.removeChild(f);
+  }
+  if (navigator.share) {
+    nativ.hidden = false;
+    nativ.addEventListener('click', function () {
+      navigator.share({ title: box.getAttribute('data-title'), text: box.getAttribute('data-text'), url: url }).catch(function () {});
+    });
+  }
+  kopie.hidden = false;
+  kopie.addEventListener('click', function () {
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(function () { melden('Link kopiert'); }, ersatz);
+    else ersatz();
+  });
+})();
+</script>
 {% endblock %}

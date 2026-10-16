@@ -199,7 +199,7 @@ def load():
 
 # ---------------------------------------------------------------- Seiten
 def page_meta(title, desc, path, **kw):
-    d = {'title': title, 'desc': desc, 'path': path, 'canonical': SITE['url'] + path, 'noindex': False, 'og_image': SITE['url'] + '/img/foto/chris-jens-buehne.webp', 'nav': '', 'jsonld': None}
+    d = {'title': title, 'desc': desc, 'path': path, 'canonical': SITE['url'] + path, 'noindex': False, 'og_image': SITE['url'] + '/img/teilen/klhe.jpg', 'og_alt': 'Bücher von KLHE', 'og_type': 'website', 'og_extra': [], 'nav': '', 'jsonld': None}
     d.update(kw)
     return d
 
@@ -255,6 +255,7 @@ def build():
     namen = [m for m in MEDIEN_REIHENFOLGE if m in ohne_logo] + sorted({m for m in ohne_logo if m not in MEDIEN_REIHENFOLGE})
     env.globals.update(site=SITE, reihen=d['reihen'], kats=d['kats'], medien={'logos': logos, 'namen': namen})
     env.filters['urlq'] = lambda s: quote(s)
+    env.filters['urlenc'] = lambda s: quote(s, safe='')  # vollständig kodiert, für Teilen-Links
     pages = []
 
     def render(tpl, path, meta, **ctx):
@@ -298,9 +299,11 @@ def build():
         if len(more) > 6:
             start = b['pos'] % len(more)
             more = (more[start:] + more[:start])[:6]
-        img_abs = SITE['url'] + b['img'] if b['img'] else SITE['url'] + '/img/foto/chris-jens-buehne.webp'
+        # Vorschaubild für geteilte Links (tools/teilen_bilder.py), sonst das Standardbild
+        img_abs = SITE['url'] + (f'/img/teilen/{b["slug"]}.jpg' if (STATIC / 'img' / 'teilen' / f'{b["slug"]}.jpg').exists() else '/img/teilen/klhe.jpg')
+        og_extra = [('book:isbn', b['isbn'].replace('-', ''))] if b['isbn'] else []
         title = f'{b["titel"]}' + (f' von {b["autoren"]}' if b['autoren'] else '') + ' · KLHE'
-        render('buch.html', b['url'], page_meta(title, short(b['klappentext']) or b['untertitel'], b['url'], nav='buecher', og_image=img_abs, jsonld=book_jsonld(b)),
+        render('buch.html', b['url'], page_meta(title, short(b['klappentext']) or b['untertitel'], b['url'], nav='buecher', og_image=img_abs, og_alt=f'Cover: {b["voller_titel"]}', og_type='book', og_extra=og_extra, jsonld=book_jsonld(b)),
                b=b, more=more, more_title=more_title, more_link=more_link)
 
     # Reihen

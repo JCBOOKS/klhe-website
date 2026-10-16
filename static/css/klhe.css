@@ -713,3 +713,16 @@ a.fact:hover span { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 560px) {
   .goods--5 { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Buch teilen */
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: -4px; }
+.share-lead { font-size: 14px; font-weight: 650; color: var(--ink-2); margin-right: 4px; }
+.share-btn { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(34, 35, 42, .14); background: rgba(255, 255, 255, .75);
+  font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; cursor: pointer; }
+.share-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.share-btn[hidden] { display: none; }
+.share-native { background: var(--ink); color: #fff; border-color: var(--ink); }
+.share-ok { font-size: 14px; font-weight: 600; color: var(--mint-ink); }
+@media (max-width: 560px) {
+  .specs dd { white-space: nowrap; font-variation-settings: "wdth" 80; }
+}

@@ -116,6 +116,7 @@ KLHE ist **Aushängeschild für BuchBuddy**: Autor:innen, die in einem Verlag ve
 **Nachgetragen 16.10.2026, 10:20**
 - A74 **Pflichtexemplare an die Deutsche Nationalbibliothek** als Verlagsleistung genannt, neben ISBN/VLB, Barsortimenten und Verlagsauslieferung: eigene Karte unter „Was KLHE für Dein Buch leistet“ (`/autoren/`), Punkt in der Liste „Bei einem Verlag erscheinen“ auf der Startseite, Seitenbeschreibung von `/autoren/`. Text: DNB archiviert dauerhaft und verzeichnet in der Deutschen Nationalbibliografie. Landesbibliothek (NRW) bewusst nicht genannt, siehe F44.
 - A75 **Fehler behoben:** Seit dem Umbau am 15.10. abends stand auf der Startseite ein überzähliges `</div>`. Dadurch lag alles ab „Unsere Verleger“ außerhalb des Seitenrahmens (Schrift fiel auf Times zurück). Repariert; `build.py --check` prüft jetzt zusätzlich, ob alle Seiten sauber verschachtelt sind.
+- A76 **Buchseiten teilen (16.10., 12:04):** Zeile „Buch teilen“ unter dem Kauf-Button jeder Buchseite: „Teilen …“ (Teilen-Menü des Handys, nur wo verfügbar), WhatsApp, Facebook, E-Mail, „Link kopieren“. Alles ohne Fremd-Skripte; Datenschutz ergänzt. Dazu eigene Vorschaubilder für geteilte Links (1200 × 630, Cover auf Kategorienfarbe, KLHE-Logo) für alle 51 Buchseiten und ein Standardbild für die übrigen Seiten (`tools/teilen_bilder.py`), plus og:type book, ISBN und Twitter-Karte.
 
 **Nur über Amazon (KDP) erhältlich, Stand 15.10.2026** (Rest: im Buchhandel gelistet)
 - Visualisierung mit der Kraft der Gedanken · Glück – der ultimative Ratgeber · Lateinamerikanisches Spanisch lernen · Mama, wer wohnt eigentlich auf dem Bauernhof? · Das total verrückte Suchbuch · Die große Monsterparade · Ein etwas anderes Ausmalbuch · Selbstfürsorge-Planer · Die Wuselbande sucht das Gähnen · Mikroabenteuer in Franken · Das große Fürth Wimmelbuch · Mein Bauch tut weh (offen)
@@ -285,6 +286,7 @@ Offen aus Etappe 3 (vor dem Livegang klären):
 
 ## E. Protokoll
 
+- 16.10.2026, ca. 12:30 Uhr: Teilen auf Buchseiten und Vorschaubilder für geteilte Links (A76).
 - 16.10.2026, ca. 11 Uhr: Pflichtexemplare aller 77 Titel bei DNB und ULB Düsseldorf geprüft (`klhe-pflichtexemplare.md`), F44 beantwortet, T16 neu, F35/F36 nebenbei geklärt.
 - 16.10.2026, ca. 10:30 Uhr: Pflichtexemplare DNB ergänzt (A74), Startseiten-Fehler behoben und Strukturprüfung eingebaut (A75). Frage F44 neu.
 - 15.10.2026, ca. 21:10 Uhr: Coverwand auf der Startseite repariert (Lücken durch verzögert geladene Cover ohne feste Größe). Bestseller-Belege zu Nine to five eingebaut (A73), Frage F43 neu.
